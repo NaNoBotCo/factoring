@@ -1,0 +1,277 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Split — make a semiprime, then break it — Big Numbers, Split</title>
+<meta name="description" content="Make a product of two primes at any size and watch trial division and Pollard rho try to get them back; then make a 2048-bit key in your browser.">
+<link rel="canonical" href="https://nanobotco.github.io/factoring/split/">
+<meta property="og:title" content="Split — make a semiprime, then break it — Big Numbers, Split">
+<meta property="og:description" content="Make a product of two primes at any size and watch trial division and Pollard rho try to get them back; then make a 2048-bit key in your browser.">
+<meta property="og:image" content="https://nanobotco.github.io/factoring/img/card.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/factoring/icon.svg" type="image/svg+xml">
+<style>
+:root{
+ --bg:#0a0a10;--bg2:#0f0f18;--panel:#14141f;--ink:#f2ede3;--mute:#9d9689;--line:#2c2c3a;
+ --chip:#1b1b28;--c0:#ffb347;--c1:#5fd3c6;--c2:#ff7ab6;--violet:#b79cff;--focus:#ffb347;
+ --display:"Avenir Next Condensed","Arial Narrow",Impact,system-ui,sans-serif;
+ --body:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+ --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.62;
+ -webkit-text-size-adjust:100%}
+a{color:var(--c0);text-decoration-thickness:.08em;text-underline-offset:.18em}
+a:hover{color:#ffd08a}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible,input:focus-visible{
+ outline:3px solid var(--focus);outline-offset:2px;border-radius:5px}
+img,canvas,svg{max-width:100%}img{height:auto}
+.sr{position:absolute;left:-999px;top:0;background:var(--c0);color:#000;padding:.4rem .8rem;z-index:99}
+.sr:focus{left:.5rem;top:.5rem}
+
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;
+ background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);transition:transform .25s}
+body.nav-away header.top{transform:translateY(-100%)}
+header.top .in{max-width:72rem;margin:0 auto;padding:.5rem 1rem;display:flex;gap:.4rem 1.1rem;
+ align-items:center;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:.03em;
+ text-transform:uppercase;text-decoration:none;color:var(--ink);white-space:nowrap;display:flex;
+ align-items:center;gap:.5rem}
+.brand b{color:var(--c0)}
+.brand i{width:.85rem;height:.85rem;border-radius:2px;background:var(--c0);display:inline-block;
+ box-shadow:6px 0 0 -2px var(--c1),-6px 0 0 -2px var(--c1);transform:rotate(45deg)}
+header.top nav{display:flex;gap:.1rem .8rem;flex-wrap:wrap;font-size:.72rem;text-transform:uppercase;
+ letter-spacing:.08em;font-weight:700}
+header.top nav a{text-decoration:none;color:var(--mute);padding:.15rem 0}
+header.top nav a:hover,header.top nav a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--c0)}
+main{max-width:72rem;margin:0 auto;padding:1rem 1rem 5rem}
+footer.bot{border-top:1px solid var(--line);margin-top:3rem;background:var(--bg2)}
+footer.bot .in{max-width:72rem;margin:0 auto;padding:1.4rem 1rem 3rem;font-size:.8rem;color:var(--mute)}
+footer.bot a{color:var(--mute)}footer.bot p{max-width:none}
+.fleet{margin:.6rem 0 0;line-height:1.9}.fleet a{margin-right:.55rem;white-space:nowrap}
+.support{margin:.45rem 0 0}.support a{margin-right:.5rem}
+
+h1{font-family:var(--display);font-size:clamp(2.4rem,7.5vw,5rem);line-height:.94;margin:.3rem 0 .4rem;
+ font-weight:800;letter-spacing:-.005em;text-transform:uppercase}
+h1 .kind{display:block;font-size:clamp(.6rem,1.5vw,.72rem);color:var(--c0);letter-spacing:.34em;
+ margin-bottom:.55rem;font-weight:800}
+h2{font-family:var(--display);font-size:clamp(1.5rem,3.4vw,2rem);margin:2.6rem 0 .6rem;font-weight:800;
+ text-transform:uppercase;border-bottom:2px solid var(--line);padding-bottom:.25rem}
+h2 small{font-family:var(--body);font-size:.55em;color:var(--mute);text-transform:none;
+ letter-spacing:0;font-weight:400;margin-left:.6rem}
+h3{font-family:var(--display);font-size:1.2rem;margin:1.7rem 0 .3rem;font-weight:800;text-transform:uppercase}
+.lede{font-size:clamp(1.12rem,2.4vw,1.35rem);max-width:44rem;margin:.5rem 0 1.1rem}
+.mute{color:var(--mute)}.small{font-size:.82rem}
+p{margin:.65rem 0;max-width:44rem}
+.prose p,.prose ul,.prose ol{max-width:44rem}
+.prose li{margin:.35rem 0}
+.prose strong{color:var(--c0);font-weight:700}
+blockquote{margin:1rem 0;padding:.6rem 0 .6rem 1rem;border-left:3px solid var(--c1);color:var(--ink);
+ max-width:44rem;font-style:normal}
+blockquote cite{display:block;margin-top:.4rem;color:var(--mute);font-size:.82rem;font-style:normal}
+
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin:1rem 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem;
+ text-decoration:none;color:var(--ink);display:block}
+a.card:hover{border-color:var(--c0)}
+.card h3{margin:.1rem 0 .3rem}
+.card p{margin:.2rem 0;font-size:.88rem;color:var(--mute)}
+
+/* the linked image: background, scrim, spacer, text — the whole box is the link */
+a.shot{position:relative;display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+ text-decoration:none;color:var(--ink)}
+a.shot:hover{border-color:var(--c0)}
+a.shot .bg{position:absolute;inset:0;background-size:cover;background-position:center;
+ transition:transform .6s}
+a.shot:hover .bg{transform:scale(1.04)}
+a.shot .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,16,.05) 0%,rgba(10,10,16,.35) 45%,rgba(10,10,16,.92) 100%)}
+a.shot .sp{display:block;padding-top:56%}
+a.shot .tx{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem}
+a.shot .tx b{display:block;font-family:var(--display);font-size:1.5rem;text-transform:uppercase;line-height:1;
+ font-weight:800}
+a.shot .tx span{display:block;color:var(--mute);font-size:.84rem;margin-top:.3rem}
+a.shot .tx em{font-style:normal;color:var(--c0);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+ font-weight:800;display:block;margin-bottom:.35rem}
+.shots{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));margin:1rem 0}
+
+/* the band: a picture behind a block of words, anchored to the window so the page scrolls through it */
+.band{position:relative;margin:2.2rem calc(50% - 50vw);padding:3.2rem 1rem;background-size:cover;
+ background-position:center;background-attachment:fixed;color:var(--ink)}
+.band:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,16,.94) 0%,rgba(10,10,16,.72) 55%,rgba(10,10,16,.35) 100%)}
+.band .in{position:relative;max-width:72rem;margin:0 auto}
+.band .in p{max-width:40rem}
+.band h2{border:none;margin-top:0}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){.band{background-attachment:scroll}}
+
+.fig{margin:1.6rem 0;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:.7rem}
+.fig img{display:block;margin:0 auto;border-radius:6px}
+.fig figcaption{color:var(--mute);font-size:.82rem;margin:.6rem .2rem 0;max-width:46rem}
+.fig.plain{background:none;border:none;padding:0}
+.hero{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);margin:.6rem 0 1.4rem}
+.hero img{display:block;width:100%}
+
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.88rem}
+th,td{text-align:left;padding:.42rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mute);font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono)}
+td.d{white-space:nowrap;font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+tr[hidden]{display:none}
+.wrap{overflow-x:auto}.wrap table{min-width:52rem}
+code,kbd{font-family:var(--mono);font-size:.86em;background:var(--chip);padding:.1rem .3rem;border-radius:4px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.8rem 1rem;
+ overflow-x:auto;font-size:.82rem}
+pre code{background:none;padding:0}
+.eq{font-family:var(--mono);background:var(--panel);border-left:3px solid var(--c0);padding:.7rem 1rem;
+ margin:1rem 0;overflow-x:auto;font-size:.92rem;max-width:44rem}
+.eq b{color:var(--c0);font-weight:600}
+.eqn{color:var(--mute);font-family:var(--body);font-size:.86rem;margin-top:.4rem}
+.cite{font-size:.78em;color:var(--c1);text-decoration:none;border-bottom:1px dotted var(--c1);
+ white-space:nowrap;margin-left:.2em}
+.cite:hover{color:var(--c1)}
+.tag{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;
+ padding:.1rem .6rem;font-size:.72rem;color:var(--mute);margin:0 .25rem .3rem 0;white-space:nowrap}
+.tag.c0{border-color:var(--c0);color:var(--c0)}
+.tag.c1{border-color:var(--c1);color:var(--c1)}
+.tag.c2{border-color:var(--c2);color:var(--c2)}
+.tag.v{border-color:var(--violet);color:var(--violet)}
+
+.tool{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem;margin:1.4rem 0}
+.tool h3{margin-top:0}
+.tool .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.5rem 0}
+.tool label{font-size:.8rem;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+button,select,input[type=text],input[type=number]{font:inherit;font-size:.9rem;background:var(--chip);color:var(--ink);
+ border:1px solid var(--line);border-radius:7px;padding:.35rem .7rem;cursor:pointer}
+input[type=text],input[type=number]{cursor:text;font-family:var(--mono)}
+input[type=range]{width:min(100%,22rem);accent-color:var(--c0)}
+button:hover,select:hover{border-color:var(--c0)}
+button:disabled{opacity:.4;cursor:default}
+button.go{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+.out{font-family:var(--mono);font-size:.9rem;background:#0b0b12;border:1px solid var(--line);
+ border-radius:8px;padding:.7rem .9rem;margin:.6rem 0 0;overflow-x:auto;line-height:1.8}
+.out .k{color:var(--mute)}
+.out .v{color:var(--c1)}
+.out .bad{color:var(--c2)}
+.out .good{color:var(--c0)}
+.out table{font-size:.8rem}
+.out .lane{display:grid;grid-template-columns:11rem 1fr;gap:.2rem .8rem;align-items:center;margin:.3rem 0}
+.out .lane i{display:block;height:6px;background:var(--c1);border-radius:3px;grid-column:2;margin-bottom:-.2rem}
+.units{display:flex;gap:.3rem;flex-wrap:wrap}
+.units button{min-width:2.9rem;text-align:center;font-family:var(--mono)}
+.units button[aria-pressed=true]{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+canvas{display:block;margin:0 auto;max-width:100%;height:auto;touch-action:pan-y;background:#0b0b12;border-radius:8px}
+
+.big{font-family:var(--display);font-size:clamp(2rem,6vw,4rem);line-height:1;color:var(--c0);font-weight:800;
+ margin:.2rem 0}
+.answer{border:1px solid var(--c0);border-radius:12px;padding:1.1rem 1.3rem;margin:1.4rem 0;
+ background:color-mix(in srgb,var(--c0) 6%,var(--panel));max-width:46rem}
+.answer h3{margin-top:0;color:var(--c0)}
+.answer p{margin:.5rem 0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;font-size:.86rem;max-width:44rem}
+.kv dt{color:var(--mute)}.kv dd{margin:0}
+.note{border:1px solid var(--line);border-left:3px solid var(--c2);background:var(--bg2);
+ border-radius:0 8px 8px 0;padding:.7rem 1rem;margin:1.2rem 0;font-size:.9rem;max-width:46rem}
+.note b{color:var(--c2)}
+ul.ticks{list-style:none;padding-left:0}
+ul.ticks li{padding-left:1.4rem;position:relative}
+ul.ticks li:before{content:"✓";position:absolute;left:0;color:var(--c1);font-weight:700}
+ul.checks{list-style:none;padding-left:0;font-family:var(--mono);font-size:.78rem;columns:2;
+ column-gap:2rem;max-width:none}
+ul.checks li{break-inside:avoid;color:var(--mute);margin:.15rem 0}
+ul.checks li b{color:var(--c1);font-weight:400}
+@media (max-width:48rem){ul.checks{columns:1}.out .lane{grid-template-columns:1fr}.out .lane i{grid-column:1}}
+.tl{list-style:none;padding:0;margin:1rem 0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:.3rem 0 .9rem 1.4rem;max-width:48rem}
+.tl li:before{content:"";position:absolute;left:-7px;top:.75rem;width:12px;height:12px;border-radius:50%;
+ background:var(--c1);border:2px solid var(--bg)}
+.tl li.quantum:before{background:var(--c2)}
+.tl li.riemann:before{background:var(--violet)}
+.tl li .when{font-family:var(--mono);color:var(--c0);font-size:.8rem;display:block}
+.tl li .who{font-weight:700}
+.tl li p{margin:.2rem 0 0;font-size:.95rem}
+dl.words dt{font-weight:700;color:var(--c0);margin-top:.9rem}
+dl.words dd{margin:0;max-width:44rem}
+.src{font-size:.86rem}
+.src li{margin:.35rem 0;padding-left:.2rem}
+.src li b{color:var(--mute);font-weight:400;font-family:var(--mono);margin-right:.4rem}
+</style></head>
+<body data-base="/factoring/" data-asof="2026-09-23">
+<a class="sr" href="#main">Skip to the page</a>
+<header class="top"><div class="in">
+<a class="brand" href="/factoring/"><i></i>Big Numbers, <b>Split</b></a>
+<nav aria-label="Sections"><a href="/factoring/split/" aria-current="page">Split</a><a href="/factoring/history/">History</a><a href="/factoring/methods/">Methods</a><a href="/factoring/records/">Records</a><a href="/factoring/quantum/">Quantum</a><a href="/factoring/riemann/">Riemann</a><a href="/factoring/wallet/">Wallet</a><a href="/factoring/now/">Now</a><a href="/factoring/words/">Words</a><a href="/factoring/sources/">Sources</a></nav></div></header>
+<main id="main"><h1><span class="kind">Make one, break one</span>Split</h1>
+<p class="lede">Multiplying is cheap. Splitting is the whole problem. The box below makes a product of two
+primes at whatever size you like and then tries to get the primes back, with a live count of the work.
+Watch the wall arrive.</p>
+
+<div class="tool" id="split">
+<h3>Make a semiprime, then split it</h3>
+<div class="row"><label>digits in each prime</label>
+<span class="units">
+<button data-digits="3" aria-pressed="false">3</button>
+<button data-digits="6" aria-pressed="true">6</button>
+<button data-digits="9" aria-pressed="false">9</button>
+<button data-digits="12" aria-pressed="false">12</button>
+<button data-digits="16" aria-pressed="false">16</button>
+<button data-digits="20" aria-pressed="false">20</button>
+</span></div>
+<div class="row"><button class="go" id="make">make a new one</button>
+<button id="trial">split by trial division</button>
+<button id="rho">split by Pollard rho</button>
+<button id="stop">stop</button></div>
+<div class="out" id="splitout"></div>
+<p class="small mute">Trial division tries every odd number up to the square root. Pollard's rho method
+(1975) walks a pseudo-random path and needs about the square root of the <i>smaller prime</i> — the square
+root of the square root. At 6 digits both finish. At 12, rho finishes and trial division shows you its
+projection. At 20 neither finishes, and the projection is the point.</p>
+</div>
+
+<h2>Why there are always enough primes</h2>
+<div class="prose">
+<p>Making a key means finding two primes of about 309 digits. That only works because primes never run
+out and never get too thin. The Prime Number Theorem <a class="cite" href="/factoring/sources/#src-6" title="Sur la distribution des zéros de la fonction ζ(s) et ses conséquences arithmétiques">[6]</a> says that near a number x,
+about one in every ln x whole numbers is prime — ln being the natural logarithm, a number that grows very
+slowly. So:</p>
+</div>
+<div class="wrap"><table><thead><tr><th>size of the number</th><th class="n">about one prime in every</th></tr></thead><tbody><tr><td>2 digits</td><td class="n">5</td></tr><tr><td>5 digits</td><td class="n">12</td></tr><tr><td>10 digits</td><td class="n">23</td></tr><tr><td>20 digits</td><td class="n">46</td></tr><tr><td>50 digits</td><td class="n">115</td></tr><tr><td>100 digits</td><td class="n">230</td></tr><tr><td>155 digits</td><td class="n">357</td></tr><tr><td>308 digits</td><td class="n">709</td></tr><tr><td>617 digits</td><td class="n">1421</td></tr></tbody></table></div>
+<div class="prose">
+<p>At 309 digits, one number in about 709 is prime — and only the odd ones need testing, so
+one in 354. Pick random numbers, test each with a fast test that can tell prime from
+not (Miller–Rabin, 1976–1980; certain-if-the-Riemann-Hypothesis-holds in one version, almost-certain in
+the one everyone uses <a class="cite" href="/factoring/sources/#src-14" title="Riemann&#x27;s hypothesis and tests for primality">[14]</a>), and a prime turns up in a few hundred tries. Your browser
+does it below.</p>
+</div>
+
+<div class="tool">
+<h3>A 2048-bit key, made here</h3>
+<p class="small mute">Two 1024-bit primes, found by the same test, multiplied. This is the shape of the
+key that guards most of the web.</p>
+<div class="row"><button class="go" id="big">make one</button></div>
+<div class="out" id="bigout"><span class="k">press the button — a second or two</span></div>
+</div>
+
+<h2>Why the two primes are kept apart</h2>
+<div class="prose">
+<p>Fermat noticed in 1643 <a class="cite" href="/factoring/sources/#src-2" title="Letter to Marin Mersenne on a method of factoring, with 2027651281 = 44021 × 46061 as the example">[2]</a> that any odd number is a difference of two squares, a² −
+b², and that (a − b)(a + b) is then a factorisation. Walk a up from the square root of N and check whether
+a² − N is a perfect square. If the two primes are close together, a starts near both of them and the walk
+is short. The primes 10,007 and 10,037 give N = 100,440,259, and Fermat's walk finds them
+in 1 steps. Key generators keep their two primes far apart for exactly this reason, and one of
+the 2024 'RSA-2048 broken' papers turned out to have chosen its numbers so that the primes differed in two
+bits <a class="cite" href="/factoring/sources/#src-78" title="A first successful factorization of RSA-2048 integer by D-Wave quantum computer — on integers whose two primes differ in two low bits">[78]</a>.</p>
+</div>
+<figure class="fig "><img src="/factoring/img/band-wave.jpg" alt="A field of teal bars of varying height with a tall amber bar every so often at a steady spacing: a^x mod N repeating." loading="lazy" decoding="async"><figcaption>a^x mod 143 for x from 0: the values look random until the amber bars, where the sequence comes back to 1, at a steady spacing. That spacing is the period, and reading it is the one thing a quantum computer does that a classical one cannot — see the <a href="/factoring/quantum/">quantum page</a>.</figcaption></figure>
+</main>
+<footer class="bot"><div class="in">
+<p><b>Big Numbers, Split</b> — Factoring, from Eratosthenes to Shor: how big numbers get split, who has split the biggest, what the Riemann Hypothesis has to do with it, and what all of it means for a bitcoin wallet.</p>
+<p>Text and figures Nan · hongdam.net · CC BY 4.0. Code MIT. Built 2026-09-23; the ledger runs to 2026-09-23.
+Every number on these pages is computed by <code>tools/compute.py</code> or carried in a data file with its
+source, in <a href="https://github.com/NaNoBotCo/factoring">the repository</a>. Nothing here is advice about money.</p>
+<div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/goin-fast/" title="a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs">Goin&#x27; Fast</a> · <a href="https://nanobotco.github.io/three-body/" title="the mathematics of the three-body problem in plain words, with the orbits found rather than copied">The Three-Body Problem</a> · <a href="https://nanobotco.github.io/exceptional-magic/" title="the octonions, triality, the magic square and E8, computed and drawn — a plain-spoken reading of one paper">Exceptional Magic</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div>
+<div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a> · Source: <a href="https://github.com/NaNoBotCo" rel="noopener">GitHub</a></div>
+<div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div>
+</div></footer><script src="/factoring/js/split.js" defer></script>
+<script src="/factoring/js/nav.js" defer></script>
+</body></html>

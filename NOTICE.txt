@@ -1,0 +1,22 @@
+Big Numbers, Split — what is in this repository, and under what terms.
+
+CODE — tools/, js/, tests/, publish.sh
+    SPDX-License-Identifier: MIT — see LICENSE-CODE.
+
+TEXT, FIGURES AND DATA — the pages in docs/, the SVGs and JPGs in docs/img/, data/*.json, README.md
+    SPDX-License-Identifier: CC-BY-4.0 — see LICENSE. Credit line: "Nan · hongdam.net · CC BY 4.0",
+    with a link to https://nanobotco.github.io/factoring/ .
+    Every picture was computed by tools/draw.py or tools/figures.py; none is a photograph or a copy
+    of anyone else's image. Every number is computed by tools/compute.py or carried in data/ with
+    a source id that resolves in tools/sources.py.
+
+SOURCES
+    The 124 sources cited are listed at https://nanobotco.github.io/factoring/sources/ and in
+    tools/sources.py. Facts are stated in this site's own words; short quotations are attributed.
+    data/recent.json holds titles and links fetched from arXiv and public RSS feeds, as published.
+
+ROSTER — data/fleet.json, tools/fleet.py
+    The publisher's list of sites, copied from the index repository.
+
+NOT ADVICE
+    Nothing in this repository is advice about money, investments or what to do with a wallet.

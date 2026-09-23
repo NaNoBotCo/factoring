@@ -1,0 +1,30 @@
+{
+ "_about": "General-purpose factoring records: RSA challenge numbers and the two 2026 GPU runs. digits = decimal digits, bits = binary length. 'effort' is as reported by the team; units differ by era. 'src' names ids in tools/sources.py. CC BY 4.0, Nan · hongdam.net.",
+ "rows": [
+  {"name": "RSA-100", "digits": 100, "bits": 330, "date": "1991-04-01", "year": 1991.25, "team": "Arjen Lenstra", "method": "MPQS", "effort": "a few days on a MasPar", "src": ["rsanumbers"]},
+  {"name": "RSA-110", "digits": 110, "bits": 364, "date": "1992-04-14", "year": 1992.28, "team": "Arjen Lenstra and Mark Manasse", "method": "MPQS", "effort": "about a month", "src": ["rsanumbers"]},
+  {"name": "RSA-120", "digits": 120, "bits": 397, "date": "1993-06-09", "year": 1993.44, "team": "Denny, Dodson, Lenstra, Manasse", "method": "MPQS", "effort": "about 830 MIPS-years", "src": ["rsanumbers"]},
+  {"name": "RSA-129", "digits": 129, "bits": 426, "date": "1994-04-26", "year": 1994.32, "team": "Atkins, Graff, Lenstra, Leyland and about 600 volunteers", "method": "MPQS", "effort": "about 5,000 MIPS-years over eight months", "src": ["atkins1995"]},
+  {"name": "RSA-130", "digits": 130, "bits": 430, "date": "1996-04-10", "year": 1996.27, "team": "Lenstra and others", "method": "GNFS", "effort": "about 1,000 MIPS-years — the first RSA number by the number field sieve", "src": ["rsanumbers"]},
+  {"name": "RSA-140", "digits": 140, "bits": 463, "date": "1999-02-02", "year": 1999.09, "team": "te Riele and others (CWI)", "method": "GNFS", "effort": "about 2,000 MIPS-years", "src": ["rsanumbers"]},
+  {"name": "RSA-155", "digits": 155, "bits": 512, "date": "1999-08-22", "year": 1999.64, "team": "Cavallar and seventeen others", "method": "GNFS", "effort": "about 8,000 MIPS-years, seven months", "src": ["cavallar2000"]},
+  {"name": "RSA-160", "digits": 160, "bits": 530, "date": "2003-04-01", "year": 2003.25, "team": "Franke, Kleinjung and others (Bonn)", "method": "GNFS", "effort": "a few months on a cluster", "src": ["rsanumbers"]},
+  {"name": "RSA-576", "digits": 174, "bits": 576, "date": "2003-12-03", "year": 2003.92, "team": "Franke, Kleinjung and others", "method": "GNFS", "effort": "months on a cluster", "src": ["rsanumbers"]},
+  {"name": "RSA-640", "digits": 193, "bits": 640, "date": "2005-11-02", "year": 2005.84, "team": "Bahr, Boehm, Franke, Kleinjung", "method": "GNFS", "effort": "about 30 years of a 2.2 GHz Opteron", "src": ["rsanumbers"]},
+  {"name": "RSA-200", "digits": 200, "bits": 663, "date": "2005-05-09", "year": 2005.35, "team": "Bahr, Boehm, Franke, Kleinjung", "method": "GNFS", "effort": "about 55 years of a 2.2 GHz Opteron", "src": ["rsanumbers"]},
+  {"name": "RSA-768", "digits": 232, "bits": 768, "date": "2009-12-12", "year": 2009.95, "team": "Kleinjung and twelve others", "method": "GNFS", "effort": "about 2,000 years of a 2.2 GHz Opteron core", "src": ["kleinjung2010"]},
+  {"name": "RSA-240", "digits": 240, "bits": 795, "date": "2019-12-02", "year": 2019.92, "team": "Boudot, Gaudry, Guillevic, Heninger, Thomé, Zimmermann", "method": "GNFS (CADO-NFS)", "effort": "about 900 core-years of a 2.1 GHz Xeon Gold 6130", "src": ["boudot2020"]},
+  {"name": "RSA-250", "digits": 250, "bits": 829, "date": "2020-02-28", "year": 2020.16, "team": "Boudot, Gaudry, Guillevic, Heninger, Thomé, Zimmermann", "method": "GNFS (CADO-NFS)", "effort": "about 2,700 core-years of a 2.1 GHz Xeon Gold 6130", "src": ["rsa250", "boudot2020"]},
+  {"name": "RSA-260", "digits": 260, "bits": 862, "date": "2026-09-03", "year": 2026.67, "team": "Eric Lu (Cognition)", "method": "GNFS (CADO-NFS on GPUs)", "effort": "4,923 GPU-days on B200-class GPUs, about 16 days elapsed, about $400k at list prices", "src": ["lu2026"]},
+  {"name": "RSA-896", "digits": 270, "bits": 896, "date": "2026-09-19", "year": 2026.72, "team": "Stephen Weis (Anthropic)", "method": "GNFS (CADO-NFS on GPUs)", "effort": "about 30 GPU-years on up to 2,048 idle GPUs over ten days", "src": ["weis2026"]}
+ ],
+ "open": [
+  {"name": "RSA-270", "digits": 270, "bits": 895, "note": "270 digits, still open in the challenge list — RSA-896 (also 270 digits) was the one that fell", "src": ["rsanumbers"]},
+  {"name": "RSA-1024", "digits": 309, "bits": 1024, "note": "the key size most of the web used until about 2013; still open", "src": ["rsanumbers"]},
+  {"name": "RSA-2048", "digits": 617, "bits": 2048, "note": "the key size most of the web uses now; still open", "src": ["rsanumbers"]}
+ ],
+ "special": [
+  {"name": "2^1061 − 1", "digits": 320, "bits": 1061, "date": "2012-08-04", "team": "NFS@Home", "method": "SNFS", "note": "the special number field sieve works on numbers of a special form; the record for those is bigger, and says nothing about RSA keys", "src": ["records"]},
+  {"name": "Seventeen Mersenne numbers 2^n − 1, 1007 ≤ n ≤ 1199", "digits": 361, "bits": 1199, "date": "2014-08", "team": "Kleinjung, Bos, Lenstra", "method": "SNFS, shared sieving", "note": "the 'Mersenne factorization factory' — one sieving pass amortised across many numbers", "src": ["records"]}
+ ]
+}

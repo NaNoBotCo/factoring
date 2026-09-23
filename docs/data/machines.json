@@ -1,0 +1,18 @@
+{
+ "_about": "Physical qubit counts of named machines, for the gap chart. 'logical' is the error-corrected count where one was demonstrated. CC BY 4.0, Nan · hongdam.net.",
+ "rows": [
+  {"year": 2001.9, "name": "IBM Almaden NMR", "physical": 7, "logical": null, "src": ["vandersypen2001"]},
+  {"year": 2016.2, "name": "Innsbruck ion trap", "physical": 5, "logical": null, "src": ["monz2016"]},
+  {"year": 2019.8, "name": "Google Sycamore", "physical": 53, "logical": null, "src": ["willow2024"]},
+  {"year": 2021.9, "name": "IBM Eagle", "physical": 127, "logical": null, "src": ["nighthawk2025"]},
+  {"year": 2022.9, "name": "IBM Osprey", "physical": 433, "logical": null, "src": ["nighthawk2025"]},
+  {"year": 2023.9, "name": "IBM Condor", "physical": 1121, "logical": null, "src": ["nighthawk2025"]},
+  {"year": 2024.7, "name": "Quantinuum H2 (with Microsoft)", "physical": 56, "logical": 12, "src": ["logical2024"]},
+  {"year": 2024.95, "name": "Google Willow", "physical": 105, "logical": 1, "src": ["willow2024"]},
+  {"year": 2025.85, "name": "Quantinuum Helios", "physical": 98, "logical": 48, "src": ["helios2025"]},
+  {"year": 2025.87, "name": "IBM Nighthawk", "physical": 120, "logical": null, "src": ["nighthawk2025"]}
+ ],
+ "roadmap": [
+  {"year": 2029, "name": "IBM Starling (planned)", "logical": 200, "note": "200 logical qubits and 100 million gates, announced June 2025", "src": ["ibm2025"]}
+ ]
+}

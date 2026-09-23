@@ -1,0 +1,281 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quantum — Shor&#x27;s period, every hardware claim, and the bill — Big Numbers, Split</title>
+<meta name="description" content="Shor&#x27;s algorithm with the period you can watch, every quantum factoring claim beside what it did, the resource estimates from 2012 to 2026, and the machines.">
+<link rel="canonical" href="https://nanobotco.github.io/factoring/quantum/">
+<meta property="og:title" content="Quantum — Shor&#x27;s period, every hardware claim, and the bill — Big Numbers, Split">
+<meta property="og:description" content="Shor&#x27;s algorithm with the period you can watch, every quantum factoring claim beside what it did, the resource estimates from 2012 to 2026, and the machines.">
+<meta property="og:image" content="https://nanobotco.github.io/factoring/img/card.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/factoring/icon.svg" type="image/svg+xml">
+<style>
+:root{
+ --bg:#0a0a10;--bg2:#0f0f18;--panel:#14141f;--ink:#f2ede3;--mute:#9d9689;--line:#2c2c3a;
+ --chip:#1b1b28;--c0:#ffb347;--c1:#5fd3c6;--c2:#ff7ab6;--violet:#b79cff;--focus:#ffb347;
+ --display:"Avenir Next Condensed","Arial Narrow",Impact,system-ui,sans-serif;
+ --body:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+ --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.62;
+ -webkit-text-size-adjust:100%}
+a{color:var(--c0);text-decoration-thickness:.08em;text-underline-offset:.18em}
+a:hover{color:#ffd08a}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible,input:focus-visible{
+ outline:3px solid var(--focus);outline-offset:2px;border-radius:5px}
+img,canvas,svg{max-width:100%}img{height:auto}
+.sr{position:absolute;left:-999px;top:0;background:var(--c0);color:#000;padding:.4rem .8rem;z-index:99}
+.sr:focus{left:.5rem;top:.5rem}
+
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;
+ background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);transition:transform .25s}
+body.nav-away header.top{transform:translateY(-100%)}
+header.top .in{max-width:72rem;margin:0 auto;padding:.5rem 1rem;display:flex;gap:.4rem 1.1rem;
+ align-items:center;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:.03em;
+ text-transform:uppercase;text-decoration:none;color:var(--ink);white-space:nowrap;display:flex;
+ align-items:center;gap:.5rem}
+.brand b{color:var(--c0)}
+.brand i{width:.85rem;height:.85rem;border-radius:2px;background:var(--c0);display:inline-block;
+ box-shadow:6px 0 0 -2px var(--c1),-6px 0 0 -2px var(--c1);transform:rotate(45deg)}
+header.top nav{display:flex;gap:.1rem .8rem;flex-wrap:wrap;font-size:.72rem;text-transform:uppercase;
+ letter-spacing:.08em;font-weight:700}
+header.top nav a{text-decoration:none;color:var(--mute);padding:.15rem 0}
+header.top nav a:hover,header.top nav a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--c0)}
+main{max-width:72rem;margin:0 auto;padding:1rem 1rem 5rem}
+footer.bot{border-top:1px solid var(--line);margin-top:3rem;background:var(--bg2)}
+footer.bot .in{max-width:72rem;margin:0 auto;padding:1.4rem 1rem 3rem;font-size:.8rem;color:var(--mute)}
+footer.bot a{color:var(--mute)}footer.bot p{max-width:none}
+.fleet{margin:.6rem 0 0;line-height:1.9}.fleet a{margin-right:.55rem;white-space:nowrap}
+.support{margin:.45rem 0 0}.support a{margin-right:.5rem}
+
+h1{font-family:var(--display);font-size:clamp(2.4rem,7.5vw,5rem);line-height:.94;margin:.3rem 0 .4rem;
+ font-weight:800;letter-spacing:-.005em;text-transform:uppercase}
+h1 .kind{display:block;font-size:clamp(.6rem,1.5vw,.72rem);color:var(--c0);letter-spacing:.34em;
+ margin-bottom:.55rem;font-weight:800}
+h2{font-family:var(--display);font-size:clamp(1.5rem,3.4vw,2rem);margin:2.6rem 0 .6rem;font-weight:800;
+ text-transform:uppercase;border-bottom:2px solid var(--line);padding-bottom:.25rem}
+h2 small{font-family:var(--body);font-size:.55em;color:var(--mute);text-transform:none;
+ letter-spacing:0;font-weight:400;margin-left:.6rem}
+h3{font-family:var(--display);font-size:1.2rem;margin:1.7rem 0 .3rem;font-weight:800;text-transform:uppercase}
+.lede{font-size:clamp(1.12rem,2.4vw,1.35rem);max-width:44rem;margin:.5rem 0 1.1rem}
+.mute{color:var(--mute)}.small{font-size:.82rem}
+p{margin:.65rem 0;max-width:44rem}
+.prose p,.prose ul,.prose ol{max-width:44rem}
+.prose li{margin:.35rem 0}
+.prose strong{color:var(--c0);font-weight:700}
+blockquote{margin:1rem 0;padding:.6rem 0 .6rem 1rem;border-left:3px solid var(--c1);color:var(--ink);
+ max-width:44rem;font-style:normal}
+blockquote cite{display:block;margin-top:.4rem;color:var(--mute);font-size:.82rem;font-style:normal}
+
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin:1rem 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem;
+ text-decoration:none;color:var(--ink);display:block}
+a.card:hover{border-color:var(--c0)}
+.card h3{margin:.1rem 0 .3rem}
+.card p{margin:.2rem 0;font-size:.88rem;color:var(--mute)}
+
+/* the linked image: background, scrim, spacer, text — the whole box is the link */
+a.shot{position:relative;display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+ text-decoration:none;color:var(--ink)}
+a.shot:hover{border-color:var(--c0)}
+a.shot .bg{position:absolute;inset:0;background-size:cover;background-position:center;
+ transition:transform .6s}
+a.shot:hover .bg{transform:scale(1.04)}
+a.shot .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,16,.05) 0%,rgba(10,10,16,.35) 45%,rgba(10,10,16,.92) 100%)}
+a.shot .sp{display:block;padding-top:56%}
+a.shot .tx{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem}
+a.shot .tx b{display:block;font-family:var(--display);font-size:1.5rem;text-transform:uppercase;line-height:1;
+ font-weight:800}
+a.shot .tx span{display:block;color:var(--mute);font-size:.84rem;margin-top:.3rem}
+a.shot .tx em{font-style:normal;color:var(--c0);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+ font-weight:800;display:block;margin-bottom:.35rem}
+.shots{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));margin:1rem 0}
+
+/* the band: a picture behind a block of words, anchored to the window so the page scrolls through it */
+.band{position:relative;margin:2.2rem calc(50% - 50vw);padding:3.2rem 1rem;background-size:cover;
+ background-position:center;background-attachment:fixed;color:var(--ink)}
+.band:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,16,.94) 0%,rgba(10,10,16,.72) 55%,rgba(10,10,16,.35) 100%)}
+.band .in{position:relative;max-width:72rem;margin:0 auto}
+.band .in p{max-width:40rem}
+.band h2{border:none;margin-top:0}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){.band{background-attachment:scroll}}
+
+.fig{margin:1.6rem 0;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:.7rem}
+.fig img{display:block;margin:0 auto;border-radius:6px}
+.fig figcaption{color:var(--mute);font-size:.82rem;margin:.6rem .2rem 0;max-width:46rem}
+.fig.plain{background:none;border:none;padding:0}
+.hero{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);margin:.6rem 0 1.4rem}
+.hero img{display:block;width:100%}
+
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.88rem}
+th,td{text-align:left;padding:.42rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mute);font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono)}
+td.d{white-space:nowrap;font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+tr[hidden]{display:none}
+.wrap{overflow-x:auto}.wrap table{min-width:52rem}
+code,kbd{font-family:var(--mono);font-size:.86em;background:var(--chip);padding:.1rem .3rem;border-radius:4px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.8rem 1rem;
+ overflow-x:auto;font-size:.82rem}
+pre code{background:none;padding:0}
+.eq{font-family:var(--mono);background:var(--panel);border-left:3px solid var(--c0);padding:.7rem 1rem;
+ margin:1rem 0;overflow-x:auto;font-size:.92rem;max-width:44rem}
+.eq b{color:var(--c0);font-weight:600}
+.eqn{color:var(--mute);font-family:var(--body);font-size:.86rem;margin-top:.4rem}
+.cite{font-size:.78em;color:var(--c1);text-decoration:none;border-bottom:1px dotted var(--c1);
+ white-space:nowrap;margin-left:.2em}
+.cite:hover{color:var(--c1)}
+.tag{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;
+ padding:.1rem .6rem;font-size:.72rem;color:var(--mute);margin:0 .25rem .3rem 0;white-space:nowrap}
+.tag.c0{border-color:var(--c0);color:var(--c0)}
+.tag.c1{border-color:var(--c1);color:var(--c1)}
+.tag.c2{border-color:var(--c2);color:var(--c2)}
+.tag.v{border-color:var(--violet);color:var(--violet)}
+
+.tool{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem;margin:1.4rem 0}
+.tool h3{margin-top:0}
+.tool .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.5rem 0}
+.tool label{font-size:.8rem;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+button,select,input[type=text],input[type=number]{font:inherit;font-size:.9rem;background:var(--chip);color:var(--ink);
+ border:1px solid var(--line);border-radius:7px;padding:.35rem .7rem;cursor:pointer}
+input[type=text],input[type=number]{cursor:text;font-family:var(--mono)}
+input[type=range]{width:min(100%,22rem);accent-color:var(--c0)}
+button:hover,select:hover{border-color:var(--c0)}
+button:disabled{opacity:.4;cursor:default}
+button.go{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+.out{font-family:var(--mono);font-size:.9rem;background:#0b0b12;border:1px solid var(--line);
+ border-radius:8px;padding:.7rem .9rem;margin:.6rem 0 0;overflow-x:auto;line-height:1.8}
+.out .k{color:var(--mute)}
+.out .v{color:var(--c1)}
+.out .bad{color:var(--c2)}
+.out .good{color:var(--c0)}
+.out table{font-size:.8rem}
+.out .lane{display:grid;grid-template-columns:11rem 1fr;gap:.2rem .8rem;align-items:center;margin:.3rem 0}
+.out .lane i{display:block;height:6px;background:var(--c1);border-radius:3px;grid-column:2;margin-bottom:-.2rem}
+.units{display:flex;gap:.3rem;flex-wrap:wrap}
+.units button{min-width:2.9rem;text-align:center;font-family:var(--mono)}
+.units button[aria-pressed=true]{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+canvas{display:block;margin:0 auto;max-width:100%;height:auto;touch-action:pan-y;background:#0b0b12;border-radius:8px}
+
+.big{font-family:var(--display);font-size:clamp(2rem,6vw,4rem);line-height:1;color:var(--c0);font-weight:800;
+ margin:.2rem 0}
+.answer{border:1px solid var(--c0);border-radius:12px;padding:1.1rem 1.3rem;margin:1.4rem 0;
+ background:color-mix(in srgb,var(--c0) 6%,var(--panel));max-width:46rem}
+.answer h3{margin-top:0;color:var(--c0)}
+.answer p{margin:.5rem 0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;font-size:.86rem;max-width:44rem}
+.kv dt{color:var(--mute)}.kv dd{margin:0}
+.note{border:1px solid var(--line);border-left:3px solid var(--c2);background:var(--bg2);
+ border-radius:0 8px 8px 0;padding:.7rem 1rem;margin:1.2rem 0;font-size:.9rem;max-width:46rem}
+.note b{color:var(--c2)}
+ul.ticks{list-style:none;padding-left:0}
+ul.ticks li{padding-left:1.4rem;position:relative}
+ul.ticks li:before{content:"✓";position:absolute;left:0;color:var(--c1);font-weight:700}
+ul.checks{list-style:none;padding-left:0;font-family:var(--mono);font-size:.78rem;columns:2;
+ column-gap:2rem;max-width:none}
+ul.checks li{break-inside:avoid;color:var(--mute);margin:.15rem 0}
+ul.checks li b{color:var(--c1);font-weight:400}
+@media (max-width:48rem){ul.checks{columns:1}.out .lane{grid-template-columns:1fr}.out .lane i{grid-column:1}}
+.tl{list-style:none;padding:0;margin:1rem 0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:.3rem 0 .9rem 1.4rem;max-width:48rem}
+.tl li:before{content:"";position:absolute;left:-7px;top:.75rem;width:12px;height:12px;border-radius:50%;
+ background:var(--c1);border:2px solid var(--bg)}
+.tl li.quantum:before{background:var(--c2)}
+.tl li.riemann:before{background:var(--violet)}
+.tl li .when{font-family:var(--mono);color:var(--c0);font-size:.8rem;display:block}
+.tl li .who{font-weight:700}
+.tl li p{margin:.2rem 0 0;font-size:.95rem}
+dl.words dt{font-weight:700;color:var(--c0);margin-top:.9rem}
+dl.words dd{margin:0;max-width:44rem}
+.src{font-size:.86rem}
+.src li{margin:.35rem 0;padding-left:.2rem}
+.src li b{color:var(--mute);font-weight:400;font-family:var(--mono);margin-right:.4rem}
+</style></head>
+<body data-base="/factoring/" data-asof="2026-09-23">
+<a class="sr" href="#main">Skip to the page</a>
+<header class="top"><div class="in">
+<a class="brand" href="/factoring/"><i></i>Big Numbers, <b>Split</b></a>
+<nav aria-label="Sections"><a href="/factoring/split/">Split</a><a href="/factoring/history/">History</a><a href="/factoring/methods/">Methods</a><a href="/factoring/records/">Records</a><a href="/factoring/quantum/" aria-current="page">Quantum</a><a href="/factoring/riemann/">Riemann</a><a href="/factoring/wallet/">Wallet</a><a href="/factoring/now/">Now</a><a href="/factoring/words/">Words</a><a href="/factoring/sources/">Sources</a></nav></div></header>
+<main id="main"><h1><span class="kind">Shor, and the bill</span>Quantum</h1>
+<p class="lede">In 1994 Peter Shor showed that a quantum computer could split any number in a number of
+steps that grows like a small power of its length — not the L(1/3) curve, not anything near it
+<a class="cite" href="/factoring/sources/#src-42" title="Polynomial-time algorithms for prime factorization and discrete logarithms on a quantum computer">[42]</a>. The quantum part of the algorithm does one thing: it finds how often a sequence
+repeats. Here is that one thing, then every claim to have done it on hardware, then the bill.</p>
+
+<h2>The period</h2>
+<div class="prose">
+<p>Pick a number a with no factor in common with N and write down a, a², a³, … each reduced mod N. The
+sequence has to repeat, because there are only N remainders. Call the spacing r, the <strong>period</strong>.
+Then, half the time or better, a<sup>r/2</sup> is a square root of 1 mod N that is not ±1, and</p>
+<div class="eq">N divides (a<sup>r/2</sup> − 1)(a<sup>r/2</sup> + 1),&nbsp;&nbsp; gcd(a<sup>r/2</sup> ± 1, N) are the factors<div class="eqn">Reading it: the same two-squares trick as the methods page: a^(r/2) squared is 1, so a^(r/2) and 1 are two numbers whose squares agree mod N.</div></div>
+<p>For N = 15 and a = 7: the sequence runs 1, 7, 4, 13, 1, 7, 4, 13, … with period
+4; 7<sup>2</sup> mod 15 = 4, and gcd(3, 15) = 3,
+gcd(5, 15) = 5. That is the arithmetic the 2001 IBM experiment did <a class="cite" href="/factoring/sources/#src-43" title="Experimental realization of Shor&#x27;s quantum factoring algorithm using nuclear magnetic resonance — 15 = 3 × 5">[43]</a>. For 21 with a = 2
+the period is 6 and the factors are 7 and 3 <a class="cite" href="/factoring/sources/#src-44" title="Experimental realization of Shor&#x27;s quantum factoring algorithm using qubit recycling — 21 = 3 × 7">[44]</a>.</p>
+<p>Finding r classically means walking the sequence, which for a 2048-bit N is a walk as long as trial
+division. A quantum register holds all the values a<sup>x</sup> at once, and the quantum Fourier transform
+turns that into a set of readings that peak at multiples of Q/r — the frequency of the beat. Read one, do
+a little arithmetic with continued fractions, and you have r. That is the whole quantum step.</p>
+</div>
+
+<div class="tool">
+<h3>Watch the period</h3>
+<div class="row"><label>N</label><select id="pN"></select><label>a</label><select id="pa"></select></div>
+<canvas id="period" width="880" height="220" aria-label="the sequence a to the x mod N as bars, with the returns to 1 in amber"></canvas>
+<canvas id="freq" width="880" height="150" style="margin-top:.5rem" aria-label="the frequency view: peaks at multiples of Q over r"></canvas>
+<div class="out" id="periodout"></div>
+<p class="small mute">Top: the sequence. Bottom: what the quantum computer reads — the Fourier transform of
+the beat, computed here on 128 points the slow way. Some choices of a fail (odd period, or the trivial
+root); Shor's algorithm picks another a and goes again.</p>
+</div>
+
+<h2 id="claims">Every claim, beside what was done</h2>
+<div class="prose">
+<p>The largest number split by Shor's algorithm on real hardware, as of 2026-09-23, is
+<b>21</b>, in 2012 — and that run, like
+every hardware run of Shor so far, was 'compiled' with knowledge of the answer, which Smolin, Smith and
+Vargo showed lets two qubits 'factor' any number you like <a class="cite" href="/factoring/sources/#src-47" title="Oversimplifying quantum factoring">[47]</a>. Everything larger in the
+press was one of: an adiabatic minimisation with no known scaling advantage, a classical method with a
+small quantum step bolted on, a number chosen to be easy, or a toy curve key.</p>
+</div>
+<div class="wrap"><table><thead><tr><th>date</th><th>who</th><th>what was said</th><th>what was done</th><th>verdict</th></tr></thead><tbody><tr><td class="d">2001-12</td><td>Vandersypen and others, IBM Almaden and Stanford</td><td>15 = 3 × 5 by Shor&#x27;s algorithm</td><td>Seven nuclear spins in a molecule ran a circuit compiled with the answer known. The first hardware Shor.</td><td><b>Real, tiny, compiled.</b> <a class="cite" href="/factoring/sources/#src-43" title="Experimental realization of Shor&#x27;s quantum factoring algorithm using nuclear magnetic resonance — 15 = 3 × 5">[43]</a></td></tr><tr><td class="d">2012-03</td><td>Xu and others, USTC</td><td>143 factored on four qubits</td><td>An adiabatic minimisation, not Shor; the problem was reduced to a few unknown bits first. In 2014 Dattani and Bryans showed the same run had also &#x27;factored&#x27; 56,153, because the trick only depends on how the factors&#x27; bits differ.</td><td><b>No route to big numbers.</b> <a class="cite" href="/factoring/sources/#src-45" title="Quantum factorization of 143 on a dipolar-coupling nuclear magnetic resonance system">[45]</a><a class="cite" href="/factoring/sources/#src-46" title="Quantum factorization of 56153 with only 4 qubits">[46]</a></td></tr><tr><td class="d">2012-10</td><td>Martín-López and others, Bristol</td><td>21 = 3 × 7 by Shor&#x27;s algorithm</td><td>Photons and a recycled qubit; compiled. Still the largest Shor factorisation on hardware in 2026.</td><td><b>Real, tiny, compiled.</b> <a class="cite" href="/factoring/sources/#src-44" title="Experimental realization of Shor&#x27;s quantum factoring algorithm using qubit recycling — 21 = 3 × 7">[44]</a></td></tr><tr><td class="d">2016-03</td><td>Monz and others, Innsbruck</td><td>A scalable Shor&#x27;s algorithm on five trapped ions — 15</td><td>The first run of the full Kitaev-style period finding without shortcuts in the quantum part, on 15.</td><td><b>Real, tiny, cleaner.</b> <a class="cite" href="/factoring/sources/#src-48" title="Realization of a scalable Shor algorithm — 15 on five trapped ions">[48]</a></td></tr><tr><td class="d">2019-03</td><td>Amico, Saleem and Kumph, IBM</td><td>35 on IBM Q hardware</td><td>The attempt failed: noise swamped the answer. An honest negative result.</td><td><b>Did not work.</b> <a class="cite" href="/factoring/sources/#src-49" title="An experimental study of Shor&#x27;s factoring algorithm on IBM Q — 35 attempted, noise wins">[49]</a></td></tr><tr><td class="d">2021-03</td><td>Claus Peter Schnorr</td><td>&#x27;This destroys the RSA cryptosystem&#x27; (a classical lattice method)</td><td>No challenge number was factored; the sentence was dropped in a revision; later work found the method fails past about 80 bits.</td><td><b>Nothing was destroyed.</b> <a class="cite" href="/factoring/sources/#src-53" title="Fast factoring integers by SVP algorithms">[53]</a><a class="cite" href="/factoring/sources/#src-103" title="No, RSA is not broken — on Schnorr&#x27;s claim">[103]</a></td></tr><tr><td class="d">2022-12</td><td>Yan and 23 others</td><td>372 qubits could challenge RSA-2048</td><td>Schnorr&#x27;s method with a small quantum optimiser in the loop; the hardware run split a 48-bit number on ten qubits. The classical part is the part that does not scale.</td><td><b>Aaronson: &#x27;cargo cult quantum factoring&#x27;.</b> <a class="cite" href="/factoring/sources/#src-54" title="Factoring integers with sublinear resources on a superconducting quantum processor — the 372-qubit claim">[54]</a><a class="cite" href="/factoring/sources/#src-55" title="Cargo cult quantum factoring">[55]</a></td></tr><tr><td class="d">2024-05</td><td>Wang Chao and others, Shanghai University</td><td>RSA broken on a D-Wave annealer (the October 2024 headlines)</td><td>A 22-bit number, 2,269,753, on a quantum annealer. Annealing has no known advantage at scale.</td><td><b>22 bits against 2048.</b> <a class="cite" href="/factoring/sources/#src-77" title="A 22-bit RSA integer factored on a D-Wave annealer — the &#x27;China breaks RSA&#x27; story">[77]</a></td></tr><tr><td class="d">2024-12</td><td>Wang Chao and others</td><td>&#x27;A first successful factorization of RSA-2048 integer by D-Wave&#x27;</td><td>On integers whose two primes differ in two low bits — every one of which Fermat&#x27;s 1643 method splits in milliseconds. Not an RSA key.</td><td><b>The number was chosen to be easy.</b> <a class="cite" href="/factoring/sources/#src-78" title="A first successful factorization of RSA-2048 integer by D-Wave quantum computer — on integers whose two primes differ in two low bits">[78]</a></td></tr><tr><td class="d">2025-04</td><td>Wang Chao&#x27;s group, reported by the SCMP</td><td>A 90-bit RSA number on a D-Wave machine</td><td>No paper located as of September 2026.</td><td><b>Unconfirmed.</b> <a class="cite" href="/factoring/sources/#src-82" title="China cracks another quantum code barrier — a 90-bit RSA integer on a D-Wave machine, reported without a paper">[82]</a></td></tr><tr><td class="d">2025-07</td><td>Steve Tippeconnic</td><td>A 5-bit elliptic-curve key broken on IBM&#x27;s 133-qubit machine</td><td>A 15-qubit circuit over a 32-element group; the answer, k = 7, is found by classical post-processing of the readouts.</td><td><b>A toy key, run for real.</b> <a class="cite" href="/factoring/sources/#src-85" title="Quantum attack on a 5-bit elliptic curve key on IBM&#x27;s 133-qubit ibm_torino">[85]</a></td></tr><tr><td class="d">2026-04</td><td>Giancarlo Lelli; the Q-Day Prize</td><td>A 15-bit curve key recovered on IBM Heron processors — one bitcoin awarded</td><td>About 98,000 gates on cloud hardware. Bitcoin developers reproduced the recovery from random bits, since 32,767 candidates can simply be checked; the hardware output was &#x27;statistically indistinguishable from coin flips&#x27;.</td><td><b>Project Eleven&#x27;s CEO: &#x27;not Q-Day&#x27;.</b> <a class="cite" href="/factoring/sources/#src-95" title="The Q-Day Prize awarded for a 15-bit elliptic curve key recovered on IBM Heron processors">[95]</a><a class="cite" href="/factoring/sources/#src-96" title="IBM quantum hardware cracks 15-bit ECC key, but Bitcoin devs say random bits match the result">[96]</a></td></tr></tbody></table></div>
+
+<h2>The bill</h2>
+<div class="prose">
+<p>Since nobody can run Shor at scale, the field publishes estimates: how many physical qubits, at what
+error rate, for how long. The estimates have fallen a thousandfold in fourteen years, all on paper. Each
+one assumes a physical error rate of about one in a thousand and a code that turns many noisy qubits into
+one reliable one; the newest ones assume codes and wiring that do not exist yet at scale.</p>
+</div>
+<div class="wrap"><table><thead><tr><th>date</th><th>who</th><th>target</th><th class="n">physical qubits</th><th class="n">logical</th><th>time</th><th>note</th></tr></thead><tbody><tr><td class="d">2012-09</td><td>Fowler, Mariantoni, Martinis, Cleland</td><td>RSA-2048</td><td class="n">1,000,000,000</td><td class="n">—</td><td>about a day</td><td>the surface-code review&#x27;s headline: a billion physical qubits for a 2000-bit number <a class="cite" href="/factoring/sources/#src-50" title="Surface codes: towards practical large-scale quantum computation">[50]</a></td></tr><tr><td class="d">2017-06</td><td>Roetteler, Naehrig, Svore, Lauter</td><td>256-bit curve key</td><td class="n">—</td><td class="n">2,330</td><td>1.26 × 10^11 Toffoli gates</td><td>the first precise count for a 256-bit curve key: about 2,330 logical qubits <a class="cite" href="/factoring/sources/#src-59" title="Quantum resource estimates for computing elliptic curve discrete logarithms">[59]</a></td></tr><tr><td class="d">2019-05</td><td>Gidney and Ekerå</td><td>RSA-2048</td><td class="n">20,000,000</td><td class="n">—</td><td>8 hours</td><td>twenty million noisy qubits, 0.1% error, 1 µs cycle <a class="cite" href="/factoring/sources/#src-51" title="How to factor 2048 bit RSA integers in 8 hours using 20 million noisy qubits">[51]</a></td></tr><tr><td class="d">2021-03</td><td>Gouzien and Sangouard</td><td>RSA-2048</td><td class="n">13,436</td><td class="n">—</td><td>177 days</td><td>plus a quantum memory of 28 million modes that does not exist; time traded for space <a class="cite" href="/factoring/sources/#src-52" title="Factoring 2048-bit RSA integers in 177 days with 13 436 qubits and a multimode memory">[52]</a></td></tr><tr><td class="d">2022-01</td><td>Webber, Elfving, Weidt, Hensinger</td><td>256-bit curve key</td><td class="n">317,000,000</td><td class="n">—</td><td>1 hour (13 million qubits for a day; 1.9 billion for 10 minutes)</td><td>the paper that first priced a Bitcoin key against the ten-minute block <a class="cite" href="/factoring/sources/#src-60" title="The impact of hardware specifications on reaching quantum advantage in the fault tolerant regime — breaking a Bitcoin key in 10 minutes, an hour, a day">[60]</a></td></tr><tr><td class="d">2023-06</td><td>Litinski</td><td>256-bit curve key</td><td class="n">6,900,000</td><td class="n">—</td><td>about 10 minutes per key</td><td>50 million Toffoli gates in a photonic &#x27;active volume&#x27; model <a class="cite" href="/factoring/sources/#src-61" title="How to compute a 256-bit elliptic curve private key with only 50 million Toffoli gates">[61]</a></td></tr><tr><td class="d">2024-02</td><td>Chevignard, Fouque, Schrottenloher</td><td>RSA-2048</td><td class="n">—</td><td class="n">1,730</td><td>about 40 runs of 2^36 Toffoli gates</td><td>a third of the logical qubits at the price of a thousand times more gates <a class="cite" href="/factoring/sources/#src-76" title="Reducing the number of qubits in quantum factoring — RSA-2048 with about 1730 logical qubits">[76]</a></td></tr><tr><td class="d">2025-05</td><td>Gidney</td><td>RSA-2048</td><td class="n">1,000,000</td><td class="n">—</td><td>under a week</td><td>fewer than a million noisy qubits; same 0.1% error assumption as 2019 <a class="cite" href="/factoring/sources/#src-58" title="How to factor 2048 bit RSA integers with less than a million noisy qubits">[58]</a></td></tr><tr><td class="d">2026-02</td><td>Webster and others, Iceberg Quantum</td><td>RSA-2048</td><td class="n">100,000</td><td class="n">—</td><td>not the headline</td><td>fewer than 100,000 on qLDPC codes with long-range wiring; about 22,000 at 0.01% error <a class="cite" href="/factoring/sources/#src-88" title="The Pinnacle architecture — RSA-2048 with fewer than 100,000 physical qubits on qLDPC codes">[88]</a></td></tr><tr><td class="d">2026-03</td><td>Babbush, Zalcman, Gidney, Broughton, Khattar, Neven, Bergamaschi, Drake, Boneh</td><td>256-bit curve key</td><td class="n">500,000</td><td class="n">1,450</td><td>18–23 minutes; about 9–12 from a primed state</td><td>fewer than half a million superconducting qubits; fast enough for the ten-minute block on a fast-clock machine <a class="cite" href="/factoring/sources/#src-91" title="Resource estimates for breaking 256-bit elliptic curve keys — under 1,450 logical qubits, fewer than 500,000 physical, minutes of runtime">[91]</a></td></tr><tr><td class="d">2026-03</td><td>Caltech and Oratomic</td><td>256-bit curve key</td><td class="n">10,000</td><td class="n">—</td><td>about 10 days per key</td><td>ten to twenty-six thousand neutral atoms; slow clock, so days not minutes <a class="cite" href="/factoring/sources/#src-93" title="Shor&#x27;s algorithm is possible with as few as 10,000 reconfigurable atomic qubits">[93]</a></td></tr><tr><td class="d">2026-04</td><td>Mundada and others, Q-CTRL</td><td>RSA-2048</td><td class="n">381,000</td><td class="n">—</td><td>9.2 days</td><td>idle logical qubits parked in slower memory tiers <a class="cite" href="/factoring/sources/#src-94" title="A heterogeneous architecture for RSA-2048 in 9.2 days on 381,000 physical qubits">[94]</a></td></tr><tr><td class="d">2026-09</td><td>Häner and others, IonQ</td><td>256-bit curve key</td><td class="n">19,397</td><td class="n">1,457</td><td>25.7 days, 63% success</td><td>a trapped-ion blueprint; IonQ&#x27;s largest machine is 256 qubits <a class="cite" href="/factoring/sources/#src-100" title="Computing 256-bit elliptic curve discrete logarithms in 26 days on a fault-tolerant trapped-ion quantum computer with 20,000 qubits">[100]</a></td></tr></tbody></table></div>
+
+<figure class="fig "><img src="/factoring/img/qubits.svg" alt="A scatter of amber and rose dots high on a log scale, the qubits papers ask for, falling from a billion in 2012 toward a hundred thousand in 2026; and a teal step low on the chart, the qubits real machines have, reaching about a thousand." loading="lazy" decoding="async"><figcaption>The gap. Amber and rose dots: what a paper says would break a key. The teal step: the most physical qubits any named machine has had. Note the vertical scale — each gridline is ten times the last. The 2026 estimates and the 2026 machines are still two to three gridlines apart, before counting that the machines’ qubits are far noisier than the papers assume.</figcaption></figure>
+
+<h2>The machines</h2>
+<div class="wrap"><table><thead><tr><th>year</th><th>machine</th><th class="n">physical qubits</th><th class="n">logical</th><th></th></tr></thead><tbody><tr><td class="d">2002</td><td>IBM Almaden NMR</td><td class="n">7</td><td class="n">—</td><td><a class="cite" href="/factoring/sources/#src-43" title="Experimental realization of Shor&#x27;s quantum factoring algorithm using nuclear magnetic resonance — 15 = 3 × 5">[43]</a></td></tr><tr><td class="d">2016</td><td>Innsbruck ion trap</td><td class="n">5</td><td class="n">—</td><td><a class="cite" href="/factoring/sources/#src-48" title="Realization of a scalable Shor algorithm — 15 on five trapped ions">[48]</a></td></tr><tr><td class="d">2020</td><td>Google Sycamore</td><td class="n">53</td><td class="n">—</td><td><a class="cite" href="/factoring/sources/#src-62" title="Quantum error correction below the surface code threshold — the Willow chip">[62]</a></td></tr><tr><td class="d">2022</td><td>IBM Eagle</td><td class="n">127</td><td class="n">—</td><td><a class="cite" href="/factoring/sources/#src-87" title="IBM lets fly Nighthawk and Loon QPUs on the way to quantum advantage">[87]</a></td></tr><tr><td class="d">2023</td><td>IBM Osprey</td><td class="n">433</td><td class="n">—</td><td><a class="cite" href="/factoring/sources/#src-87" title="IBM lets fly Nighthawk and Loon QPUs on the way to quantum advantage">[87]</a></td></tr><tr><td class="d">2024</td><td>IBM Condor</td><td class="n">1,121</td><td class="n">—</td><td><a class="cite" href="/factoring/sources/#src-87" title="IBM lets fly Nighthawk and Loon QPUs on the way to quantum advantage">[87]</a></td></tr><tr><td class="d">2025</td><td>Quantinuum H2 (with Microsoft)</td><td class="n">56</td><td class="n">12</td><td><a class="cite" href="/factoring/sources/#src-79" title="Twelve logical qubits on the 56-qubit H2 trapped-ion machine">[79]</a></td></tr><tr><td class="d">2025</td><td>Google Willow</td><td class="n">105</td><td class="n">1</td><td><a class="cite" href="/factoring/sources/#src-62" title="Quantum error correction below the surface code threshold — the Willow chip">[62]</a></td></tr><tr><td class="d">2026</td><td>Quantinuum Helios</td><td class="n">98</td><td class="n">48</td><td><a class="cite" href="/factoring/sources/#src-86" title="Commercial launch of Helios — 98 trapped-ion qubits, 48 error-corrected logical qubits">[86]</a></td></tr><tr><td class="d">2026</td><td>IBM Nighthawk</td><td class="n">120</td><td class="n">—</td><td><a class="cite" href="/factoring/sources/#src-87" title="IBM lets fly Nighthawk and Loon QPUs on the way to quantum advantage">[87]</a></td></tr></tbody></table></div>
+<div class="prose">
+<p>Physical qubits are the noisy ones a chip has. Logical qubits are the reliable ones built from them by
+error correction, and the exchange rate has been about a thousand to one for the surface code. Google's
+Willow (December 2024) was the first chip clearly past the point where adding physical qubits makes the
+logical one better instead of worse <a class="cite" href="/factoring/sources/#src-62" title="Quantum error correction below the surface code threshold — the Willow chip">[62]</a>; Quantinuum's Helios (November 2025) holds 48
+logical qubits, the most anywhere <a class="cite" href="/factoring/sources/#src-86" title="Commercial launch of Helios — 98 trapped-ion qubits, 48 error-corrected logical qubits">[86]</a>. The papers want more than a thousand logical
+qubits running billions of operations. IBM's roadmap puts 200 logical qubits in 2029 <a class="cite" href="/factoring/sources/#src-84" title="IBM sets the course to build the world&#x27;s first large-scale, fault-tolerant quantum computer — Starling, 200 logical qubits by 2029">[84]</a>.</p>
+<p>The <a href="/factoring/wallet/">wallet page</a> has the 2026 estimates for a curve key specifically, and
+the ten-minute question.</p>
+</div></main>
+<footer class="bot"><div class="in">
+<p><b>Big Numbers, Split</b> — Factoring, from Eratosthenes to Shor: how big numbers get split, who has split the biggest, what the Riemann Hypothesis has to do with it, and what all of it means for a bitcoin wallet.</p>
+<p>Text and figures Nan · hongdam.net · CC BY 4.0. Code MIT. Built 2026-09-23; the ledger runs to 2026-09-23.
+Every number on these pages is computed by <code>tools/compute.py</code> or carried in a data file with its
+source, in <a href="https://github.com/NaNoBotCo/factoring">the repository</a>. Nothing here is advice about money.</p>
+<div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/goin-fast/" title="a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs">Goin&#x27; Fast</a> · <a href="https://nanobotco.github.io/three-body/" title="the mathematics of the three-body problem in plain words, with the orbits found rather than copied">The Three-Body Problem</a> · <a href="https://nanobotco.github.io/exceptional-magic/" title="the octonions, triality, the magic square and E8, computed and drawn — a plain-spoken reading of one paper">Exceptional Magic</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div>
+<div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a> · Source: <a href="https://github.com/NaNoBotCo" rel="noopener">GitHub</a></div>
+<div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div>
+</div></footer><script src="/factoring/js/period.js" defer></script>
+<script src="/factoring/js/nav.js" defer></script>
+</body></html>

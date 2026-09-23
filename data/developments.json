@@ -1,0 +1,366 @@
+{
+ "_about": "The hand-kept ledger of developments from 2024 on: date, who, what happened, what it does not mean, source id, confidence. Researched by a web agent on 2026-09-23 and edited by hand; rows marked unconfirmed rest on one secondary source. The weekly feed (recent.json) is separate and unread by a person. CC BY 4.0, Nan · hongdam.net.",
+ "as_of": "2026-09-23",
+ "rows": [
+  {
+   "date": "2024-02",
+   "who": "Chevignard, Fouque, Schrottenloher",
+   "what": "RSA-2048 with about 1,730 logical qubits by approximate residue arithmetic — a third of the usual count, at the price of about a thousand times more gates.",
+   "not": "Fewer qubits, far more time; a trade, not a shortcut.",
+   "src": "chevignard2024",
+   "confidence": "confirmed",
+   "lane": "quantum"
+  },
+  {
+   "date": "2024-05",
+   "who": "Wang Chao and others, Shanghai University",
+   "what": "A 22-bit RSA integer factored on a D-Wave annealer; in October the story runs worldwide as 'China breaks military-grade encryption'.",
+   "not": "22 bits against 2048; annealing has no known scaling advantage; no key in use was affected.",
+   "src": "wang2024",
+   "confidence": "confirmed",
+   "lane": "quantum"
+  },
+  {
+   "date": "2024-05-31",
+   "who": "Guth and Maynard",
+   "what": "The first improvement since Ingham (1940) on how many zeta zeros can lie off the critical line in a range; published in the Annals in 2026.",
+   "not": "Progress on the Riemann Hypothesis, not a proof; no bearing on factoring.",
+   "src": "guth2024",
+   "confidence": "confirmed",
+   "lane": "riemann"
+  },
+  {
+   "date": "2024-08-13",
+   "who": "NIST",
+   "what": "FIPS 203 (ML-KEM), 204 (ML-DSA) and 205 (SLH-DSA): the first final post-quantum standards.",
+   "not": "New locks on the shelf; nothing yet says when to take the old ones off.",
+   "src": "nist2024",
+   "confidence": "confirmed",
+   "lane": "policy"
+  },
+  {
+   "date": "2024-09-10",
+   "who": "Microsoft and Quantinuum",
+   "what": "Twelve logical qubits on the 56-qubit H2 trapped-ion machine, with a 22-fold drop in circuit error against raw qubits.",
+   "not": "Twelve; a key break needs over a thousand, running billions of gates.",
+   "src": "logical2024",
+   "confidence": "confirmed",
+   "lane": "hardware"
+  },
+  {
+   "date": "2024-11-12",
+   "who": "NIST",
+   "what": "Draft IR 8547: RSA-2048 and 256-bit curves deprecated after 2030, all quantum-vulnerable public-key algorithms disallowed after 2035.",
+   "not": "A policy calendar, not a forecast of when a machine arrives; still a draft in September 2026.",
+   "src": "nist8547",
+   "confidence": "confirmed",
+   "lane": "policy"
+  },
+  {
+   "date": "2024-12-09",
+   "who": "Google Quantum AI",
+   "what": "Willow, 105 qubits: the first chip clearly below the error-correction threshold — logical error falls by about 2.1× each time the code grows a step, up to distance 7.",
+   "not": "One logical memory qubit, no logical gates; the 'ten septillion years' line is a sampling benchmark with nothing to do with factoring.",
+   "src": "willow2024",
+   "confidence": "confirmed",
+   "lane": "hardware"
+  },
+  {
+   "date": "2024-12-30",
+   "who": "Wang Chao and others",
+   "what": "'A first successful factorization of RSA-2048 integer by D-Wave quantum computer', on 'a class of special integers'.",
+   "not": "The two primes differ in two low bits; Fermat's method from 1643 splits every such number in milliseconds. Not an RSA key.",
+   "src": "wang2024b",
+   "confidence": "confirmed",
+   "lane": "quantum"
+  },
+  {
+   "date": "2025-02-19",
+   "who": "Microsoft",
+   "what": "Majorana 1 announced as an eight-qubit topological processor.",
+   "not": "Nature's own editorial note said the paper does not show the topological states claimed; no error-corrected computation was shown.",
+   "src": "majorana2025",
+   "confidence": "confirmed",
+   "lane": "hardware"
+  },
+  {
+   "date": "2025-03-11",
+   "who": "NIST",
+   "what": "HQC chosen as a fifth post-quantum algorithm, a backup to ML-KEM built on different mathematics.",
+   "not": "Insurance against a lattice break, not a reaction to any factoring result.",
+   "src": "hqc2025",
+   "confidence": "confirmed",
+   "lane": "policy"
+  },
+  {
+   "date": "2025-04",
+   "who": "Wang Chao's group, via the South China Morning Post",
+   "what": "A 90-bit RSA integer reported factored on a D-Wave machine.",
+   "not": "No paper found; 90 bits is far below the 896-bit classical record.",
+   "src": "wang2025",
+   "confidence": "unconfirmed",
+   "lane": "quantum"
+  },
+  {
+   "date": "2025-04-16",
+   "who": "Project Eleven",
+   "what": "The Q-Day Prize: one bitcoin for the largest elliptic-curve key broken with Shor's algorithm on real hardware by 5 April 2026.",
+   "not": "Toy keys of 1 to 25 bits; a yardstick for hardware, not a measure of wallet risk.",
+   "src": "qday2025",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2025-05",
+   "who": "Chaincode Labs — Milton and Shikhelman",
+   "what": "The Bitcoin report: about 6.26 million BTC (roughly 30%) sits in outputs whose public key is already visible; migrating every coin would take about 76 days of full blocks at best.",
+   "not": "A count of exposed keys, not of coins at risk today: no machine can use them yet.",
+   "src": "chaincode2025",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2025-05-09",
+   "who": "BlackRock",
+   "what": "The iShares Bitcoin Trust prospectus adds that advances in quantum computing could undermine Bitcoin's cryptography and that any fix needs broad network consensus.",
+   "not": "Standard risk disclosure, as Bloomberg's ETF analyst said at the time.",
+   "src": "blackrock2025",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2025-05-21",
+   "who": "Craig Gidney",
+   "what": "RSA-2048 with fewer than a million noisy qubits in under a week — a twentyfold drop from the 2019 figure, from better arithmetic, 'yoked' surface codes and cheaper magic states.",
+   "not": "Assumes 0.1% error and a microsecond cycle; the biggest machines have a hundred to a thousand qubits.",
+   "src": "gidney2025",
+   "confidence": "confirmed",
+   "lane": "quantum"
+  },
+  {
+   "date": "2025-06-10",
+   "who": "IBM",
+   "what": "Roadmap to Starling in 2029: 200 logical qubits and 100 million gates on qLDPC codes, via Loon (2025), Kookaburra (2026), Cockatoo (2027).",
+   "not": "Starling as described would still be below every published RSA-2048 budget.",
+   "src": "ibm2025",
+   "confidence": "confirmed",
+   "lane": "hardware"
+  },
+  {
+   "date": "2025-07-11",
+   "who": "Steve Tippeconnic",
+   "what": "A 5-bit elliptic-curve key recovered with a Shor-style circuit on IBM's 133-qubit machine.",
+   "not": "A 32-element group; a pencil does it faster.",
+   "src": "tippeconnic2025",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2025-07-13",
+   "who": "Jameson Lopp, on the bitcoindev list",
+   "what": "A migration proposal: three years after a post-quantum output type exists, stop sending to legacy scripts; two years after that, stop accepting old signatures — freezing coins that did not move.",
+   "not": "A draft for discussion; no activation path.",
+   "src": "lopp2025list",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2025-11-05",
+   "who": "Quantinuum",
+   "what": "Helios: 98 trapped-ion qubits, 48 error-corrected logical qubits, two-qubit fidelity 99.92%.",
+   "not": "48 logical qubits is a few percent of a key-breaking budget, and the runs are shallow.",
+   "src": "helios2025",
+   "confidence": "confirmed",
+   "lane": "hardware"
+  },
+  {
+   "date": "2025-11-12",
+   "who": "IBM",
+   "what": "Nighthawk (120 qubits) and the experimental Loon chip with the long-range couplers qLDPC codes need.",
+   "not": "Physical-qubit devices; no logical factoring demonstration.",
+   "src": "nighthawk2025",
+   "confidence": "confirmed",
+   "lane": "hardware"
+  },
+  {
+   "date": "2026-01-23",
+   "who": "Coinbase",
+   "what": "An independent advisory board on quantum risk: Aaronson, Boneh, Drake, Kannan, Lindell, Malkhi.",
+   "not": "A board; its April paper says the threat is 'on the horizon' and blockchains are safe today.",
+   "src": "coinbase2026b",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2026-02-09",
+   "who": "CoinShares",
+   "what": "About 1.6 million BTC in exposed P2PK outputs, over 32,000 outputs of about 50 BTC each; the threat put at least a decade out.",
+   "not": "Counts only P2PK; reused addresses add millions more.",
+   "src": "coinshares2026",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2026-02-11",
+   "who": "BIP 360 and BIP 361",
+   "what": "BIP 360 becomes Pay-to-Merkle-Root (P2MR, addresses bc1z): Taproot's script tree with the key path removed. BIP 361 is Lopp's sunset schedule, numbered and merged as a draft in April.",
+   "not": "Both are drafts; neither has an activation path.",
+   "src": "bip361",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2026-02-12",
+   "who": "Iceberg Quantum (Webster and others)",
+   "what": "'Pinnacle': RSA-2048 with fewer than 100,000 physical qubits on qLDPC codes, about 22,000 at 0.01% error.",
+   "not": "Needs long-range connectivity and real-time decoding nobody has built; Aaronson: timeline effect unknown.",
+   "src": "pinnacle2026",
+   "confidence": "confirmed",
+   "lane": "quantum"
+  },
+  {
+   "date": "2026-03-09",
+   "who": "Global Risk Institute — Mosca and Piani",
+   "what": "The 2025 expert survey: 26 experts put the chance of a 24-hour RSA-2048 break within ten years at 28–49%, the highest in the series; 92% give it even odds within twenty.",
+   "not": "Opinions of experts, weighted by how they were asked; not a date.",
+   "src": "gri2025",
+   "confidence": "confirmed",
+   "lane": "timeline"
+  },
+  {
+   "date": "2026-03-25",
+   "who": "Google — Adkins and Schmieg",
+   "what": "Google will finish its own post-quantum migration by 2029, a year ahead of NIST's deprecation, citing hardware, error correction and the new resource estimates; Android 17 ships ML-DSA.",
+   "not": "A migration deadline, not a claim that RSA falls in 2029.",
+   "src": "google2029",
+   "confidence": "confirmed",
+   "lane": "policy"
+  },
+  {
+   "date": "2026-03-30",
+   "who": "Babbush, Zalcman, Gidney, Broughton, Khattar, Neven, Bergamaschi, Drake, Boneh",
+   "what": "A 256-bit curve key with under 1,450 logical qubits, 70–90 million Toffoli gates, fewer than 500,000 physical superconducting qubits, in 18–23 minutes — a twentyfold cut. Fast-clock machines could work inside Bitcoin's ten-minute block; ion and atom machines could not.",
+   "not": "A cost model; no such machine exists. Google withheld the circuits and published a zero-knowledge proof of their correctness instead.",
+   "src": "babbush2026",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2026-03-31",
+   "who": "Caltech and Oratomic",
+   "what": "A neutral-atom machine of 10,000–26,000 physical qubits could break a 256-bit curve key, at about ten days per key.",
+   "not": "Atoms are a thousand times slower per step than superconducting qubits; days, not minutes.",
+   "src": "caltech2026",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2026-04-13",
+   "who": "Q-CTRL — Mundada and others",
+   "what": "RSA-2048 in 9.2 days with 381,000 physical qubits by parking idle logical qubits in slower memory.",
+   "not": "Compiler accounting on assumed hardware; the '138×' headline is against a different baseline than Gidney 2025.",
+   "src": "mundada2026",
+   "confidence": "confirmed",
+   "lane": "quantum"
+  },
+  {
+   "date": "2026-04-16",
+   "who": "BitMEX Research",
+   "what": "A 'quantum canary': coins in an address only a quantum machine could open; a spend from it proves the capability and triggers restrictions on old wallets automatically.",
+   "not": "Critics: the first attacker may steal quietly rather than ring the bell.",
+   "src": "canary2026",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2026-04-24",
+   "who": "Project Eleven; Giancarlo Lelli",
+   "what": "The Q-Day Prize awarded for a 15-bit curve key on IBM Heron processors.",
+   "not": "Bitcoin developers reproduced the result from random bits within a day; Project Eleven's CEO agreed it 'is not Q-Day'.",
+   "src": "qday2026b",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2026-05-05",
+   "who": "Xue and Covey",
+   "what": "Shor's algorithm compiled across a modular half-million-atom machine with 16% overhead against one module.",
+   "not": "An architecture study; no such machine.",
+   "src": "xue2026",
+   "confidence": "confirmed",
+   "lane": "quantum"
+  },
+  {
+   "date": "2026-05-22",
+   "who": "Glassnode",
+   "what": "6.04 million BTC (30.2%) with the spending key visible: 1.92 million structural (P2PK, Taproot), 4.12 million from address reuse, of which 1.66 million belongs to exchanges.",
+   "not": "Visible is not stolen; the count is of doors, not of thieves.",
+   "src": "glassnode2026",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2026-06-13",
+   "who": "Coinbase's advisory board",
+   "what": "About 7 million BTC exposed: 1.7 million in some 20,000 legacy P2PK addresses, about 5 million by address reuse, some in exchange cold wallets.",
+   "not": "Same doors, counted a third way.",
+   "src": "coinbase2026",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2026-06-22",
+   "who": "The White House — Executive Order 14412",
+   "what": "Federal high-value systems to move key establishment to post-quantum by end of 2030 and signatures by end of 2031.",
+   "not": "Applies to federal systems; says nothing new about machines.",
+   "src": "eo14412",
+   "confidence": "confirmed",
+   "lane": "policy"
+  },
+  {
+   "date": "2026-08-27",
+   "who": "Jonas Nick and Mikhail Kudinov, Blockstream",
+   "what": "SHRINCS: a SHA-256-based post-quantum signature of about 324 bytes, sized so Bitcoin's throughput survives; demonstrated on Liquid in March.",
+   "not": "Security proof pending, no audit, needs a soft fork.",
+   "src": "shrincs2026",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2026-09",
+   "who": "Wikipedia's records page",
+   "what": "States that 2^1277 − 1 (1,277 bits) was factored by the special number field sieve in September 2026.",
+   "not": "No announcement found on the usual lists; unverified.",
+   "src": "records",
+   "confidence": "unconfirmed",
+   "lane": "classical"
+  },
+  {
+   "date": "2026-09-03",
+   "who": "Eric Lu, Cognition",
+   "what": "RSA-260 (862 bits) factored: CADO-NFS ported to GPUs with coding agents, 4,923 GPU-days on B200-class parts, about sixteen days elapsed.",
+   "not": "Lu: 'essentially no algorithmic advancements'. The sieve is the same; 2048 bits is not structurally closer.",
+   "src": "lu2026",
+   "confidence": "confirmed",
+   "lane": "classical"
+  },
+  {
+   "date": "2026-09-04",
+   "who": "IonQ — Häner and thirteen others",
+   "what": "A blueprint: a 256-bit curve key in 25.7 days on 19,397 trapped-ion qubits (about 1,457 logical), 40 million Toffoli gates, 63% success.",
+   "not": "A design on paper; IonQ's largest machine is 256 qubits.",
+   "src": "haner2026",
+   "confidence": "confirmed",
+   "lane": "wallet"
+  },
+  {
+   "date": "2026-09-19",
+   "who": "Stephen Weis, Anthropic",
+   "what": "RSA-896 (896 bits, 270 digits) factored with a GPU port of CADO-NFS, run as a low-priority job on up to 2,048 idle GPUs for ten days — about 30 GPU-years.",
+   "not": "Weis: no improvement to the number field sieve's running time and no effect on deployed RSA-2048; it does put RSA-1024 within reach of anyone with a data-centre GPU fleet.",
+   "src": "weis2026",
+   "confidence": "confirmed",
+   "lane": "classical"
+  }
+ ]
+}

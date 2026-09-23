@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Big Numbers, Split: factoring from Eratosthenes to Shor, the Riemann Hypothesis, and the bitcoin wallet"
+message: "If you use these figures, data or text, cite as below and keep the credit line."
+type: software
+authors:
+  - name: "Nan"
+    website: "https://hongdam.net"
+repository-code: "https://github.com/NaNoBotCo/factoring"
+url: "https://nanobotco.github.io/factoring/"
+license: CC-BY-4.0
+date-released: "2026-09-23"
+keywords:
+  - integer factorization
+  - RSA
+  - number field sieve
+  - Shor's algorithm
+  - quantum computing
+  - Riemann hypothesis
+  - zeta zeros
+  - elliptic curve
+  - bitcoin
+  - post-quantum cryptography

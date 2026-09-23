@@ -1,0 +1,313 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wallet — the curve, the window, and every proposal — Big Numbers, Split</title>
+<meta name="description" content="How a bitcoin key works, which outputs expose it, how many coins sit in them, what a ten-minute quantum attack would need, and every post-quantum proposal for Bitcoin as of September 2026.">
+<link rel="canonical" href="https://nanobotco.github.io/factoring/wallet/">
+<meta property="og:title" content="Wallet — the curve, the window, and every proposal — Big Numbers, Split">
+<meta property="og:description" content="How a bitcoin key works, which outputs expose it, how many coins sit in them, what a ten-minute quantum attack would need, and every post-quantum proposal for Bitcoin as of September 2026.">
+<meta property="og:image" content="https://nanobotco.github.io/factoring/img/card.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/factoring/icon.svg" type="image/svg+xml">
+<style>
+:root{
+ --bg:#0a0a10;--bg2:#0f0f18;--panel:#14141f;--ink:#f2ede3;--mute:#9d9689;--line:#2c2c3a;
+ --chip:#1b1b28;--c0:#ffb347;--c1:#5fd3c6;--c2:#ff7ab6;--violet:#b79cff;--focus:#ffb347;
+ --display:"Avenir Next Condensed","Arial Narrow",Impact,system-ui,sans-serif;
+ --body:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+ --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.62;
+ -webkit-text-size-adjust:100%}
+a{color:var(--c0);text-decoration-thickness:.08em;text-underline-offset:.18em}
+a:hover{color:#ffd08a}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible,input:focus-visible{
+ outline:3px solid var(--focus);outline-offset:2px;border-radius:5px}
+img,canvas,svg{max-width:100%}img{height:auto}
+.sr{position:absolute;left:-999px;top:0;background:var(--c0);color:#000;padding:.4rem .8rem;z-index:99}
+.sr:focus{left:.5rem;top:.5rem}
+
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;
+ background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);transition:transform .25s}
+body.nav-away header.top{transform:translateY(-100%)}
+header.top .in{max-width:72rem;margin:0 auto;padding:.5rem 1rem;display:flex;gap:.4rem 1.1rem;
+ align-items:center;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:.03em;
+ text-transform:uppercase;text-decoration:none;color:var(--ink);white-space:nowrap;display:flex;
+ align-items:center;gap:.5rem}
+.brand b{color:var(--c0)}
+.brand i{width:.85rem;height:.85rem;border-radius:2px;background:var(--c0);display:inline-block;
+ box-shadow:6px 0 0 -2px var(--c1),-6px 0 0 -2px var(--c1);transform:rotate(45deg)}
+header.top nav{display:flex;gap:.1rem .8rem;flex-wrap:wrap;font-size:.72rem;text-transform:uppercase;
+ letter-spacing:.08em;font-weight:700}
+header.top nav a{text-decoration:none;color:var(--mute);padding:.15rem 0}
+header.top nav a:hover,header.top nav a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--c0)}
+main{max-width:72rem;margin:0 auto;padding:1rem 1rem 5rem}
+footer.bot{border-top:1px solid var(--line);margin-top:3rem;background:var(--bg2)}
+footer.bot .in{max-width:72rem;margin:0 auto;padding:1.4rem 1rem 3rem;font-size:.8rem;color:var(--mute)}
+footer.bot a{color:var(--mute)}footer.bot p{max-width:none}
+.fleet{margin:.6rem 0 0;line-height:1.9}.fleet a{margin-right:.55rem;white-space:nowrap}
+.support{margin:.45rem 0 0}.support a{margin-right:.5rem}
+
+h1{font-family:var(--display);font-size:clamp(2.4rem,7.5vw,5rem);line-height:.94;margin:.3rem 0 .4rem;
+ font-weight:800;letter-spacing:-.005em;text-transform:uppercase}
+h1 .kind{display:block;font-size:clamp(.6rem,1.5vw,.72rem);color:var(--c0);letter-spacing:.34em;
+ margin-bottom:.55rem;font-weight:800}
+h2{font-family:var(--display);font-size:clamp(1.5rem,3.4vw,2rem);margin:2.6rem 0 .6rem;font-weight:800;
+ text-transform:uppercase;border-bottom:2px solid var(--line);padding-bottom:.25rem}
+h2 small{font-family:var(--body);font-size:.55em;color:var(--mute);text-transform:none;
+ letter-spacing:0;font-weight:400;margin-left:.6rem}
+h3{font-family:var(--display);font-size:1.2rem;margin:1.7rem 0 .3rem;font-weight:800;text-transform:uppercase}
+.lede{font-size:clamp(1.12rem,2.4vw,1.35rem);max-width:44rem;margin:.5rem 0 1.1rem}
+.mute{color:var(--mute)}.small{font-size:.82rem}
+p{margin:.65rem 0;max-width:44rem}
+.prose p,.prose ul,.prose ol{max-width:44rem}
+.prose li{margin:.35rem 0}
+.prose strong{color:var(--c0);font-weight:700}
+blockquote{margin:1rem 0;padding:.6rem 0 .6rem 1rem;border-left:3px solid var(--c1);color:var(--ink);
+ max-width:44rem;font-style:normal}
+blockquote cite{display:block;margin-top:.4rem;color:var(--mute);font-size:.82rem;font-style:normal}
+
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin:1rem 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem;
+ text-decoration:none;color:var(--ink);display:block}
+a.card:hover{border-color:var(--c0)}
+.card h3{margin:.1rem 0 .3rem}
+.card p{margin:.2rem 0;font-size:.88rem;color:var(--mute)}
+
+/* the linked image: background, scrim, spacer, text — the whole box is the link */
+a.shot{position:relative;display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+ text-decoration:none;color:var(--ink)}
+a.shot:hover{border-color:var(--c0)}
+a.shot .bg{position:absolute;inset:0;background-size:cover;background-position:center;
+ transition:transform .6s}
+a.shot:hover .bg{transform:scale(1.04)}
+a.shot .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,16,.05) 0%,rgba(10,10,16,.35) 45%,rgba(10,10,16,.92) 100%)}
+a.shot .sp{display:block;padding-top:56%}
+a.shot .tx{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem}
+a.shot .tx b{display:block;font-family:var(--display);font-size:1.5rem;text-transform:uppercase;line-height:1;
+ font-weight:800}
+a.shot .tx span{display:block;color:var(--mute);font-size:.84rem;margin-top:.3rem}
+a.shot .tx em{font-style:normal;color:var(--c0);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+ font-weight:800;display:block;margin-bottom:.35rem}
+.shots{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));margin:1rem 0}
+
+/* the band: a picture behind a block of words, anchored to the window so the page scrolls through it */
+.band{position:relative;margin:2.2rem calc(50% - 50vw);padding:3.2rem 1rem;background-size:cover;
+ background-position:center;background-attachment:fixed;color:var(--ink)}
+.band:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,16,.94) 0%,rgba(10,10,16,.72) 55%,rgba(10,10,16,.35) 100%)}
+.band .in{position:relative;max-width:72rem;margin:0 auto}
+.band .in p{max-width:40rem}
+.band h2{border:none;margin-top:0}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){.band{background-attachment:scroll}}
+
+.fig{margin:1.6rem 0;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:.7rem}
+.fig img{display:block;margin:0 auto;border-radius:6px}
+.fig figcaption{color:var(--mute);font-size:.82rem;margin:.6rem .2rem 0;max-width:46rem}
+.fig.plain{background:none;border:none;padding:0}
+.hero{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);margin:.6rem 0 1.4rem}
+.hero img{display:block;width:100%}
+
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.88rem}
+th,td{text-align:left;padding:.42rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mute);font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono)}
+td.d{white-space:nowrap;font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+tr[hidden]{display:none}
+.wrap{overflow-x:auto}.wrap table{min-width:52rem}
+code,kbd{font-family:var(--mono);font-size:.86em;background:var(--chip);padding:.1rem .3rem;border-radius:4px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.8rem 1rem;
+ overflow-x:auto;font-size:.82rem}
+pre code{background:none;padding:0}
+.eq{font-family:var(--mono);background:var(--panel);border-left:3px solid var(--c0);padding:.7rem 1rem;
+ margin:1rem 0;overflow-x:auto;font-size:.92rem;max-width:44rem}
+.eq b{color:var(--c0);font-weight:600}
+.eqn{color:var(--mute);font-family:var(--body);font-size:.86rem;margin-top:.4rem}
+.cite{font-size:.78em;color:var(--c1);text-decoration:none;border-bottom:1px dotted var(--c1);
+ white-space:nowrap;margin-left:.2em}
+.cite:hover{color:var(--c1)}
+.tag{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;
+ padding:.1rem .6rem;font-size:.72rem;color:var(--mute);margin:0 .25rem .3rem 0;white-space:nowrap}
+.tag.c0{border-color:var(--c0);color:var(--c0)}
+.tag.c1{border-color:var(--c1);color:var(--c1)}
+.tag.c2{border-color:var(--c2);color:var(--c2)}
+.tag.v{border-color:var(--violet);color:var(--violet)}
+
+.tool{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem;margin:1.4rem 0}
+.tool h3{margin-top:0}
+.tool .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.5rem 0}
+.tool label{font-size:.8rem;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+button,select,input[type=text],input[type=number]{font:inherit;font-size:.9rem;background:var(--chip);color:var(--ink);
+ border:1px solid var(--line);border-radius:7px;padding:.35rem .7rem;cursor:pointer}
+input[type=text],input[type=number]{cursor:text;font-family:var(--mono)}
+input[type=range]{width:min(100%,22rem);accent-color:var(--c0)}
+button:hover,select:hover{border-color:var(--c0)}
+button:disabled{opacity:.4;cursor:default}
+button.go{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+.out{font-family:var(--mono);font-size:.9rem;background:#0b0b12;border:1px solid var(--line);
+ border-radius:8px;padding:.7rem .9rem;margin:.6rem 0 0;overflow-x:auto;line-height:1.8}
+.out .k{color:var(--mute)}
+.out .v{color:var(--c1)}
+.out .bad{color:var(--c2)}
+.out .good{color:var(--c0)}
+.out table{font-size:.8rem}
+.out .lane{display:grid;grid-template-columns:11rem 1fr;gap:.2rem .8rem;align-items:center;margin:.3rem 0}
+.out .lane i{display:block;height:6px;background:var(--c1);border-radius:3px;grid-column:2;margin-bottom:-.2rem}
+.units{display:flex;gap:.3rem;flex-wrap:wrap}
+.units button{min-width:2.9rem;text-align:center;font-family:var(--mono)}
+.units button[aria-pressed=true]{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+canvas{display:block;margin:0 auto;max-width:100%;height:auto;touch-action:pan-y;background:#0b0b12;border-radius:8px}
+
+.big{font-family:var(--display);font-size:clamp(2rem,6vw,4rem);line-height:1;color:var(--c0);font-weight:800;
+ margin:.2rem 0}
+.answer{border:1px solid var(--c0);border-radius:12px;padding:1.1rem 1.3rem;margin:1.4rem 0;
+ background:color-mix(in srgb,var(--c0) 6%,var(--panel));max-width:46rem}
+.answer h3{margin-top:0;color:var(--c0)}
+.answer p{margin:.5rem 0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;font-size:.86rem;max-width:44rem}
+.kv dt{color:var(--mute)}.kv dd{margin:0}
+.note{border:1px solid var(--line);border-left:3px solid var(--c2);background:var(--bg2);
+ border-radius:0 8px 8px 0;padding:.7rem 1rem;margin:1.2rem 0;font-size:.9rem;max-width:46rem}
+.note b{color:var(--c2)}
+ul.ticks{list-style:none;padding-left:0}
+ul.ticks li{padding-left:1.4rem;position:relative}
+ul.ticks li:before{content:"✓";position:absolute;left:0;color:var(--c1);font-weight:700}
+ul.checks{list-style:none;padding-left:0;font-family:var(--mono);font-size:.78rem;columns:2;
+ column-gap:2rem;max-width:none}
+ul.checks li{break-inside:avoid;color:var(--mute);margin:.15rem 0}
+ul.checks li b{color:var(--c1);font-weight:400}
+@media (max-width:48rem){ul.checks{columns:1}.out .lane{grid-template-columns:1fr}.out .lane i{grid-column:1}}
+.tl{list-style:none;padding:0;margin:1rem 0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:.3rem 0 .9rem 1.4rem;max-width:48rem}
+.tl li:before{content:"";position:absolute;left:-7px;top:.75rem;width:12px;height:12px;border-radius:50%;
+ background:var(--c1);border:2px solid var(--bg)}
+.tl li.quantum:before{background:var(--c2)}
+.tl li.riemann:before{background:var(--violet)}
+.tl li .when{font-family:var(--mono);color:var(--c0);font-size:.8rem;display:block}
+.tl li .who{font-weight:700}
+.tl li p{margin:.2rem 0 0;font-size:.95rem}
+dl.words dt{font-weight:700;color:var(--c0);margin-top:.9rem}
+dl.words dd{margin:0;max-width:44rem}
+.src{font-size:.86rem}
+.src li{margin:.35rem 0;padding-left:.2rem}
+.src li b{color:var(--mute);font-weight:400;font-family:var(--mono);margin-right:.4rem}
+</style></head>
+<body data-base="/factoring/" data-asof="2026-09-23">
+<a class="sr" href="#main">Skip to the page</a>
+<header class="top"><div class="in">
+<a class="brand" href="/factoring/"><i></i>Big Numbers, <b>Split</b></a>
+<nav aria-label="Sections"><a href="/factoring/split/">Split</a><a href="/factoring/history/">History</a><a href="/factoring/methods/">Methods</a><a href="/factoring/records/">Records</a><a href="/factoring/quantum/">Quantum</a><a href="/factoring/riemann/">Riemann</a><a href="/factoring/wallet/" aria-current="page">Wallet</a><a href="/factoring/now/">Now</a><a href="/factoring/words/">Words</a><a href="/factoring/sources/">Sources</a></nav></div></header>
+<main id="main"><h1><span class="kind">The curve, the window, the proposals</span>Wallet</h1>
+<p class="lede">A bitcoin wallet does not use RSA. Its lock is a different hard problem on a curve, broken
+by the same quantum algorithm and, on paper, a little more cheaply. This page is the mechanics and the
+public record as of 2026-09-23: which coins show their key, what a ten-minute attack would need, and every
+draft proposal on the table. It is not advice.</p>
+
+<figure class="fig "><img src="/factoring/img/band-curve.jpg" alt="A glowing amber loop and tail, an elliptic curve, with a teal line cutting it at three points and a rose vertical dropping from the third." loading="lazy" decoding="async"><figcaption>An elliptic curve over the ordinary numbers, y² = x³ − 3x + 3. Draw a line through two points on it and it crosses a third; flip that third point over the axis and you have ‘added’ the two. That rule, done over whole numbers mod a 256-bit prime instead of over a smooth picture, is a wallet.</figcaption></figure>
+
+<h2>The lock</h2>
+<div class="prose">
+<p>Bitcoin's curve is y² = x³ + 7 over the integers mod a particular 256-bit prime, a curve called
+secp256k1 <a class="cite" href="/factoring/sources/#src-68" title="SEC 2: recommended elliptic curve domain parameters — secp256k1">[68]</a><a class="cite" href="/factoring/sources/#src-66" title="Bitcoin: a peer-to-peer electronic cash system">[66]</a>. There is a fixed starting point G on it. Your private key is a
+random 256-bit number k. Your public key is the point you reach by adding G to itself k times, written
+k·G. Adding is fast, and there is a shortcut (double-and-add) so that 256 doublings get you anywhere. Going
+back — given k·G, find k — is the <strong>discrete logarithm</strong>, and the best classical methods
+need about 2<sup>128</sup> steps <a class="cite" href="/factoring/sources/#src-67" title="Elliptic curve cryptosystems">[67]</a>. Same shape as factoring: easy one way, no known
+way back.</p>
+<p>Here is the same curve over the integers mod 97 instead, small enough to draw all
+78 of its points and hop around on it.</p>
+</div>
+<div class="tool">
+<h3>Hop</h3>
+<canvas id="curve" width="560" height="560" aria-label="the points of y squared equals x cubed plus seven mod 97, as dots, with the walk from G drawn"></canvas>
+<div class="row"><button class="go" id="hop">hop once</button><button id="hopplay">keep hopping</button><button id="challenge">hide k, show k·G</button><button id="brute">brute force</button></div>
+<div class="out" id="curveout"></div>
+<p class="small mute">G has order 79 here: 79 hops and you are back where you
+started. On secp256k1 the order is about 2<sup>256</sup>, and the landing spot after k hops tells you
+nothing about k that anyone knows how to read — classically.</p>
+</div>
+<div class="tool">
+<h3>A key, made here</h3>
+<p class="small mute">The same arithmetic at full size, in your browser: a random 256-bit k, then k·G on
+secp256k1.</p>
+<div class="row"><button class="go" id="realkey">make a key</button></div>
+<div class="out" id="keyout"><span class="k">press the button</span></div>
+</div>
+
+<h2>Which coins show their key</h2>
+<div class="prose">
+<p>A Bitcoin <strong>address</strong> is usually not the public key. It is a hash of it — a one-way
+fingerprint — and the key itself appears on the chain only inside the transaction that spends from the
+address <a class="cite" href="/factoring/sources/#src-69" title="Developer guide — transactions, P2PKH, P2PK, P2WPKH and P2TR output types">[69]</a>. That one layer is most of the story. Hashes are not broken by Shor's algorithm;
+a quantum computer speeds up reversing a hash only by a square root, which a 256-bit hash absorbs. So
+what matters is which outputs put the key itself on the chain:</p>
+</div>
+<div class="wrap"><table><thead><tr><th>output type</th><th>address looks like</th><th>key visible</th><th>note</th></tr></thead><tbody><tr><td><b>P2PK</b><br><span class="small mute">2009</span></td><td class="d">no address — the key itself</td><td><span class="tag c2">always</span></td><td>The original 2009–2010 output: the public key sits in the open on the chain. Satoshi-era mining rewards are here, about 1.7 million BTC across some 20,000 to 45,000 outputs, untouched since. <a class="cite" href="/factoring/sources/#src-69" title="Developer guide — transactions, P2PKH, P2PK, P2WPKH and P2TR output types">[69]</a><a class="cite" href="/factoring/sources/#src-104" title="Bitcoin and quantum computing: current status and future directions">[104]</a></td></tr><tr><td><b>P2PKH</b><br><span class="small mute">2009</span></td><td class="d">1…</td><td><span class="tag c1">only when spent, or if the address is reused</span></td><td>The output holds a hash of the key. The key is shown in the spending transaction — so a used address that receives coins again is exposed. <a class="cite" href="/factoring/sources/#src-69" title="Developer guide — transactions, P2PKH, P2PK, P2WPKH and P2TR output types">[69]</a></td></tr><tr><td><b>P2SH</b><br><span class="small mute">2012</span></td><td class="d">3…</td><td><span class="tag c1">only when spent, or if reused</span></td><td>A hash of a script; the script and its keys appear at spend time. <a class="cite" href="/factoring/sources/#src-104" title="Bitcoin and quantum computing: current status and future directions">[104]</a></td></tr><tr><td><b>P2WPKH</b><br><span class="small mute">2017</span></td><td class="d">bc1q… (42 characters)</td><td><span class="tag c1">only when spent, or if reused</span></td><td>SegWit&#x27;s version of P2PKH; same hash-until-spend property. <a class="cite" href="/factoring/sources/#src-69" title="Developer guide — transactions, P2PKH, P2PK, P2WPKH and P2TR output types">[69]</a></td></tr><tr><td><b>P2WSH</b><br><span class="small mute">2017</span></td><td class="d">bc1q… (62 characters)</td><td><span class="tag c1">only when spent, or if reused</span></td><td>SegWit&#x27;s version of P2SH. <a class="cite" href="/factoring/sources/#src-104" title="Bitcoin and quantum computing: current status and future directions">[104]</a></td></tr><tr><td><b>P2TR (Taproot)</b><br><span class="small mute">2021</span></td><td class="d">bc1p…</td><td><span class="tag c2">always</span></td><td>The output is itself a (tweaked) public key, by design, so the key is on the chain from the moment coins arrive. About a third of all outputs by count in 2025, under one percent by value. <a class="cite" href="/factoring/sources/#src-71" title="BIP 341 — Taproot: SegWit version 1 spending rules (the output carries a public key)">[71]</a><a class="cite" href="/factoring/sources/#src-104" title="Bitcoin and quantum computing: current status and future directions">[104]</a></td></tr><tr><td><b>P2MR (proposed, BIP 360)</b><br><span class="small mute">draft</span></td><td class="d">bc1z…</td><td><span class="tag c1">no key path</span></td><td>Taproot&#x27;s script tree with the key-path spend removed, so a hash-based or post-quantum script can sit in a leaf. A draft with no activation path. <a class="cite" href="/factoring/sources/#src-72" title="BIP 360 — a quantum-resistant output type for Bitcoin">[72]</a></td></tr></tbody></table></div>
+<div class="prose">
+<p>The counts of how many coins sit in exposed outputs come from five sources and land in the same
+place: about a third of all bitcoin, once address reuse is counted, and about 1.6 to 1.7 million BTC in
+the oldest kind alone — coins mined in 2009–2010 and never moved.</p>
+</div>
+<div class="wrap"><table><thead><tr><th>who counted</th><th>when</th><th class="n">BTC</th><th class="n">of supply</th><th>how</th></tr></thead><tbody><tr><td>Deloitte</td><td class="d">2020-12</td><td class="n">4.00M</td><td class="n">25%</td><td>about 2 million BTC in P2PK plus 2.5 million in reused P2PKH <a class="cite" href="/factoring/sources/#src-73" title="Quantum computers and the Bitcoin blockchain — the share of coins in exposed-key outputs">[73]</a></td></tr><tr><td>Chaincode Labs</td><td class="d">2025-05</td><td class="n">6.26M</td><td class="n">30%</td><td>P2PK, raw multisig and Taproot, plus reused addresses; about 1.72 million BTC in P2PK alone <a class="cite" href="/factoring/sources/#src-104" title="Bitcoin and quantum computing: current status and future directions">[104]</a></td></tr><tr><td>CoinShares</td><td class="d">2026-02</td><td class="n">1.60M</td><td class="n">8%</td><td>P2PK only, 32,000+ outputs averaging about 50 BTC <a class="cite" href="/factoring/sources/#src-105" title="The quantum threat to Bitcoin is smaller than people think — 1.6 million BTC in P2PK">[105]</a></td></tr><tr><td>Glassnode</td><td class="d">2026-05</td><td class="n">6.04M</td><td class="n">30%</td><td>1.92 million structural (P2PK, Taproot) plus 4.12 million by address reuse; 1.66 million of the reuse is exchanges <a class="cite" href="/factoring/sources/#src-106" title="6.04 million BTC with the public key already visible on-chain">[106]</a></td></tr><tr><td>Coinbase advisory board</td><td class="d">2026-06</td><td class="n">7.00M</td><td class="n">33%</td><td>about 1.7 million in some 20,000 P2PK addresses plus about 5 million by reuse <a class="cite" href="/factoring/sources/#src-107" title="Coinbase quantum report flags exchange cold wallets among millions of bitcoin exposed by address reuse">[107]</a></td></tr></tbody></table></div>
+<figure class="fig "><img src="/factoring/img/exposure.svg" alt="Five amber bars of different heights, one per source, each labelled with millions of bitcoin and a percentage." loading="lazy" decoding="async"><figcaption>The five counts. CoinShares counted only the P2PK outputs; the others add reused addresses and, from 2025, Taproot.</figcaption></figure>
+
+<h2>The two attacks</h2>
+<div class="prose"><h3>Long-range</h3><p>The public key is already on the chain. The attacker can take a month. Every P2PK output, every Taproot output, and every reused address of any type is in this class. <a class="cite" href="/factoring/sources/#src-104" title="Bitcoin and quantum computing: current status and future directions">[104]</a><a class="cite" href="/factoring/sources/#src-72" title="BIP 360 — a quantum-resistant output type for Bitcoin">[72]</a></p><h3>Short-range (on-spend)</h3><p>The key appears only in the spending transaction, so the attacker must compute the private key and broadcast a competing spend before the honest one is confirmed — about ten minutes, sometimes an hour. Every output type is in this class at the moment of spending. <a class="cite" href="/factoring/sources/#src-104" title="Bitcoin and quantum computing: current status and future directions">[104]</a><a class="cite" href="/factoring/sources/#src-91" title="Resource estimates for breaking 256-bit elliptic curve keys — under 1,450 logical qubits, fewer than 500,000 physical, minutes of runtime">[91]</a></p><h3>Harvest now, decrypt later</h3><p>Does not apply to a wallet. There is no ciphertext to store; a key is either on the chain or it is not. <a class="cite" href="/factoring/sources/#src-104" title="Bitcoin and quantum computing: current status and future directions">[104]</a></p></div>
+
+<h2>The ten-minute window</h2>
+<div class="prose">
+<p>For a never-reused hash address, the key is visible only between broadcast and confirmation. So the
+question people ask is whether a machine could take a public key, compute the private key, and get a
+competing transaction mined, in the ten minutes a block takes on average. The estimates:</p>
+</div>
+<div class="wrap"><table><thead><tr><th>who</th><th>when</th><th>to break one key in ten minutes</th><th>in an hour</th><th>in a day</th><th></th></tr></thead><tbody><tr><td>Webber and others</td><td class="d">2022</td><td>1.9 billion physical qubits</td><td>317 million</td><td>13 million</td><td><a class="cite" href="/factoring/sources/#src-60" title="The impact of hardware specifications on reaching quantum advantage in the fault tolerant regime — breaking a Bitcoin key in 10 minutes, an hour, a day">[60]</a></td></tr><tr><td>Litinski</td><td class="d">2023</td><td>about 6.9 million physical qubits (photonic model)</td><td></td><td></td><td><a class="cite" href="/factoring/sources/#src-61" title="How to compute a 256-bit elliptic curve private key with only 50 million Toffoli gates">[61]</a></td></tr><tr><td>Babbush, Gidney, Boneh and others</td><td class="d">2026-03</td><td>fewer than 500,000 superconducting qubits, 9–23 minutes</td><td></td><td></td><td><a class="cite" href="/factoring/sources/#src-91" title="Resource estimates for breaking 256-bit elliptic curve keys — under 1,450 logical qubits, fewer than 500,000 physical, minutes of runtime">[91]</a></td></tr><tr><td>Caltech and Oratomic</td><td class="d">2026-03</td><td>not possible on atoms — about 10 days per key on 10,000–26,000 atoms</td><td></td><td></td><td><a class="cite" href="/factoring/sources/#src-93" title="Shor&#x27;s algorithm is possible with as few as 10,000 reconfigurable atomic qubits">[93]</a></td></tr><tr><td>IonQ</td><td class="d">2026-09</td><td>not possible on ions — 25.7 days per key on 19,397 qubits</td><td></td><td></td><td><a class="cite" href="/factoring/sources/#src-100" title="Computing 256-bit elliptic curve discrete logarithms in 26 days on a fault-tolerant trapped-ion quantum computer with 20,000 qubits">[100]</a></td></tr></tbody></table></div>
+<div class="prose">
+<p>The 2026 papers disagree with each other in an instructive way. Google's team says a fast
+superconducting machine of under half a million qubits could do it in minutes, inside the window
+<a class="cite" href="/factoring/sources/#src-91" title="Resource estimates for breaking 256-bit elliptic curve keys — under 1,450 logical qubits, fewer than 500,000 physical, minutes of runtime">[91]</a>; the Caltech and IonQ blueprints, on atoms and ions, need ten to twenty-six days per
+key, because those qubits tick a thousand times slower <a class="cite" href="/factoring/sources/#src-93" title="Shor&#x27;s algorithm is possible with as few as 10,000 reconfigurable atomic qubits">[93]</a><a class="cite" href="/factoring/sources/#src-100" title="Computing 256-bit elliptic curve discrete logarithms in 26 days on a fault-tolerant trapped-ion quantum computer with 20,000 qubits">[100]</a>. Google
+withheld its circuits and published a proof they work, and advised: migrate, do not reuse addresses,
+decide what to do about abandoned coins <a class="cite" href="/factoring/sources/#src-92" title="Safeguarding cryptocurrency by disclosing quantum vulnerabilities responsibly">[92]</a>. None of these machines exists; see the
+<a href="/factoring/quantum/">gap chart</a>.</p>
+</div>
+
+<h2>The proposals</h2>
+<div class="prose">
+<p>Every one is a draft. None has an activation path. Bitcoin has, as of 2026-09-23, no agreed roadmap,
+funding or timeline for a post-quantum move <a class="cite" href="/factoring/sources/#src-121" title="Google says post-quantum migration needs to happen by 2029 — and Bitcoin has no roadmap">[121]</a>.</p>
+</div>
+<div class="wrap"><table><thead><tr><th>proposal</th><th>when</th><th>what it does</th></tr></thead><tbody><tr><td><b>BIP 360 — P2MR</b><br><span class="small mute">Hunter Beast, Ethan Heilman, Isabel Foxen Duke</span></td><td class="d">2024-12 onward</td><td>A new output type, SegWit version 2, addresses bc1z: Taproot&#x27;s script tree without the key path. Renamed twice (P2QRH, P2TSH, P2MR). Status: draft. <a class="cite" href="/factoring/sources/#src-72" title="BIP 360 — a quantum-resistant output type for Bitcoin">[72]</a></td></tr><tr><td><b>BIP 361 — legacy signature sunset</b><br><span class="small mute">Jameson Lopp and others</span></td><td class="d">2025-07 list post; 2026-04 merged as draft</td><td>Phase A, about three years after activation: legacy scripts may only send to post-quantum scripts. Phase B, two years later: old signatures no longer verify, with &#x27;rescue&#x27; paths for coins provably from a seed phrase. Status: draft. <a class="cite" href="/factoring/sources/#src-109" title="BIP 361 — Post quantum migration and legacy signature sunset">[109]</a><a class="cite" href="/factoring/sources/#src-110" title="A post quantum migration proposal">[110]</a></td></tr><tr><td><b>Hourglass</b><br><span class="small mute">Hunter Beast</span></td><td class="d">2025-04</td><td>Rate-limit spends from P2PK outputs to one per block, so a thief could not dump 1.7 million BTC at once. <a class="cite" href="/factoring/sources/#src-111" title="Hourglass — rate-limiting spends from pay-to-pubkey outputs">[111]</a></td></tr><tr><td><b>Commit, delay, reveal</b><br><span class="small mute">Tim Ruffing; Tadge Dryja&#x27;s variant</span></td><td class="d">2025-05</td><td>Publish a hash of your transaction first, wait, then reveal it, so an attacker who learns your key at reveal time cannot front-run a transaction committed earlier. Would let exposed keys spend safely after the curve breaks. <a class="cite" href="/factoring/sources/#src-112" title="A commit-reveal soft fork for spending exposed keys after ECDSA is broken">[112]</a></td></tr><tr><td><b>Quantum canary</b><br><span class="small mute">BitMEX Research</span></td><td class="d">2026-04</td><td>Coins in an address only a quantum machine could open; a spend from it triggers restrictions automatically instead of on a fixed date. <a class="cite" href="/factoring/sources/#src-113" title="Bitcoin devs float a quantum tripwire that triggers a coin freeze only if an attack is proven">[113]</a></td></tr><tr><td><b>Provable address-control timestamps</b><br><span class="small mute">Dan Robinson, Paradigm</span></td><td class="d">2026-05</td><td>Privately timestamp a proof that you control an address now, without moving coins; redeem frozen coins later with a STARK proof. <a class="cite" href="/factoring/sources/#src-124" title="Provable address-control timestamps — a way to prove control without moving coins">[124]</a></td></tr><tr><td><b>SHRINCS</b><br><span class="small mute">Jonas Nick and Mikhail Kudinov, Blockstream</span></td><td class="d">2026-08</td><td>A SHA-256-based signature of about 324 bytes, so post-quantum signatures do not cut throughput to a third of a transaction a second. <a class="cite" href="/factoring/sources/#src-114" title="SHRINCS — a hash-based post-quantum signature sized for Bitcoin blocks">[114]</a></td></tr><tr><td><b>Quantum-safe transactions without a fork</b><br><span class="small mute">Avihu Levy, StarkWare</span></td><td class="d">2026-04</td><td>Hash-based proofs under today&#x27;s rules, at $75–$200 of GPU time per transaction; a last resort, its author says. <a class="cite" href="/factoring/sources/#src-123" title="Quantum-safe Bitcoin now possible without a soft fork, but costs $200 a pop">[123]</a></td></tr><tr><td><b>P2Q</b><br><span class="small mute">Casey Rodarmor</span></td><td class="d">draft</td><td>A SegWit version 3 output identical to Taproot, so its key path can be switched off later without touching existing Taproot coins. <a class="cite" href="/factoring/sources/#src-122" title="P2Q — a draft BIP for a SegWit version 3 output whose key path can later be switched off">[122]</a></td></tr></tbody></table></div>
+<div class="prose">
+<p>The hard part is not the new signature; NIST has three of those already <a class="cite" href="/factoring/sources/#src-63" title="NIST releases first three finalized post-quantum encryption standards — FIPS 203, 204, 205">[63]</a>. It is the
+old coins. A post-quantum output type only protects coins that move to it, and the question of what
+happens to coins whose owners never move them — including the 1.7 million BTC from 2009 — is a question
+about freezing other people's property, which is why BIP 361's sunset schedule is the contested one
+<a class="cite" href="/factoring/sources/#src-109" title="BIP 361 — Post quantum migration and legacy signature sunset">[109]</a>. Migrating every output would take about 76 days of full blocks at best
+<a class="cite" href="/factoring/sources/#src-104" title="Bitcoin and quantum computing: current status and future directions">[104]</a>.</p>
+<p>Elsewhere:</p>
+<ul><li><b>Ethereum</b> — A roadmap: hash-based validator signatures, signature agility for accounts (EIP-8141, expected in the Hegotá fork), core post-quantum infrastructure around 2029. <a class="cite" href="/factoring/sources/#src-117" title="Roadmap — quantum resistance">[117]</a></li><li><b>Algorand</b> — First post-quantum transaction on mainnet in November 2025, Falcon-1024 signatures in a stateless contract; consensus itself not yet post-quantum. <a class="cite" href="/factoring/sources/#src-118" title="Quantum-resistant transactions on Algorand with Falcon signatures">[118]</a></li></ul>
+</div>
+
+<h2>The timelines people sign their names to</h2>
+<div class="wrap"><table><thead><tr><th>who</th><th>when</th><th>what they said</th></tr></thead><tbody><tr><td>Global Risk Institute expert survey</td><td class="d">2026-03</td><td>28–49% chance of a 24-hour RSA-2048 break within ten years; 92% of experts give even odds within twenty. <a class="cite" href="/factoring/sources/#src-119" title="Quantum threat timeline report 2025 — the expert survey">[119]</a></td></tr><tr><td>NIST</td><td class="d">2024-11</td><td>RSA-2048 and 256-bit curves deprecated after 2030, disallowed after 2035 (draft). <a class="cite" href="/factoring/sources/#src-64" title="Transition to post-quantum cryptography standards — NIST IR 8547 (initial public draft): RSA and ECC deprecated after 2030, disallowed after 2035">[64]</a></td></tr><tr><td>Google</td><td class="d">2026-03</td><td>Its own migration done by 2029. <a class="cite" href="/factoring/sources/#src-90" title="Google&#x27;s post-quantum migration timeline — done by 2029">[90]</a></td></tr><tr><td>Coinbase advisory board</td><td class="d">2026-04</td><td>&#x27;Clearly on the horizon&#x27;, a few years to a decade or more; blockchains safe today; start preparing now. <a class="cite" href="/factoring/sources/#src-108" title="Coinbase advisory board says the quantum computing threat is on the horizon">[108]</a></td></tr><tr><td>CoinShares</td><td class="d">2026-02</td><td>At least a decade away. <a class="cite" href="/factoring/sources/#src-105" title="The quantum threat to Bitcoin is smaller than people think — 1.6 million BTC in P2PK">[105]</a></td></tr></tbody></table></div>
+<div class="prose">
+<p>Nobody has a date. What exists is a policy calendar (NIST's 2030 and 2035), a corporate one (Google's
+2029), an expert survey with odds per decade, and a set of resource estimates that have fallen twentyfold
+twice in seven years while the machines grew tenfold once. The <a href="/factoring/now/">ledger</a> is where
+each new number lands.</p>
+</div></main>
+<footer class="bot"><div class="in">
+<p><b>Big Numbers, Split</b> — Factoring, from Eratosthenes to Shor: how big numbers get split, who has split the biggest, what the Riemann Hypothesis has to do with it, and what all of it means for a bitcoin wallet.</p>
+<p>Text and figures Nan · hongdam.net · CC BY 4.0. Code MIT. Built 2026-09-23; the ledger runs to 2026-09-23.
+Every number on these pages is computed by <code>tools/compute.py</code> or carried in a data file with its
+source, in <a href="https://github.com/NaNoBotCo/factoring">the repository</a>. Nothing here is advice about money.</p>
+<div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/goin-fast/" title="a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs">Goin&#x27; Fast</a> · <a href="https://nanobotco.github.io/three-body/" title="the mathematics of the three-body problem in plain words, with the orbits found rather than copied">The Three-Body Problem</a> · <a href="https://nanobotco.github.io/exceptional-magic/" title="the octonions, triality, the magic square and E8, computed and drawn — a plain-spoken reading of one paper">Exceptional Magic</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div>
+<div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a> · Source: <a href="https://github.com/NaNoBotCo" rel="noopener">GitHub</a></div>
+<div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div>
+</div></footer><script src="/factoring/js/curve.js" defer></script>
+<script src="/factoring/js/nav.js" defer></script>
+</body></html>

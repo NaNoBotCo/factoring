@@ -1,0 +1,436 @@
+{
+ "primes": {
+  "table": [
+   {
+    "x": 10,
+    "pi": 4,
+    "x_over_ln": 4.3429448190325175,
+    "li": 6.1655995047872985,
+    "err_ln": -0.3429448190325175,
+    "err_li": -2.1655995047872985
+   },
+   {
+    "x": 100,
+    "pi": 25,
+    "x_over_ln": 21.71472409516259,
+    "li": 30.126141584079644,
+    "err_ln": 3.285275904837409,
+    "err_li": -5.126141584079644
+   },
+   {
+    "x": 1000,
+    "pi": 168,
+    "x_over_ln": 144.76482730108395,
+    "li": 177.60965799015213,
+    "err_ln": 23.235172698916045,
+    "err_li": -9.60965799015213
+   },
+   {
+    "x": 10000,
+    "pi": 1229,
+    "x_over_ln": 1085.7362047581294,
+    "li": 1246.1372158993895,
+    "err_ln": 143.26379524187064,
+    "err_li": -17.137215899389503
+   },
+   {
+    "x": 100000,
+    "pi": 9592,
+    "x_over_ln": 8685.889638065037,
+    "li": 9629.809001050791,
+    "err_ln": 906.1103619349633,
+    "err_li": -37.80900105079127
+   },
+   {
+    "x": 1000000,
+    "pi": 78498,
+    "x_over_ln": 72382.41365054197,
+    "li": 78627.54915946208,
+    "err_ln": 6115.586349458026,
+    "err_li": -129.54915946208348
+   },
+   {
+    "x": 10000000,
+    "pi": 664579,
+    "x_over_ln": 620420.6884332169,
+    "li": 664918.4050485695,
+    "err_ln": 44158.311566783115,
+    "err_li": -339.40504856954794
+   }
+  ],
+  "count_to": 10000000,
+  "pi_max": 664579,
+  "density": [
+   {
+    "digits": 2,
+    "one_in": 5
+   },
+   {
+    "digits": 5,
+    "one_in": 12
+   },
+   {
+    "digits": 10,
+    "one_in": 23
+   },
+   {
+    "digits": 20,
+    "one_in": 46
+   },
+   {
+    "digits": 50,
+    "one_in": 115
+   },
+   {
+    "digits": 100,
+    "one_in": 230
+   },
+   {
+    "digits": 155,
+    "one_in": 357
+   },
+   {
+    "digits": 308,
+    "one_in": 709
+   },
+   {
+    "digits": 617,
+    "one_in": 1421
+   }
+  ]
+ },
+ "zeros": {
+  "count": 100,
+  "first": [
+   14.134725141734691,
+   21.022039638771552,
+   25.01085758014569,
+   30.424876125859512,
+   32.9350615877392,
+   37.586178158825675,
+   40.918719012147506,
+   43.327073280915,
+   48.005150881167154,
+   49.773832477672286
+  ],
+  "max_err_first_ten": 1.4210854715202004e-14,
+  "method": "Euler\u2013Maclaurin zeta on the critical line, sign changes of Z(t), bisection"
+ },
+ "explicit": {
+  "err_100": 1.6328928305043604,
+  "rms_100": 0.3721372376689615,
+  "err_0": 5.441576101183429,
+  "psi_100": 94.0453112293574
+ },
+ "cost": {
+  "anchor": {
+   "bits": 829,
+   "core_years": 2700.0,
+   "cpu": "2.1 GHz Xeon Gold 6130"
+  },
+  "rows": [
+   {
+    "bits": 512,
+    "digits": 155,
+    "log10_L": 19.244650146832814,
+    "relative_to_rsa250": 2.6698517403082185e-05,
+    "core_years": 0.0720859969883219
+   },
+   {
+    "bits": 768,
+    "digits": 232,
+    "log10_L": 23.032436373346044,
+    "relative_to_rsa250": 0.16378471589735616,
+    "core_years": 442.21873292286165
+   },
+   {
+    "bits": 829,
+    "digits": 250,
+    "log10_L": 23.8181630016307,
+    "relative_to_rsa250": 1.0,
+    "core_years": 2700.0
+   },
+   {
+    "bits": 1024,
+    "digits": 309,
+    "log10_L": 26.119204501692618,
+    "relative_to_rsa250": 200.00529804120998,
+    "core_years": 540014.304711267
+   },
+   {
+    "bits": 1536,
+    "digits": 463,
+    "log10_L": 31.11777161416488,
+    "relative_to_rsa250": 19934649.8869532,
+    "core_years": 53823554694.77364
+   },
+   {
+    "bits": 2048,
+    "digits": 617,
+    "log10_L": 35.18553380962904,
+    "relative_to_rsa250": 233007987032.17902,
+    "core_years": 629121564986883.4
+   },
+   {
+    "bits": 3072,
+    "digits": 925,
+    "log10_L": 41.7637820235327,
+    "relative_to_rsa250": 8.82305571956653e+17,
+    "core_years": 2.382225044282963e+21
+   },
+   {
+    "bits": 4096,
+    "digits": 1234,
+    "log10_L": 47.11027720882285,
+    "relative_to_rsa250": 1.9593598621099757e+23,
+    "core_years": 5.290271627696934e+26
+   }
+  ],
+  "ratio_768_1024": 1221.1475102875488,
+  "c": 1.9229994270765445
+ },
+ "examples": {
+  "kraitchik": {
+   "N": 1649,
+   "relations": [
+    {
+     "x": 41,
+     "x2": 1681,
+     "q": 32,
+     "factors": {
+      "2": 5
+     }
+    },
+    {
+     "x": 43,
+     "x2": 1849,
+     "q": 200,
+     "factors": {
+      "2": 3,
+      "5": 2
+     }
+    },
+    {
+     "x": 47,
+     "x2": 2209,
+     "q": 560,
+     "factors": {
+      "2": 4,
+      "5": 1,
+      "7": 1
+     }
+    },
+    {
+     "x": 57,
+     "x2": 3249,
+     "q": 1600,
+     "factors": {
+      "2": 6,
+      "5": 2
+     }
+    }
+   ],
+   "X": 114,
+   "Y": 80,
+   "gcd": 17,
+   "other": 97
+  },
+  "shor15": {
+   "N": 15,
+   "a": 7,
+   "period": 4,
+   "sequence": [
+    1,
+    7,
+    4,
+    13,
+    1,
+    7,
+    4,
+    13,
+    1,
+    7,
+    4,
+    13,
+    1,
+    7,
+    4,
+    13,
+    1,
+    7,
+    4,
+    13,
+    1,
+    7,
+    4,
+    13
+   ],
+   "works": true,
+   "factors": [
+    3,
+    5
+   ]
+  },
+  "shor21": {
+   "N": 21,
+   "a": 2,
+   "period": 6,
+   "sequence": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    11,
+    1,
+    2,
+    4,
+    8,
+    16,
+    11,
+    1,
+    2,
+    4,
+    8,
+    16,
+    11,
+    1,
+    2,
+    4,
+    8,
+    16,
+    11
+   ],
+   "works": true,
+   "factors": [
+    7,
+    3
+   ]
+  },
+  "fermat": {
+   "p": 10007,
+   "q": 10037,
+   "N": 100440259,
+   "steps": 1,
+   "a": 10022,
+   "b": 15
+  }
+ },
+ "curve": {
+  "p": 97,
+  "b": 7,
+  "points": 78,
+  "order": 79,
+  "G": [
+   1,
+   28
+  ],
+  "G_order": 79
+ },
+ "checks": {
+  "total": 25,
+  "failures": 0,
+  "list": [
+   {
+    "name": "pi(10^6) = 78498",
+    "ok": true
+   },
+   {
+    "name": "pi(10^7) = 664579",
+    "ok": true
+   },
+   {
+    "name": "li beats x/ln x at 10^7",
+    "ok": true
+   },
+   {
+    "name": "li(10^6) near 78627.55",
+    "ok": true
+   },
+   {
+    "name": "first ten zeros match Odlyzko's to 1e-6",
+    "ok": true
+   },
+   {
+    "name": "zero count agrees with Riemann\u2013von Mangoldt",
+    "ok": true
+   },
+   {
+    "name": "zeros strictly increasing",
+    "ok": true
+   },
+   {
+    "name": "zeta(2) = pi^2/6 by the same routine",
+    "ok": true
+   },
+   {
+    "name": "100 zeros bring psi(x) within 3 everywhere on [2,100]",
+    "ok": true
+   },
+   {
+    "name": "100 zeros: root-mean-square miss under 0.8",
+    "ok": true
+   },
+   {
+    "name": "zeros improve on x alone",
+    "ok": true
+   },
+   {
+    "name": "psi(100) = ln lcm(1..100)",
+    "ok": true
+   },
+   {
+    "name": "cost curve rises",
+    "ok": true
+   },
+   {
+    "name": "768 -> 1024 lands between 100x and 10000x",
+    "ok": true
+   },
+   {
+    "name": "Shor: 7 mod 15 has period 4",
+    "ok": true
+   },
+   {
+    "name": "Shor: 15 splits into 3 and 5",
+    "ok": true
+   },
+   {
+    "name": "Shor: 2 mod 21 has period 6",
+    "ok": true
+   },
+   {
+    "name": "Shor: 21 splits into 3 and 7",
+    "ok": true
+   },
+   {
+    "name": "Kraitchik: 41^2 = 32 mod 1649",
+    "ok": true
+   },
+   {
+    "name": "Kraitchik: 43^2 = 200 mod 1649",
+    "ok": true
+   },
+   {
+    "name": "Kraitchik: 32*200 is a square",
+    "ok": true
+   },
+   {
+    "name": "Kraitchik: gcd gives 17",
+    "ok": true
+   },
+   {
+    "name": "Fermat: close primes fall in a handful of steps",
+    "ok": true
+   },
+   {
+    "name": "toy curve: order of G divides the point count",
+    "ok": true
+   },
+   {
+    "name": "toy curve: the walk returns to infinity",
+    "ok": true
+   }
+  ]
+ }
+}

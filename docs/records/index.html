@@ -1,0 +1,255 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Records — every general-purpose factoring record since 1991 — Big Numbers, Split</title>
+<meta name="description" content="The RSA challenge records from RSA-100 in 1991 to RSA-896 in September 2026, the number field sieve&#x27;s cost curve, and a ruler for any key size.">
+<link rel="canonical" href="https://nanobotco.github.io/factoring/records/">
+<meta property="og:title" content="Records — every general-purpose factoring record since 1991 — Big Numbers, Split">
+<meta property="og:description" content="The RSA challenge records from RSA-100 in 1991 to RSA-896 in September 2026, the number field sieve&#x27;s cost curve, and a ruler for any key size.">
+<meta property="og:image" content="https://nanobotco.github.io/factoring/img/card.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/factoring/icon.svg" type="image/svg+xml">
+<style>
+:root{
+ --bg:#0a0a10;--bg2:#0f0f18;--panel:#14141f;--ink:#f2ede3;--mute:#9d9689;--line:#2c2c3a;
+ --chip:#1b1b28;--c0:#ffb347;--c1:#5fd3c6;--c2:#ff7ab6;--violet:#b79cff;--focus:#ffb347;
+ --display:"Avenir Next Condensed","Arial Narrow",Impact,system-ui,sans-serif;
+ --body:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+ --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.62;
+ -webkit-text-size-adjust:100%}
+a{color:var(--c0);text-decoration-thickness:.08em;text-underline-offset:.18em}
+a:hover{color:#ffd08a}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible,input:focus-visible{
+ outline:3px solid var(--focus);outline-offset:2px;border-radius:5px}
+img,canvas,svg{max-width:100%}img{height:auto}
+.sr{position:absolute;left:-999px;top:0;background:var(--c0);color:#000;padding:.4rem .8rem;z-index:99}
+.sr:focus{left:.5rem;top:.5rem}
+
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;
+ background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);transition:transform .25s}
+body.nav-away header.top{transform:translateY(-100%)}
+header.top .in{max-width:72rem;margin:0 auto;padding:.5rem 1rem;display:flex;gap:.4rem 1.1rem;
+ align-items:center;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:.03em;
+ text-transform:uppercase;text-decoration:none;color:var(--ink);white-space:nowrap;display:flex;
+ align-items:center;gap:.5rem}
+.brand b{color:var(--c0)}
+.brand i{width:.85rem;height:.85rem;border-radius:2px;background:var(--c0);display:inline-block;
+ box-shadow:6px 0 0 -2px var(--c1),-6px 0 0 -2px var(--c1);transform:rotate(45deg)}
+header.top nav{display:flex;gap:.1rem .8rem;flex-wrap:wrap;font-size:.72rem;text-transform:uppercase;
+ letter-spacing:.08em;font-weight:700}
+header.top nav a{text-decoration:none;color:var(--mute);padding:.15rem 0}
+header.top nav a:hover,header.top nav a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--c0)}
+main{max-width:72rem;margin:0 auto;padding:1rem 1rem 5rem}
+footer.bot{border-top:1px solid var(--line);margin-top:3rem;background:var(--bg2)}
+footer.bot .in{max-width:72rem;margin:0 auto;padding:1.4rem 1rem 3rem;font-size:.8rem;color:var(--mute)}
+footer.bot a{color:var(--mute)}footer.bot p{max-width:none}
+.fleet{margin:.6rem 0 0;line-height:1.9}.fleet a{margin-right:.55rem;white-space:nowrap}
+.support{margin:.45rem 0 0}.support a{margin-right:.5rem}
+
+h1{font-family:var(--display);font-size:clamp(2.4rem,7.5vw,5rem);line-height:.94;margin:.3rem 0 .4rem;
+ font-weight:800;letter-spacing:-.005em;text-transform:uppercase}
+h1 .kind{display:block;font-size:clamp(.6rem,1.5vw,.72rem);color:var(--c0);letter-spacing:.34em;
+ margin-bottom:.55rem;font-weight:800}
+h2{font-family:var(--display);font-size:clamp(1.5rem,3.4vw,2rem);margin:2.6rem 0 .6rem;font-weight:800;
+ text-transform:uppercase;border-bottom:2px solid var(--line);padding-bottom:.25rem}
+h2 small{font-family:var(--body);font-size:.55em;color:var(--mute);text-transform:none;
+ letter-spacing:0;font-weight:400;margin-left:.6rem}
+h3{font-family:var(--display);font-size:1.2rem;margin:1.7rem 0 .3rem;font-weight:800;text-transform:uppercase}
+.lede{font-size:clamp(1.12rem,2.4vw,1.35rem);max-width:44rem;margin:.5rem 0 1.1rem}
+.mute{color:var(--mute)}.small{font-size:.82rem}
+p{margin:.65rem 0;max-width:44rem}
+.prose p,.prose ul,.prose ol{max-width:44rem}
+.prose li{margin:.35rem 0}
+.prose strong{color:var(--c0);font-weight:700}
+blockquote{margin:1rem 0;padding:.6rem 0 .6rem 1rem;border-left:3px solid var(--c1);color:var(--ink);
+ max-width:44rem;font-style:normal}
+blockquote cite{display:block;margin-top:.4rem;color:var(--mute);font-size:.82rem;font-style:normal}
+
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin:1rem 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem;
+ text-decoration:none;color:var(--ink);display:block}
+a.card:hover{border-color:var(--c0)}
+.card h3{margin:.1rem 0 .3rem}
+.card p{margin:.2rem 0;font-size:.88rem;color:var(--mute)}
+
+/* the linked image: background, scrim, spacer, text — the whole box is the link */
+a.shot{position:relative;display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+ text-decoration:none;color:var(--ink)}
+a.shot:hover{border-color:var(--c0)}
+a.shot .bg{position:absolute;inset:0;background-size:cover;background-position:center;
+ transition:transform .6s}
+a.shot:hover .bg{transform:scale(1.04)}
+a.shot .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,16,.05) 0%,rgba(10,10,16,.35) 45%,rgba(10,10,16,.92) 100%)}
+a.shot .sp{display:block;padding-top:56%}
+a.shot .tx{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem}
+a.shot .tx b{display:block;font-family:var(--display);font-size:1.5rem;text-transform:uppercase;line-height:1;
+ font-weight:800}
+a.shot .tx span{display:block;color:var(--mute);font-size:.84rem;margin-top:.3rem}
+a.shot .tx em{font-style:normal;color:var(--c0);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+ font-weight:800;display:block;margin-bottom:.35rem}
+.shots{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));margin:1rem 0}
+
+/* the band: a picture behind a block of words, anchored to the window so the page scrolls through it */
+.band{position:relative;margin:2.2rem calc(50% - 50vw);padding:3.2rem 1rem;background-size:cover;
+ background-position:center;background-attachment:fixed;color:var(--ink)}
+.band:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,16,.94) 0%,rgba(10,10,16,.72) 55%,rgba(10,10,16,.35) 100%)}
+.band .in{position:relative;max-width:72rem;margin:0 auto}
+.band .in p{max-width:40rem}
+.band h2{border:none;margin-top:0}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){.band{background-attachment:scroll}}
+
+.fig{margin:1.6rem 0;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:.7rem}
+.fig img{display:block;margin:0 auto;border-radius:6px}
+.fig figcaption{color:var(--mute);font-size:.82rem;margin:.6rem .2rem 0;max-width:46rem}
+.fig.plain{background:none;border:none;padding:0}
+.hero{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);margin:.6rem 0 1.4rem}
+.hero img{display:block;width:100%}
+
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.88rem}
+th,td{text-align:left;padding:.42rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mute);font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono)}
+td.d{white-space:nowrap;font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+tr[hidden]{display:none}
+.wrap{overflow-x:auto}.wrap table{min-width:52rem}
+code,kbd{font-family:var(--mono);font-size:.86em;background:var(--chip);padding:.1rem .3rem;border-radius:4px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.8rem 1rem;
+ overflow-x:auto;font-size:.82rem}
+pre code{background:none;padding:0}
+.eq{font-family:var(--mono);background:var(--panel);border-left:3px solid var(--c0);padding:.7rem 1rem;
+ margin:1rem 0;overflow-x:auto;font-size:.92rem;max-width:44rem}
+.eq b{color:var(--c0);font-weight:600}
+.eqn{color:var(--mute);font-family:var(--body);font-size:.86rem;margin-top:.4rem}
+.cite{font-size:.78em;color:var(--c1);text-decoration:none;border-bottom:1px dotted var(--c1);
+ white-space:nowrap;margin-left:.2em}
+.cite:hover{color:var(--c1)}
+.tag{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;
+ padding:.1rem .6rem;font-size:.72rem;color:var(--mute);margin:0 .25rem .3rem 0;white-space:nowrap}
+.tag.c0{border-color:var(--c0);color:var(--c0)}
+.tag.c1{border-color:var(--c1);color:var(--c1)}
+.tag.c2{border-color:var(--c2);color:var(--c2)}
+.tag.v{border-color:var(--violet);color:var(--violet)}
+
+.tool{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem;margin:1.4rem 0}
+.tool h3{margin-top:0}
+.tool .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.5rem 0}
+.tool label{font-size:.8rem;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+button,select,input[type=text],input[type=number]{font:inherit;font-size:.9rem;background:var(--chip);color:var(--ink);
+ border:1px solid var(--line);border-radius:7px;padding:.35rem .7rem;cursor:pointer}
+input[type=text],input[type=number]{cursor:text;font-family:var(--mono)}
+input[type=range]{width:min(100%,22rem);accent-color:var(--c0)}
+button:hover,select:hover{border-color:var(--c0)}
+button:disabled{opacity:.4;cursor:default}
+button.go{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+.out{font-family:var(--mono);font-size:.9rem;background:#0b0b12;border:1px solid var(--line);
+ border-radius:8px;padding:.7rem .9rem;margin:.6rem 0 0;overflow-x:auto;line-height:1.8}
+.out .k{color:var(--mute)}
+.out .v{color:var(--c1)}
+.out .bad{color:var(--c2)}
+.out .good{color:var(--c0)}
+.out table{font-size:.8rem}
+.out .lane{display:grid;grid-template-columns:11rem 1fr;gap:.2rem .8rem;align-items:center;margin:.3rem 0}
+.out .lane i{display:block;height:6px;background:var(--c1);border-radius:3px;grid-column:2;margin-bottom:-.2rem}
+.units{display:flex;gap:.3rem;flex-wrap:wrap}
+.units button{min-width:2.9rem;text-align:center;font-family:var(--mono)}
+.units button[aria-pressed=true]{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+canvas{display:block;margin:0 auto;max-width:100%;height:auto;touch-action:pan-y;background:#0b0b12;border-radius:8px}
+
+.big{font-family:var(--display);font-size:clamp(2rem,6vw,4rem);line-height:1;color:var(--c0);font-weight:800;
+ margin:.2rem 0}
+.answer{border:1px solid var(--c0);border-radius:12px;padding:1.1rem 1.3rem;margin:1.4rem 0;
+ background:color-mix(in srgb,var(--c0) 6%,var(--panel));max-width:46rem}
+.answer h3{margin-top:0;color:var(--c0)}
+.answer p{margin:.5rem 0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;font-size:.86rem;max-width:44rem}
+.kv dt{color:var(--mute)}.kv dd{margin:0}
+.note{border:1px solid var(--line);border-left:3px solid var(--c2);background:var(--bg2);
+ border-radius:0 8px 8px 0;padding:.7rem 1rem;margin:1.2rem 0;font-size:.9rem;max-width:46rem}
+.note b{color:var(--c2)}
+ul.ticks{list-style:none;padding-left:0}
+ul.ticks li{padding-left:1.4rem;position:relative}
+ul.ticks li:before{content:"✓";position:absolute;left:0;color:var(--c1);font-weight:700}
+ul.checks{list-style:none;padding-left:0;font-family:var(--mono);font-size:.78rem;columns:2;
+ column-gap:2rem;max-width:none}
+ul.checks li{break-inside:avoid;color:var(--mute);margin:.15rem 0}
+ul.checks li b{color:var(--c1);font-weight:400}
+@media (max-width:48rem){ul.checks{columns:1}.out .lane{grid-template-columns:1fr}.out .lane i{grid-column:1}}
+.tl{list-style:none;padding:0;margin:1rem 0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:.3rem 0 .9rem 1.4rem;max-width:48rem}
+.tl li:before{content:"";position:absolute;left:-7px;top:.75rem;width:12px;height:12px;border-radius:50%;
+ background:var(--c1);border:2px solid var(--bg)}
+.tl li.quantum:before{background:var(--c2)}
+.tl li.riemann:before{background:var(--violet)}
+.tl li .when{font-family:var(--mono);color:var(--c0);font-size:.8rem;display:block}
+.tl li .who{font-weight:700}
+.tl li p{margin:.2rem 0 0;font-size:.95rem}
+dl.words dt{font-weight:700;color:var(--c0);margin-top:.9rem}
+dl.words dd{margin:0;max-width:44rem}
+.src{font-size:.86rem}
+.src li{margin:.35rem 0;padding-left:.2rem}
+.src li b{color:var(--mute);font-weight:400;font-family:var(--mono);margin-right:.4rem}
+</style></head>
+<body data-base="/factoring/" data-asof="2026-09-23">
+<a class="sr" href="#main">Skip to the page</a>
+<header class="top"><div class="in">
+<a class="brand" href="/factoring/"><i></i>Big Numbers, <b>Split</b></a>
+<nav aria-label="Sections"><a href="/factoring/split/">Split</a><a href="/factoring/history/">History</a><a href="/factoring/methods/">Methods</a><a href="/factoring/records/" aria-current="page">Records</a><a href="/factoring/quantum/">Quantum</a><a href="/factoring/riemann/">Riemann</a><a href="/factoring/wallet/">Wallet</a><a href="/factoring/now/">Now</a><a href="/factoring/words/">Words</a><a href="/factoring/sources/">Sources</a></nav></div></header>
+<main id="main"><h1><span class="kind">1991 to this month</span>Records</h1>
+<p class="lede">Every general-purpose factoring record since the RSA challenge list was published, the
+curve they sit on, and a ruler for how far a 2048-bit key is from the biggest number anyone has split.</p>
+
+<figure class="fig "><img src="/factoring/img/records.svg" alt="A line chart of factoring records in bits against year, rising from 330 bits in 1991 to 896 in 2026, with dashed lines at 512, 1024 and 2048." loading="lazy" decoding="async"><figcaption>Bits in the record number against the year. The 2026 pair are the first records set on GPUs and the first set with the help of AI coding agents; both authors said the mathematics did not change <a class="cite" href="/factoring/sources/#src-99" title="Factoring RSA-260 — a GPU port of CADO-NFS, 4,923 GPU-days">[99]</a><a class="cite" href="/factoring/sources/#src-101" title="Factoring RSA-896 — CADO-NFS on idle data-centre GPUs, about 30 GPU-years in ten days">[101]</a>.</figcaption></figure>
+
+<div class="wrap"><table><thead><tr><th>number</th><th class="n">digits</th><th class="n">bits</th><th>date</th><th>who</th><th>method</th><th>effort</th></tr></thead>
+<tbody><tr><td>RSA-100</td><td class="n">100</td><td class="n">330</td><td class="d">1991-04-01</td><td>Arjen Lenstra</td><td>MPQS</td><td>a few days on a MasPar <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr><tr><td>RSA-110</td><td class="n">110</td><td class="n">364</td><td class="d">1992-04-14</td><td>Arjen Lenstra and Mark Manasse</td><td>MPQS</td><td>about a month <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr><tr><td>RSA-120</td><td class="n">120</td><td class="n">397</td><td class="d">1993-06-09</td><td>Denny, Dodson, Lenstra, Manasse</td><td>MPQS</td><td>about 830 MIPS-years <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr><tr><td>RSA-129</td><td class="n">129</td><td class="n">426</td><td class="d">1994-04-26</td><td>Atkins, Graff, Lenstra, Leyland and about 600 volunteers</td><td>MPQS</td><td>about 5,000 MIPS-years over eight months <a class="cite" href="/factoring/sources/#src-23" title="The magic words are squeamish ossifrage — RSA-129">[23]</a></td></tr><tr><td>RSA-130</td><td class="n">130</td><td class="n">430</td><td class="d">1996-04-10</td><td>Lenstra and others</td><td>GNFS</td><td>about 1,000 MIPS-years — the first RSA number by the number field sieve <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr><tr><td>RSA-140</td><td class="n">140</td><td class="n">463</td><td class="d">1999-02-02</td><td>te Riele and others (CWI)</td><td>GNFS</td><td>about 2,000 MIPS-years <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr><tr><td>RSA-155</td><td class="n">155</td><td class="n">512</td><td class="d">1999-08-22</td><td>Cavallar and seventeen others</td><td>GNFS</td><td>about 8,000 MIPS-years, seven months <a class="cite" href="/factoring/sources/#src-24" title="Factorization of a 512-bit RSA modulus">[24]</a></td></tr><tr><td>RSA-160</td><td class="n">160</td><td class="n">530</td><td class="d">2003-04-01</td><td>Franke, Kleinjung and others (Bonn)</td><td>GNFS</td><td>a few months on a cluster <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr><tr><td>RSA-576</td><td class="n">174</td><td class="n">576</td><td class="d">2003-12-03</td><td>Franke, Kleinjung and others</td><td>GNFS</td><td>months on a cluster <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr><tr><td>RSA-640</td><td class="n">193</td><td class="n">640</td><td class="d">2005-11-02</td><td>Bahr, Boehm, Franke, Kleinjung</td><td>GNFS</td><td>about 30 years of a 2.2 GHz Opteron <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr><tr><td>RSA-200</td><td class="n">200</td><td class="n">663</td><td class="d">2005-05-09</td><td>Bahr, Boehm, Franke, Kleinjung</td><td>GNFS</td><td>about 55 years of a 2.2 GHz Opteron <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr><tr><td>RSA-768</td><td class="n">232</td><td class="n">768</td><td class="d">2009-12-12</td><td>Kleinjung and twelve others</td><td>GNFS</td><td>about 2,000 years of a 2.2 GHz Opteron core <a class="cite" href="/factoring/sources/#src-25" title="Factorization of a 768-bit RSA modulus">[25]</a></td></tr><tr><td>RSA-240</td><td class="n">240</td><td class="n">795</td><td class="d">2019-12-02</td><td>Boudot, Gaudry, Guillevic, Heninger, Thomé, Zimmermann</td><td>GNFS (CADO-NFS)</td><td>about 900 core-years of a 2.1 GHz Xeon Gold 6130 <a class="cite" href="/factoring/sources/#src-26" title="Comparing the difficulty of factorization and discrete logarithm: a 240-digit experiment">[26]</a></td></tr><tr><td>RSA-250</td><td class="n">250</td><td class="n">829</td><td class="d">2020-02-28</td><td>Boudot, Gaudry, Guillevic, Heninger, Thomé, Zimmermann</td><td>GNFS (CADO-NFS)</td><td>about 2,700 core-years of a 2.1 GHz Xeon Gold 6130 <a class="cite" href="/factoring/sources/#src-27" title="Factorization of RSA-250 — announcement to the cado-nfs list">[27]</a><a class="cite" href="/factoring/sources/#src-26" title="Comparing the difficulty of factorization and discrete logarithm: a 240-digit experiment">[26]</a></td></tr><tr><td>RSA-260</td><td class="n">260</td><td class="n">862</td><td class="d">2026-09-03</td><td>Eric Lu (Cognition)</td><td>GNFS (CADO-NFS on GPUs)</td><td>4,923 GPU-days on B200-class GPUs, about 16 days elapsed, about $400k at list prices <a class="cite" href="/factoring/sources/#src-99" title="Factoring RSA-260 — a GPU port of CADO-NFS, 4,923 GPU-days">[99]</a></td></tr><tr><td>RSA-896</td><td class="n">270</td><td class="n">896</td><td class="d">2026-09-19</td><td>Stephen Weis (Anthropic)</td><td>GNFS (CADO-NFS on GPUs)</td><td>about 30 GPU-years on up to 2,048 idle GPUs over ten days <a class="cite" href="/factoring/sources/#src-101" title="Factoring RSA-896 — CADO-NFS on idle data-centre GPUs, about 30 GPU-years in ten days">[101]</a></td></tr></tbody>
+<tbody><tr><th colspan="7">still open</th></tr><tr><td>RSA-270</td><td class="n">270</td><td class="n">895</td><td colspan="4">270 digits, still open in the challenge list — RSA-896 (also 270 digits) was the one that fell <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr><tr><td>RSA-1024</td><td class="n">309</td><td class="n">1024</td><td colspan="4">the key size most of the web used until about 2013; still open <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr><tr><td>RSA-2048</td><td class="n">617</td><td class="n">2048</td><td colspan="4">the key size most of the web uses now; still open <a class="cite" href="/factoring/sources/#src-29" title="RSA numbers — the challenge list with each factorization&#x27;s date, team and effort">[29]</a></td></tr></tbody>
+<tbody><tr><th colspan="7">special form — a different, easier sieve; not comparable</th></tr><tr><td>2^1061 − 1</td><td class="n">320</td><td class="n">1061</td><td class="d">2012-08-04</td><td>NFS@Home</td><td>SNFS</td><td>the special number field sieve works on numbers of a special form; the record for those is bigger, and says nothing about RSA keys <a class="cite" href="/factoring/sources/#src-102" title="Integer factorization records">[102]</a></td></tr><tr><td>Seventeen Mersenne numbers 2^n − 1, 1007 ≤ n ≤ 1199</td><td class="n">361</td><td class="n">1199</td><td class="d">2014-08</td><td>Kleinjung, Bos, Lenstra</td><td>SNFS, shared sieving</td><td>the &#x27;Mersenne factorization factory&#x27; — one sieving pass amortised across many numbers <a class="cite" href="/factoring/sources/#src-102" title="Integer factorization records">[102]</a></td></tr></tbody></table></div>
+<p class="small mute">The two 2026 rows are not on the RSA challenge list's own cadence: RSA-260 was the
+next unsolved challenge number; RSA-896 was a 270-digit challenge number picked because it was a round
+number of bits. Effort units change with the era — MIPS-years, Opteron-years, Xeon core-years, GPU-years
+— and are not convertible without a footnote; the sources give each team's own figure.</p>
+
+<h2>The curve</h2>
+<div class="prose">
+<p>The number field sieve's running time has a known shape <a class="cite" href="/factoring/sources/#src-22" title="The development of the number field sieve">[22]</a>:</p>
+<div class="eq">L(N) = exp( c · (ln N)<sup>1/3</sup> · (ln ln N)<sup>2/3</sup> ),&nbsp;&nbsp; c = (64/9)<sup>1/3</sup> ≈ 1.923<div class="eqn">Reading it: not exponential in the number of bits (that would be 2 to the bits), and not a fixed power of the bits either; in between, with the 1/3 doing the work. Constants and lower-order terms are missing, which is why this is a ruler and not a forecast.</div></div>
+<p>Anchor it on RSA-250 — 2,700 core-years for 829 bits
+<a class="cite" href="/factoring/sources/#src-27" title="Factorization of RSA-250 — announcement to the cado-nfs list">[27]</a> — and read off the rest:</p>
+</div>
+<div class="wrap"><table><thead><tr><th class="n">bits</th><th class="n">digits</th><th class="n">times RSA-250</th><th class="n">core-years, scaled</th><th>in words</th></tr></thead><tbody><tr><td class="n">512</td><td class="n">155</td><td class="n">2.67e-05</td><td class="n">0.0721</td><td>about 26 days of one core</td></tr><tr><td class="n">768</td><td class="n">232</td><td class="n">0.164</td><td class="n">442</td><td>about 442 core-years — a big cluster for a year</td></tr><tr><td class="n">829</td><td class="n">250</td><td class="n">1</td><td class="n">2.7e+03</td><td>about 2,700 core-years — a big cluster for a year</td></tr><tr><td class="n">1024</td><td class="n">309</td><td class="n">200</td><td class="n">5.4e+05</td><td>about 540,014 core-years — every core in a large data centre for years</td></tr><tr><td class="n">1536</td><td class="n">463</td><td class="n">1.99e+07</td><td class="n">5.38e+10</td><td>5.4e+10 core-years — more computing than has been done on Earth</td></tr><tr><td class="n">2048</td><td class="n">617</td><td class="n">2.33e+11</td><td class="n">6.29e+14</td><td>6.3e+14 core-years — more computing than has been done on Earth</td></tr><tr><td class="n">3072</td><td class="n">925</td><td class="n">8.82e+17</td><td class="n">2.38e+21</td><td>2.4e+21 core-years — more computing than has been done on Earth</td></tr><tr><td class="n">4096</td><td class="n">1234</td><td class="n">1.96e+23</td><td class="n">5.29e+26</td><td>5.3e+26 core-years — more computing than has been done on Earth</td></tr></tbody></table></div>
+<figure class="fig "><img src="/factoring/img/cost.svg" alt="A curve rising steeply from left to right: the estimated core-years to factor a key against its size in bits, marked at 512, 768, 1024, 2048 and 4096." loading="lazy" decoding="async"><figcaption>The same curve drawn. The RSA-768 team said 1024 bits was about a thousand times harder than 768; the ruler here says 1221×, which is the same order. The 2026 GPU runs do not move the curve; they move the price of a core-year.</figcaption></figure>
+
+<div class="tool">
+<h3>The ruler</h3>
+<div class="row"><label>key size</label><input type="range" id="bits" min="512" max="4096" step="32" value="2048"> <span class="v" id="bitsv">2048</span> bits</div>
+<div class="out" id="costout"></div>
+</div>
+
+<h2>What the 2026 records changed</h2>
+<div class="prose">
+<p>Two things, and neither is the mathematics. Eric Lu's RSA-260 run in early September and Stephen
+Weis's RSA-896 run two weeks later both ported CADO-NFS to data-centre GPUs, with AI coding agents doing
+much of the port <a class="cite" href="/factoring/sources/#src-99" title="Factoring RSA-260 — a GPU port of CADO-NFS, 4,923 GPU-days">[99]</a><a class="cite" href="/factoring/sources/#src-101" title="Factoring RSA-896 — CADO-NFS on idle data-centre GPUs, about 30 GPU-years in ten days">[101]</a>. Weis's ran as a low-priority job on idle machines: about
+thirty GPU-years in ten days, at no marginal cost to anyone. His own conclusion: the running time of the
+sieve did not improve, deployed 2048-bit keys are not affected — and a 1024-bit key is now within reach
+of anyone with a large GPU fleet and a slow month. Old keys do not retire themselves; in 2015 a 512-bit key
+cost $75 of cloud time to break and hundreds were still in use <a class="cite" href="/factoring/sources/#src-32" title="Factoring as a service — a 512-bit RSA key in four hours for $75 of cloud time">[32]</a>.</p>
+</div></main>
+<footer class="bot"><div class="in">
+<p><b>Big Numbers, Split</b> — Factoring, from Eratosthenes to Shor: how big numbers get split, who has split the biggest, what the Riemann Hypothesis has to do with it, and what all of it means for a bitcoin wallet.</p>
+<p>Text and figures Nan · hongdam.net · CC BY 4.0. Code MIT. Built 2026-09-23; the ledger runs to 2026-09-23.
+Every number on these pages is computed by <code>tools/compute.py</code> or carried in a data file with its
+source, in <a href="https://github.com/NaNoBotCo/factoring">the repository</a>. Nothing here is advice about money.</p>
+<div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/goin-fast/" title="a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs">Goin&#x27; Fast</a> · <a href="https://nanobotco.github.io/three-body/" title="the mathematics of the three-body problem in plain words, with the orbits found rather than copied">The Three-Body Problem</a> · <a href="https://nanobotco.github.io/exceptional-magic/" title="the octonions, triality, the magic square and E8, computed and drawn — a plain-spoken reading of one paper">Exceptional Magic</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div>
+<div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a> · Source: <a href="https://github.com/NaNoBotCo" rel="noopener">GitHub</a></div>
+<div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div>
+</div></footer><script src="/factoring/js/cost.js" defer></script>
+<script src="/factoring/js/nav.js" defer></script>
+</body></html>

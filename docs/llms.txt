@@ -1,0 +1,85 @@
+# Big Numbers, Split
+
+> Factoring, from Eratosthenes to Shor: how big numbers get split, who has split the biggest, what the Riemann Hypothesis has to do with it, and what all of it means for a bitcoin wallet.
+
+https://nanobotco.github.io/factoring/
+
+As of 2026-09-23. Nothing here is advice about money.
+
+## Facts this site computes
+- pi(10^7) = 664579; li(x) misses by -339.4, x/ln x by 44158
+- the first 100 zeros of zeta on the critical line, first ten to 1e-9 of Odlyzko's
+- the explicit formula with 100 zeros reproduces psi(x) on [2,100] to rms 0.37
+- NFS cost curve L[1/3] anchored on RSA-250 (2,700 core-years): 1024 bits about 200x, 2048 bits about 2.3e+11x
+- Kraitchik on 1649: 41^2 = 32, 43^2 = 200 mod N, gcd gives 17
+- Shor on 15 with a = 7: period 4, factors 3 and 5
+- y^2 = x^3 + 7 mod 97 has 78 points, G of order 79
+- 25 checks, 0 failing
+
+## Facts this site carries, with sources
+- largest number split by Shor on hardware: 21 (2012), compiled
+- largest curve key broken on hardware: 15 bits (April 2026), reproduced with random bits
+- general-purpose factoring record: RSA-896, 896 bits, 19 September 2026; RSA-260 on 3 September 2026
+- qubit estimates for RSA-2048: 1e9 (2012), 2e7 (2019), <1e6 (2025), <1e5 (2026, qLDPC)
+- qubit estimate for a 256-bit curve key: <500,000 physical, minutes (Google, March 2026)
+- biggest machines: about 100-1,100 physical qubits; 48 logical (Helios, 2025)
+- bitcoin in exposed-key outputs: about 30% of supply (Glassnode May 2026, Chaincode May 2025)
+- NIST: RSA-2048/P-256 deprecated after 2030, disallowed after 2035 (draft IR 8547)
+- Riemann Hypothesis: open; proving it gives no factoring algorithm
+
+## Pages
+- https://nanobotco.github.io/factoring/split/ — Split
+- https://nanobotco.github.io/factoring/history/ — History
+- https://nanobotco.github.io/factoring/methods/ — Methods
+- https://nanobotco.github.io/factoring/records/ — Records
+- https://nanobotco.github.io/factoring/quantum/ — Quantum
+- https://nanobotco.github.io/factoring/riemann/ — Riemann
+- https://nanobotco.github.io/factoring/wallet/ — Wallet
+- https://nanobotco.github.io/factoring/now/ — Now
+- https://nanobotco.github.io/factoring/words/ — Words
+- https://nanobotco.github.io/factoring/sources/ — Sources
+
+## Data
+- https://nanobotco.github.io/factoring/data/facts.json — every computed number
+- https://nanobotco.github.io/factoring/data/zeros.json — the hundred zeros
+- https://nanobotco.github.io/factoring/data/developments.json — the ledger
+- https://nanobotco.github.io/factoring/data/wallet.json — outputs, exposure counts, proposals, timelines
+
+## Terms
+Text and figures: Nan · hongdam.net · CC BY 4.0, CC BY 4.0. Code: MIT.
+
+# — roster of sibling sites, generated from data/fleet.json —
+## Elsewhere from the same publisher
+
+Made by Hongdam (https://hongdam.net/), a bilingual web studio in Chiang Rai.
+
+- [Mot Dang](https://motdang.net/): city directory for Chiang Mai and Chiang Rai
+- [The Mae Hong Son Loop](https://nanobotco.github.io/mae-hong-son-loop/): motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured
+- [Muay Thai](https://motdang.net/muay-thai/): the eight limbs, the thirty named techniques, the ceremony, and every gym on the map
+- [Roads of Chiang Mai](https://motdang.net/roads/): the square of 1296, four rings, and what each one did to the city — counted from the map
+- [wichaa](https://wichaa.net/): Lanna manuscripts, the amulet market, and the traditions around them
+- [Hand Poke](https://nanobotco.github.io/hand-poke/): 28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted
+- [Black Holes, Drawn](https://nanobotco.github.io/black-holes/): black holes modelled and drawn from the equations — generators, the past, present and future, the legends
+- [Quantum Computing, plainly](https://nanobotco.github.io/quantum-computing/): the history and theory of quantum computing in plain words, with demos; refreshed weekly
+- [Goin' Fast](https://nanobotco.github.io/goin-fast/): a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs
+- [The Three-Body Problem](https://nanobotco.github.io/three-body/): the mathematics of the three-body problem in plain words, with the orbits found rather than copied
+- [Exceptional Magic](https://nanobotco.github.io/exceptional-magic/): the octonions, triality, the magic square and E8, computed and drawn — a plain-spoken reading of one paper
+- [Amulet Atlas](https://nanobotco.github.io/amulet-atlas/): amulets, charms and talismans worldwide
+- [Carolina Barbecue](https://nanobotco.github.io/carolina-barbecue/): barbecue in North and South Carolina
+- [Wing Country](https://nanobotco.github.io/buffalo-wings/): the American chicken wing
+- [Pink Box](https://nanobotco.github.io/pink-box/): the American mom-and-pop donut shop
+- [Basque Tables](https://nanobotco.github.io/basque-tables/): Basque dining rooms of California, Nevada and Idaho
+- [Pinot Country](https://nanobotco.github.io/pinot-noir/): pinot noir: the vine, the regions, the cellars
+- [Care Abroad](https://nanobotco.github.io/care-abroad/): treatment across borders, with published prices and their dates
+- [Thai Roots](https://nanobotco.github.io/thairoots/): a root dictionary of Thai, with a word decomposer
+- [The index](https://nanobotco.github.io/index/): every corpus, site and repository, counted
+- [Uptake](https://nanobotco.github.io/uptake/): a field manual on publishing for machines that copy
+- [NaNoBotCo](https://nanobotco.github.io/): the portal
+- [Ask Mot Dang](https://ask.motdang.net/): reader assistant over the directory
+- [ai.motdang.net](https://ai.motdang.net/): white-label assistants, by seat
+- [Defiant](https://defiant.to/): medical and dental care in Chiang Mai, with a translator at the appointment
+- [Hongdam](https://hongdam.net/): bilingual web development, Chiang Rai
+- [ฮักฝรั่ง](https://hakfarang.net/): เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง
+- [Offrampt](https://offrampt.net/): turning crypto into spendable local money, Thailand first
+
+- [The roster as JSON](https://nanobotco.github.io/index/fleet.json)

@@ -1,0 +1,309 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Riemann — the primes counted, a hundred zeros computed, and what the Hypothesis would do to a key — Big Numbers, Split</title>
+<meta name="description" content="The Prime Number Theorem measured to ten million, the first hundred zeta zeros computed, the explicit formula drawing the primes, and why proving the Riemann Hypothesis would not break RSA.">
+<link rel="canonical" href="https://nanobotco.github.io/factoring/riemann/">
+<meta property="og:title" content="Riemann — the primes counted, a hundred zeros computed, and what the Hypothesis would do to a key — Big Numbers, Split">
+<meta property="og:description" content="The Prime Number Theorem measured to ten million, the first hundred zeta zeros computed, the explicit formula drawing the primes, and why proving the Riemann Hypothesis would not break RSA.">
+<meta property="og:image" content="https://nanobotco.github.io/factoring/img/card.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/factoring/icon.svg" type="image/svg+xml">
+<style>
+:root{
+ --bg:#0a0a10;--bg2:#0f0f18;--panel:#14141f;--ink:#f2ede3;--mute:#9d9689;--line:#2c2c3a;
+ --chip:#1b1b28;--c0:#ffb347;--c1:#5fd3c6;--c2:#ff7ab6;--violet:#b79cff;--focus:#ffb347;
+ --display:"Avenir Next Condensed","Arial Narrow",Impact,system-ui,sans-serif;
+ --body:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+ --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.62;
+ -webkit-text-size-adjust:100%}
+a{color:var(--c0);text-decoration-thickness:.08em;text-underline-offset:.18em}
+a:hover{color:#ffd08a}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible,input:focus-visible{
+ outline:3px solid var(--focus);outline-offset:2px;border-radius:5px}
+img,canvas,svg{max-width:100%}img{height:auto}
+.sr{position:absolute;left:-999px;top:0;background:var(--c0);color:#000;padding:.4rem .8rem;z-index:99}
+.sr:focus{left:.5rem;top:.5rem}
+
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;
+ background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);transition:transform .25s}
+body.nav-away header.top{transform:translateY(-100%)}
+header.top .in{max-width:72rem;margin:0 auto;padding:.5rem 1rem;display:flex;gap:.4rem 1.1rem;
+ align-items:center;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:.03em;
+ text-transform:uppercase;text-decoration:none;color:var(--ink);white-space:nowrap;display:flex;
+ align-items:center;gap:.5rem}
+.brand b{color:var(--c0)}
+.brand i{width:.85rem;height:.85rem;border-radius:2px;background:var(--c0);display:inline-block;
+ box-shadow:6px 0 0 -2px var(--c1),-6px 0 0 -2px var(--c1);transform:rotate(45deg)}
+header.top nav{display:flex;gap:.1rem .8rem;flex-wrap:wrap;font-size:.72rem;text-transform:uppercase;
+ letter-spacing:.08em;font-weight:700}
+header.top nav a{text-decoration:none;color:var(--mute);padding:.15rem 0}
+header.top nav a:hover,header.top nav a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--c0)}
+main{max-width:72rem;margin:0 auto;padding:1rem 1rem 5rem}
+footer.bot{border-top:1px solid var(--line);margin-top:3rem;background:var(--bg2)}
+footer.bot .in{max-width:72rem;margin:0 auto;padding:1.4rem 1rem 3rem;font-size:.8rem;color:var(--mute)}
+footer.bot a{color:var(--mute)}footer.bot p{max-width:none}
+.fleet{margin:.6rem 0 0;line-height:1.9}.fleet a{margin-right:.55rem;white-space:nowrap}
+.support{margin:.45rem 0 0}.support a{margin-right:.5rem}
+
+h1{font-family:var(--display);font-size:clamp(2.4rem,7.5vw,5rem);line-height:.94;margin:.3rem 0 .4rem;
+ font-weight:800;letter-spacing:-.005em;text-transform:uppercase}
+h1 .kind{display:block;font-size:clamp(.6rem,1.5vw,.72rem);color:var(--c0);letter-spacing:.34em;
+ margin-bottom:.55rem;font-weight:800}
+h2{font-family:var(--display);font-size:clamp(1.5rem,3.4vw,2rem);margin:2.6rem 0 .6rem;font-weight:800;
+ text-transform:uppercase;border-bottom:2px solid var(--line);padding-bottom:.25rem}
+h2 small{font-family:var(--body);font-size:.55em;color:var(--mute);text-transform:none;
+ letter-spacing:0;font-weight:400;margin-left:.6rem}
+h3{font-family:var(--display);font-size:1.2rem;margin:1.7rem 0 .3rem;font-weight:800;text-transform:uppercase}
+.lede{font-size:clamp(1.12rem,2.4vw,1.35rem);max-width:44rem;margin:.5rem 0 1.1rem}
+.mute{color:var(--mute)}.small{font-size:.82rem}
+p{margin:.65rem 0;max-width:44rem}
+.prose p,.prose ul,.prose ol{max-width:44rem}
+.prose li{margin:.35rem 0}
+.prose strong{color:var(--c0);font-weight:700}
+blockquote{margin:1rem 0;padding:.6rem 0 .6rem 1rem;border-left:3px solid var(--c1);color:var(--ink);
+ max-width:44rem;font-style:normal}
+blockquote cite{display:block;margin-top:.4rem;color:var(--mute);font-size:.82rem;font-style:normal}
+
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin:1rem 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem;
+ text-decoration:none;color:var(--ink);display:block}
+a.card:hover{border-color:var(--c0)}
+.card h3{margin:.1rem 0 .3rem}
+.card p{margin:.2rem 0;font-size:.88rem;color:var(--mute)}
+
+/* the linked image: background, scrim, spacer, text — the whole box is the link */
+a.shot{position:relative;display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+ text-decoration:none;color:var(--ink)}
+a.shot:hover{border-color:var(--c0)}
+a.shot .bg{position:absolute;inset:0;background-size:cover;background-position:center;
+ transition:transform .6s}
+a.shot:hover .bg{transform:scale(1.04)}
+a.shot .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,16,.05) 0%,rgba(10,10,16,.35) 45%,rgba(10,10,16,.92) 100%)}
+a.shot .sp{display:block;padding-top:56%}
+a.shot .tx{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem}
+a.shot .tx b{display:block;font-family:var(--display);font-size:1.5rem;text-transform:uppercase;line-height:1;
+ font-weight:800}
+a.shot .tx span{display:block;color:var(--mute);font-size:.84rem;margin-top:.3rem}
+a.shot .tx em{font-style:normal;color:var(--c0);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+ font-weight:800;display:block;margin-bottom:.35rem}
+.shots{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));margin:1rem 0}
+
+/* the band: a picture behind a block of words, anchored to the window so the page scrolls through it */
+.band{position:relative;margin:2.2rem calc(50% - 50vw);padding:3.2rem 1rem;background-size:cover;
+ background-position:center;background-attachment:fixed;color:var(--ink)}
+.band:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,16,.94) 0%,rgba(10,10,16,.72) 55%,rgba(10,10,16,.35) 100%)}
+.band .in{position:relative;max-width:72rem;margin:0 auto}
+.band .in p{max-width:40rem}
+.band h2{border:none;margin-top:0}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){.band{background-attachment:scroll}}
+
+.fig{margin:1.6rem 0;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:.7rem}
+.fig img{display:block;margin:0 auto;border-radius:6px}
+.fig figcaption{color:var(--mute);font-size:.82rem;margin:.6rem .2rem 0;max-width:46rem}
+.fig.plain{background:none;border:none;padding:0}
+.hero{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);margin:.6rem 0 1.4rem}
+.hero img{display:block;width:100%}
+
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.88rem}
+th,td{text-align:left;padding:.42rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mute);font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono)}
+td.d{white-space:nowrap;font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+tr[hidden]{display:none}
+.wrap{overflow-x:auto}.wrap table{min-width:52rem}
+code,kbd{font-family:var(--mono);font-size:.86em;background:var(--chip);padding:.1rem .3rem;border-radius:4px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.8rem 1rem;
+ overflow-x:auto;font-size:.82rem}
+pre code{background:none;padding:0}
+.eq{font-family:var(--mono);background:var(--panel);border-left:3px solid var(--c0);padding:.7rem 1rem;
+ margin:1rem 0;overflow-x:auto;font-size:.92rem;max-width:44rem}
+.eq b{color:var(--c0);font-weight:600}
+.eqn{color:var(--mute);font-family:var(--body);font-size:.86rem;margin-top:.4rem}
+.cite{font-size:.78em;color:var(--c1);text-decoration:none;border-bottom:1px dotted var(--c1);
+ white-space:nowrap;margin-left:.2em}
+.cite:hover{color:var(--c1)}
+.tag{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;
+ padding:.1rem .6rem;font-size:.72rem;color:var(--mute);margin:0 .25rem .3rem 0;white-space:nowrap}
+.tag.c0{border-color:var(--c0);color:var(--c0)}
+.tag.c1{border-color:var(--c1);color:var(--c1)}
+.tag.c2{border-color:var(--c2);color:var(--c2)}
+.tag.v{border-color:var(--violet);color:var(--violet)}
+
+.tool{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem;margin:1.4rem 0}
+.tool h3{margin-top:0}
+.tool .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.5rem 0}
+.tool label{font-size:.8rem;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+button,select,input[type=text],input[type=number]{font:inherit;font-size:.9rem;background:var(--chip);color:var(--ink);
+ border:1px solid var(--line);border-radius:7px;padding:.35rem .7rem;cursor:pointer}
+input[type=text],input[type=number]{cursor:text;font-family:var(--mono)}
+input[type=range]{width:min(100%,22rem);accent-color:var(--c0)}
+button:hover,select:hover{border-color:var(--c0)}
+button:disabled{opacity:.4;cursor:default}
+button.go{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+.out{font-family:var(--mono);font-size:.9rem;background:#0b0b12;border:1px solid var(--line);
+ border-radius:8px;padding:.7rem .9rem;margin:.6rem 0 0;overflow-x:auto;line-height:1.8}
+.out .k{color:var(--mute)}
+.out .v{color:var(--c1)}
+.out .bad{color:var(--c2)}
+.out .good{color:var(--c0)}
+.out table{font-size:.8rem}
+.out .lane{display:grid;grid-template-columns:11rem 1fr;gap:.2rem .8rem;align-items:center;margin:.3rem 0}
+.out .lane i{display:block;height:6px;background:var(--c1);border-radius:3px;grid-column:2;margin-bottom:-.2rem}
+.units{display:flex;gap:.3rem;flex-wrap:wrap}
+.units button{min-width:2.9rem;text-align:center;font-family:var(--mono)}
+.units button[aria-pressed=true]{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+canvas{display:block;margin:0 auto;max-width:100%;height:auto;touch-action:pan-y;background:#0b0b12;border-radius:8px}
+
+.big{font-family:var(--display);font-size:clamp(2rem,6vw,4rem);line-height:1;color:var(--c0);font-weight:800;
+ margin:.2rem 0}
+.answer{border:1px solid var(--c0);border-radius:12px;padding:1.1rem 1.3rem;margin:1.4rem 0;
+ background:color-mix(in srgb,var(--c0) 6%,var(--panel));max-width:46rem}
+.answer h3{margin-top:0;color:var(--c0)}
+.answer p{margin:.5rem 0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;font-size:.86rem;max-width:44rem}
+.kv dt{color:var(--mute)}.kv dd{margin:0}
+.note{border:1px solid var(--line);border-left:3px solid var(--c2);background:var(--bg2);
+ border-radius:0 8px 8px 0;padding:.7rem 1rem;margin:1.2rem 0;font-size:.9rem;max-width:46rem}
+.note b{color:var(--c2)}
+ul.ticks{list-style:none;padding-left:0}
+ul.ticks li{padding-left:1.4rem;position:relative}
+ul.ticks li:before{content:"✓";position:absolute;left:0;color:var(--c1);font-weight:700}
+ul.checks{list-style:none;padding-left:0;font-family:var(--mono);font-size:.78rem;columns:2;
+ column-gap:2rem;max-width:none}
+ul.checks li{break-inside:avoid;color:var(--mute);margin:.15rem 0}
+ul.checks li b{color:var(--c1);font-weight:400}
+@media (max-width:48rem){ul.checks{columns:1}.out .lane{grid-template-columns:1fr}.out .lane i{grid-column:1}}
+.tl{list-style:none;padding:0;margin:1rem 0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:.3rem 0 .9rem 1.4rem;max-width:48rem}
+.tl li:before{content:"";position:absolute;left:-7px;top:.75rem;width:12px;height:12px;border-radius:50%;
+ background:var(--c1);border:2px solid var(--bg)}
+.tl li.quantum:before{background:var(--c2)}
+.tl li.riemann:before{background:var(--violet)}
+.tl li .when{font-family:var(--mono);color:var(--c0);font-size:.8rem;display:block}
+.tl li .who{font-weight:700}
+.tl li p{margin:.2rem 0 0;font-size:.95rem}
+dl.words dt{font-weight:700;color:var(--c0);margin-top:.9rem}
+dl.words dd{margin:0;max-width:44rem}
+.src{font-size:.86rem}
+.src li{margin:.35rem 0;padding-left:.2rem}
+.src li b{color:var(--mute);font-weight:400;font-family:var(--mono);margin-right:.4rem}
+</style></head>
+<body data-base="/factoring/" data-asof="2026-09-23">
+<a class="sr" href="#main">Skip to the page</a>
+<header class="top"><div class="in">
+<a class="brand" href="/factoring/"><i></i>Big Numbers, <b>Split</b></a>
+<nav aria-label="Sections"><a href="/factoring/split/">Split</a><a href="/factoring/history/">History</a><a href="/factoring/methods/">Methods</a><a href="/factoring/records/">Records</a><a href="/factoring/quantum/">Quantum</a><a href="/factoring/riemann/" aria-current="page">Riemann</a><a href="/factoring/wallet/">Wallet</a><a href="/factoring/now/">Now</a><a href="/factoring/words/">Words</a><a href="/factoring/sources/">Sources</a></nav></div></header>
+<main id="main"><h1><span class="kind">A hundred zeros, computed</span>Riemann</h1>
+<p class="lede">Riemann's 1859 paper is eight pages on how many primes there are below a given size
+<a class="cite" href="/factoring/sources/#src-5" title="Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse">[5]</a>. It contains a guess that has stood unproved for 167 years, a million-dollar
+prize, and the reason this page exists: people keep asking whether proving it would break RSA. It would
+not. Here is what it is, computed rather than described.</p>
+
+<h2>Counting primes</h2>
+<div class="prose">
+<p>Write π(x) for the number of primes up to x. Gauss, at fifteen, guessed from tables that π(x) runs
+like x / ln x, and later that the integral li(x) = ∫ dt / ln t does better <a class="cite" href="/factoring/sources/#src-4" title="Disquisitiones Arithmeticae, art. 329 — on the problem of telling primes from composites and splitting the latter">[4]</a>. Both
+were proved right in 1896 <a class="cite" href="/factoring/sources/#src-6" title="Sur la distribution des zéros de la fonction ζ(s) et ses conséquences arithmétiques">[6]</a>. The sieve in <code>tools/compute.py</code> counts to ten
+million:</p>
+</div>
+<div class="wrap"><table><thead><tr><th class="n">x</th><th class="n">π(x)</th><th class="n">x / ln x</th><th class="n">miss</th><th class="n">li(x)</th><th class="n">miss</th></tr></thead><tbody><tr><td class="n">10<sup>1</sup></td><td class="n">4</td><td class="n">4</td><td class="n">-0</td><td class="n">6.2</td><td class="n">-2.2</td></tr><tr><td class="n">10<sup>2</sup></td><td class="n">25</td><td class="n">22</td><td class="n">+3</td><td class="n">30.1</td><td class="n">-5.1</td></tr><tr><td class="n">10<sup>3</sup></td><td class="n">168</td><td class="n">145</td><td class="n">+23</td><td class="n">177.6</td><td class="n">-9.6</td></tr><tr><td class="n">10<sup>4</sup></td><td class="n">1,229</td><td class="n">1,086</td><td class="n">+143</td><td class="n">1,246.1</td><td class="n">-17.1</td></tr><tr><td class="n">10<sup>5</sup></td><td class="n">9,592</td><td class="n">8,686</td><td class="n">+906</td><td class="n">9,629.8</td><td class="n">-37.8</td></tr><tr><td class="n">10<sup>6</sup></td><td class="n">78,498</td><td class="n">72,382</td><td class="n">+6,116</td><td class="n">78,627.5</td><td class="n">-129.5</td></tr><tr><td class="n">10<sup>7</sup></td><td class="n">664,579</td><td class="n">620,421</td><td class="n">+44,158</td><td class="n">664,918.4</td><td class="n">-339.4</td></tr></tbody></table></div>
+<figure class="fig "><img src="/factoring/img/pi.svg" alt="Three nearly coincident lines on log axes with an inset table of misses: the count of primes, x over ln x, and li of x." loading="lazy" decoding="async"><figcaption>On log scales the three lines are one line — that is the Prime Number Theorem. The table is the story: li(x) misses by a few hundred where x / ln x misses by tens of thousands.</figcaption></figure>
+<div class="prose">
+<p>The Riemann Hypothesis is a statement about that last column. It says the miss of li(x) never grows
+faster than about √x · ln x — the primes are spread as evenly as a random process could spread them, with
+no long-range conspiracy in either direction. Every check ever made agrees; nobody has proved it.</p>
+</div>
+
+<h2>The zeros</h2>
+<div class="prose">
+<p>Riemann's function is</p>
+<div class="eq">ζ(s) = 1 + 1/2<sup>s</sup> + 1/3<sup>s</sup> + 1/4<sup>s</sup> + … = ∏<sub>p</sub> 1 / (1 − p<sup>−s</sup>)<div class="eqn">Reading it: the sum over all whole numbers equals a product over all primes — Euler's identity, and the reason a function about the whole numbers knows where the primes are.</div></div>
+<p>Extended to complex s, it has zeros. The uninteresting ones sit at −2, −4, −6, … The interesting ones
+sit in the strip where the real part of s is between 0 and 1, and Riemann observed that every one he
+computed had real part exactly ½ — the <strong>critical line</strong> — and wrote that it was 'very
+probable' they all do. That sentence is the Hypothesis.</p>
+<p>This site computed the first 100 of them, by Euler–Maclaurin summation of ζ along the line
+and bisection on sign changes of the Riemann–Siegel Z function, and checked the count against the
+Riemann–von Mangoldt formula so none was skipped. The first ten agree with Odlyzko's tables
+<a class="cite" href="/factoring/sources/#src-36" title="Tables of zeros of the Riemann zeta function">[36]</a> to 1e-14:</p>
+</div>
+<div class="wrap"><table><thead><tr><th class="n">#</th><th class="n">1</th><th class="n">2</th><th class="n">3</th><th class="n">4</th><th class="n">5</th><th class="n">6</th><th class="n">7</th><th class="n">8</th><th class="n">9</th><th class="n">10</th></tr></thead>
+<tbody><tr><td>t</td><td class="n">14.134725</td><td class="n">21.022040</td><td class="n">25.010858</td><td class="n">30.424876</td><td class="n">32.935062</td><td class="n">37.586178</td><td class="n">40.918719</td><td class="n">43.327073</td><td class="n">48.005151</td><td class="n">49.773832</td></tr></tbody></table></div>
+<figure class="fig "><img src="/factoring/img/zeros.svg" alt="A wavy teal line crossing a horizontal axis at ten marked amber points between 14 and 50." loading="lazy" decoding="async"><figcaption>Z(t) is ζ(½ + it) with its phase stripped off, so it is a real wave, and it crosses zero exactly where ζ does. The amber points are the first ten crossings.</figcaption></figure>
+<figure class="fig "><img src="/factoring/img/band-zeros.jpg" alt="A teal field with dark wells along a rose horizontal line: the size of the zeta function across the critical strip, the zeros as the dark spots." loading="lazy" decoding="async"><figcaption>The critical strip laid on its side: the real part of s runs down the picture from 1.4 at the top to −0.4 at the bottom, t runs left to right from 2 to 60, brightness is the size of ζ. The dark wells are the zeros, and every one sits on the rose line, where the real part is ½. Turing checked the first few thousand this way on the Manchester machine in 1950, hoping to find one off the line <a class="cite" href="/factoring/sources/#src-10" title="Some calculations of the Riemann zeta-function — zeros checked on the Manchester machine in 1950">[10]</a>; the count is now past ten trillion <a class="cite" href="/factoring/sources/#src-41" title="The Riemann hypothesis is true up to 3·10^12">[41]</a>.</figcaption></figure>
+
+<h2>The zeros draw the primes</h2>
+<div class="prose">
+<p>Here is the part that makes the Hypothesis matter. Riemann's <strong>explicit formula</strong> writes
+the count of primes exactly in terms of the zeros. In the cleanest form, with ψ(x) counting each prime
+power p<sup>k</sup> ≤ x with weight ln p:</p>
+<div class="eq">ψ(x) = x − Σ<sub>ρ</sub> x<sup>ρ</sup>/ρ − ln 2π − ½ ln(1 − x<sup>−2</sup>)<div class="eqn">Reading it: the smooth guess x, minus one wave per zero ρ = ½ + iγ. Each wave has size √x and wobbles ln x · γ / 2π times per unit of ln x. Add them all and the staircase of primes comes out exactly.</div></div>
+<p>The slider adds the 100 zeros one at a time. With none, the formula is the line x. With ten,
+the big wobbles. With a hundred, the steps at every prime and prime power are there, to within
+0.37 on average between the steps.</p>
+</div>
+<div class="tool">
+<h3>Add the zeros</h3>
+<div class="row"><label>zeros</label><input type="range" id="nzeros" min="0" max="100" value="0"> <button id="zplay">play</button></div>
+<canvas id="explicit" width="880" height="360" aria-label="A teal staircase rising from 0 to about 94, and coloured curves that hug it more closely as more zeros are added."></canvas>
+<div class="out" id="explicitout"></div>
+</div>
+<figure class="fig "><img src="/factoring/img/explicit.svg" alt="A teal staircase rising from 0 to about 94, and coloured curves that hug it more closely as more zeros are added." loading="lazy" decoding="async"><figcaption>The same thing drawn at build time: ψ(x) as a staircase, and the formula with 0, 10, 30 and 100 zeros.</figcaption></figure>
+<div class="prose">
+<p>Now the Hypothesis in one sentence: if every zero has real part ½, every wave has size exactly √x,
+and the primes can never stray from their smooth count by more than about √x · ln x. If some zero had real
+part ¾, its wave would have size x<sup>¾</sup>, and the primes would bunch and thin on a scale nobody has
+seen. That is all it says. It is a statement about the error term.</p>
+</div>
+
+<h2>What it would and would not do to a key</h2>
+<div class="prose">
+<p><strong>Would not:</strong> give anyone a factoring algorithm. No method on this site — not the sieves,
+not the number field sieve, not Shor — runs faster if the Hypothesis is true, because none of them uses
+it. Their running times rest on how often values are smooth, and the heuristics for that are about
+smooth numbers, not zeros. A proof would be one of the great events in mathematics and would change no
+key size anywhere. The wallet, likewise.</p>
+<p><strong>Would, a little:</strong> tidy up some proofs. Miller's 1976 primality test is fast and
+<em>certain</em> if the Generalised Riemann Hypothesis holds <a class="cite" href="/factoring/sources/#src-14" title="Riemann&#x27;s hypothesis and tests for primality">[14]</a>; without it, Rabin's
+1980 version is fast and almost certain, and that is what every key generator on Earth uses, so nothing
+changes in practice. Since 2002 there has been a fast certain test with no hypothesis at all
+<a class="cite" href="/factoring/sources/#src-33" title="PRIMES is in P">[33]</a>. Telling prime from composite is easy. Splitting a composite is the problem, and the
+Hypothesis is silent on it.</p>
+<p><strong>Where the Hypothesis and quantum computing do meet</strong> is somewhere else entirely. In 1972
+Hugh Montgomery showed Freeman Dyson his formula for how the zeros space themselves out, and Dyson
+recognised it on the spot: it was the spacing of the energy levels of a heavy atomic nucleus, from random
+matrix theory <a class="cite" href="/factoring/sources/#src-34" title="The pair correlation of zeros of the zeta function">[34]</a>. Odlyzko's computations of millions of zeros matched it to high
+precision <a class="cite" href="/factoring/sources/#src-35" title="On the distribution of spacings between zeros of the zeta function">[35]</a>. The suggestion — Hilbert's and Pólya's, a century old — is that the zeros
+are the energy levels of some quantum system nobody has found, and Berry and Keating have a candidate
+<a class="cite" href="/factoring/sources/#src-37" title="The Riemann zeros and eigenvalue asymptotics">[37]</a>. A proof might come from physics. It still would not touch a key.</p>
+<p><strong>Recent:</strong> in 2024 Larry Guth and James Maynard gave the first improvement since 1940 on
+how many zeros can sit off the line in a given range <a class="cite" href="/factoring/sources/#src-39" title="New large value estimates for Dirichlet polynomials">[39]</a> — progress on the Hypothesis, not
+a proof. Yitang Zhang's 2022 preprint on the Landau–Siegel zero, a related question, has one arXiv version
+and no journal <a class="cite" href="/factoring/sources/#src-40" title="Discrete mean estimates and the Landau-Siegel zero">[40]</a>. Several 2025–2026 preprints claim full proofs; none has been accepted
+by a journal or by the field. The problem is open, and the Clay Institute's million is unclaimed
+<a class="cite" href="/factoring/sources/#src-38" title="The Riemann Hypothesis — Millennium Prize problem statement by Enrico Bombieri">[38]</a>.</p>
+</div>
+
+<h2 id="checks">The checks</h2>
+<p class="small mute">25 checks run before this site publishes; 0 failing as of
+2026-09-23.</p>
+<ul class="checks"><li><b>ok</b> pi(10^6) = 78498</li><li><b>ok</b> pi(10^7) = 664579</li><li><b>ok</b> li beats x/ln x at 10^7</li><li><b>ok</b> li(10^6) near 78627.55</li><li><b>ok</b> first ten zeros match Odlyzko&#x27;s to 1e-6</li><li><b>ok</b> zero count agrees with Riemann–von Mangoldt</li><li><b>ok</b> zeros strictly increasing</li><li><b>ok</b> zeta(2) = pi^2/6 by the same routine</li><li><b>ok</b> 100 zeros bring psi(x) within 3 everywhere on [2,100]</li><li><b>ok</b> 100 zeros: root-mean-square miss under 0.8</li><li><b>ok</b> zeros improve on x alone</li><li><b>ok</b> psi(100) = ln lcm(1..100)</li><li><b>ok</b> cost curve rises</li><li><b>ok</b> 768 -&gt; 1024 lands between 100x and 10000x</li><li><b>ok</b> Shor: 7 mod 15 has period 4</li><li><b>ok</b> Shor: 15 splits into 3 and 5</li><li><b>ok</b> Shor: 2 mod 21 has period 6</li><li><b>ok</b> Shor: 21 splits into 3 and 7</li><li><b>ok</b> Kraitchik: 41^2 = 32 mod 1649</li><li><b>ok</b> Kraitchik: 43^2 = 200 mod 1649</li><li><b>ok</b> Kraitchik: 32*200 is a square</li><li><b>ok</b> Kraitchik: gcd gives 17</li><li><b>ok</b> Fermat: close primes fall in a handful of steps</li><li><b>ok</b> toy curve: order of G divides the point count</li><li><b>ok</b> toy curve: the walk returns to infinity</li></ul></main>
+<footer class="bot"><div class="in">
+<p><b>Big Numbers, Split</b> — Factoring, from Eratosthenes to Shor: how big numbers get split, who has split the biggest, what the Riemann Hypothesis has to do with it, and what all of it means for a bitcoin wallet.</p>
+<p>Text and figures Nan · hongdam.net · CC BY 4.0. Code MIT. Built 2026-09-23; the ledger runs to 2026-09-23.
+Every number on these pages is computed by <code>tools/compute.py</code> or carried in a data file with its
+source, in <a href="https://github.com/NaNoBotCo/factoring">the repository</a>. Nothing here is advice about money.</p>
+<div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/goin-fast/" title="a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs">Goin&#x27; Fast</a> · <a href="https://nanobotco.github.io/three-body/" title="the mathematics of the three-body problem in plain words, with the orbits found rather than copied">The Three-Body Problem</a> · <a href="https://nanobotco.github.io/exceptional-magic/" title="the octonions, triality, the magic square and E8, computed and drawn — a plain-spoken reading of one paper">Exceptional Magic</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div>
+<div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a> · Source: <a href="https://github.com/NaNoBotCo" rel="noopener">GitHub</a></div>
+<div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div>
+</div></footer><script src="/factoring/js/zeros.js" defer></script>
+<script src="/factoring/js/nav.js" defer></script>
+</body></html>

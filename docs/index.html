@@ -1,0 +1,302 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Big Numbers, Split — factoring, from Eratosthenes to Shor</title>
+<meta name="description" content="Factoring, from Eratosthenes to Shor: how big numbers get split, who has split the biggest, what the Riemann Hypothesis has to do with it, and what all of it means for a bitcoin wallet.">
+<link rel="canonical" href="https://nanobotco.github.io/factoring/">
+<meta property="og:title" content="Big Numbers, Split — factoring, from Eratosthenes to Shor">
+<meta property="og:description" content="Factoring, from Eratosthenes to Shor: how big numbers get split, who has split the biggest, what the Riemann Hypothesis has to do with it, and what all of it means for a bitcoin wallet.">
+<meta property="og:image" content="https://nanobotco.github.io/factoring/img/card.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/factoring/icon.svg" type="image/svg+xml">
+<style>
+:root{
+ --bg:#0a0a10;--bg2:#0f0f18;--panel:#14141f;--ink:#f2ede3;--mute:#9d9689;--line:#2c2c3a;
+ --chip:#1b1b28;--c0:#ffb347;--c1:#5fd3c6;--c2:#ff7ab6;--violet:#b79cff;--focus:#ffb347;
+ --display:"Avenir Next Condensed","Arial Narrow",Impact,system-ui,sans-serif;
+ --body:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+ --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.62;
+ -webkit-text-size-adjust:100%}
+a{color:var(--c0);text-decoration-thickness:.08em;text-underline-offset:.18em}
+a:hover{color:#ffd08a}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible,input:focus-visible{
+ outline:3px solid var(--focus);outline-offset:2px;border-radius:5px}
+img,canvas,svg{max-width:100%}img{height:auto}
+.sr{position:absolute;left:-999px;top:0;background:var(--c0);color:#000;padding:.4rem .8rem;z-index:99}
+.sr:focus{left:.5rem;top:.5rem}
+
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;
+ background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);transition:transform .25s}
+body.nav-away header.top{transform:translateY(-100%)}
+header.top .in{max-width:72rem;margin:0 auto;padding:.5rem 1rem;display:flex;gap:.4rem 1.1rem;
+ align-items:center;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:.03em;
+ text-transform:uppercase;text-decoration:none;color:var(--ink);white-space:nowrap;display:flex;
+ align-items:center;gap:.5rem}
+.brand b{color:var(--c0)}
+.brand i{width:.85rem;height:.85rem;border-radius:2px;background:var(--c0);display:inline-block;
+ box-shadow:6px 0 0 -2px var(--c1),-6px 0 0 -2px var(--c1);transform:rotate(45deg)}
+header.top nav{display:flex;gap:.1rem .8rem;flex-wrap:wrap;font-size:.72rem;text-transform:uppercase;
+ letter-spacing:.08em;font-weight:700}
+header.top nav a{text-decoration:none;color:var(--mute);padding:.15rem 0}
+header.top nav a:hover,header.top nav a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--c0)}
+main{max-width:72rem;margin:0 auto;padding:1rem 1rem 5rem}
+footer.bot{border-top:1px solid var(--line);margin-top:3rem;background:var(--bg2)}
+footer.bot .in{max-width:72rem;margin:0 auto;padding:1.4rem 1rem 3rem;font-size:.8rem;color:var(--mute)}
+footer.bot a{color:var(--mute)}footer.bot p{max-width:none}
+.fleet{margin:.6rem 0 0;line-height:1.9}.fleet a{margin-right:.55rem;white-space:nowrap}
+.support{margin:.45rem 0 0}.support a{margin-right:.5rem}
+
+h1{font-family:var(--display);font-size:clamp(2.4rem,7.5vw,5rem);line-height:.94;margin:.3rem 0 .4rem;
+ font-weight:800;letter-spacing:-.005em;text-transform:uppercase}
+h1 .kind{display:block;font-size:clamp(.6rem,1.5vw,.72rem);color:var(--c0);letter-spacing:.34em;
+ margin-bottom:.55rem;font-weight:800}
+h2{font-family:var(--display);font-size:clamp(1.5rem,3.4vw,2rem);margin:2.6rem 0 .6rem;font-weight:800;
+ text-transform:uppercase;border-bottom:2px solid var(--line);padding-bottom:.25rem}
+h2 small{font-family:var(--body);font-size:.55em;color:var(--mute);text-transform:none;
+ letter-spacing:0;font-weight:400;margin-left:.6rem}
+h3{font-family:var(--display);font-size:1.2rem;margin:1.7rem 0 .3rem;font-weight:800;text-transform:uppercase}
+.lede{font-size:clamp(1.12rem,2.4vw,1.35rem);max-width:44rem;margin:.5rem 0 1.1rem}
+.mute{color:var(--mute)}.small{font-size:.82rem}
+p{margin:.65rem 0;max-width:44rem}
+.prose p,.prose ul,.prose ol{max-width:44rem}
+.prose li{margin:.35rem 0}
+.prose strong{color:var(--c0);font-weight:700}
+blockquote{margin:1rem 0;padding:.6rem 0 .6rem 1rem;border-left:3px solid var(--c1);color:var(--ink);
+ max-width:44rem;font-style:normal}
+blockquote cite{display:block;margin-top:.4rem;color:var(--mute);font-size:.82rem;font-style:normal}
+
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin:1rem 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem;
+ text-decoration:none;color:var(--ink);display:block}
+a.card:hover{border-color:var(--c0)}
+.card h3{margin:.1rem 0 .3rem}
+.card p{margin:.2rem 0;font-size:.88rem;color:var(--mute)}
+
+/* the linked image: background, scrim, spacer, text — the whole box is the link */
+a.shot{position:relative;display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+ text-decoration:none;color:var(--ink)}
+a.shot:hover{border-color:var(--c0)}
+a.shot .bg{position:absolute;inset:0;background-size:cover;background-position:center;
+ transition:transform .6s}
+a.shot:hover .bg{transform:scale(1.04)}
+a.shot .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,16,.05) 0%,rgba(10,10,16,.35) 45%,rgba(10,10,16,.92) 100%)}
+a.shot .sp{display:block;padding-top:56%}
+a.shot .tx{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem}
+a.shot .tx b{display:block;font-family:var(--display);font-size:1.5rem;text-transform:uppercase;line-height:1;
+ font-weight:800}
+a.shot .tx span{display:block;color:var(--mute);font-size:.84rem;margin-top:.3rem}
+a.shot .tx em{font-style:normal;color:var(--c0);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+ font-weight:800;display:block;margin-bottom:.35rem}
+.shots{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));margin:1rem 0}
+
+/* the band: a picture behind a block of words, anchored to the window so the page scrolls through it */
+.band{position:relative;margin:2.2rem calc(50% - 50vw);padding:3.2rem 1rem;background-size:cover;
+ background-position:center;background-attachment:fixed;color:var(--ink)}
+.band:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,16,.94) 0%,rgba(10,10,16,.72) 55%,rgba(10,10,16,.35) 100%)}
+.band .in{position:relative;max-width:72rem;margin:0 auto}
+.band .in p{max-width:40rem}
+.band h2{border:none;margin-top:0}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){.band{background-attachment:scroll}}
+
+.fig{margin:1.6rem 0;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:.7rem}
+.fig img{display:block;margin:0 auto;border-radius:6px}
+.fig figcaption{color:var(--mute);font-size:.82rem;margin:.6rem .2rem 0;max-width:46rem}
+.fig.plain{background:none;border:none;padding:0}
+.hero{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);margin:.6rem 0 1.4rem}
+.hero img{display:block;width:100%}
+
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.88rem}
+th,td{text-align:left;padding:.42rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mute);font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono)}
+td.d{white-space:nowrap;font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+tr[hidden]{display:none}
+.wrap{overflow-x:auto}.wrap table{min-width:52rem}
+code,kbd{font-family:var(--mono);font-size:.86em;background:var(--chip);padding:.1rem .3rem;border-radius:4px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.8rem 1rem;
+ overflow-x:auto;font-size:.82rem}
+pre code{background:none;padding:0}
+.eq{font-family:var(--mono);background:var(--panel);border-left:3px solid var(--c0);padding:.7rem 1rem;
+ margin:1rem 0;overflow-x:auto;font-size:.92rem;max-width:44rem}
+.eq b{color:var(--c0);font-weight:600}
+.eqn{color:var(--mute);font-family:var(--body);font-size:.86rem;margin-top:.4rem}
+.cite{font-size:.78em;color:var(--c1);text-decoration:none;border-bottom:1px dotted var(--c1);
+ white-space:nowrap;margin-left:.2em}
+.cite:hover{color:var(--c1)}
+.tag{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;
+ padding:.1rem .6rem;font-size:.72rem;color:var(--mute);margin:0 .25rem .3rem 0;white-space:nowrap}
+.tag.c0{border-color:var(--c0);color:var(--c0)}
+.tag.c1{border-color:var(--c1);color:var(--c1)}
+.tag.c2{border-color:var(--c2);color:var(--c2)}
+.tag.v{border-color:var(--violet);color:var(--violet)}
+
+.tool{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem;margin:1.4rem 0}
+.tool h3{margin-top:0}
+.tool .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.5rem 0}
+.tool label{font-size:.8rem;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+button,select,input[type=text],input[type=number]{font:inherit;font-size:.9rem;background:var(--chip);color:var(--ink);
+ border:1px solid var(--line);border-radius:7px;padding:.35rem .7rem;cursor:pointer}
+input[type=text],input[type=number]{cursor:text;font-family:var(--mono)}
+input[type=range]{width:min(100%,22rem);accent-color:var(--c0)}
+button:hover,select:hover{border-color:var(--c0)}
+button:disabled{opacity:.4;cursor:default}
+button.go{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+.out{font-family:var(--mono);font-size:.9rem;background:#0b0b12;border:1px solid var(--line);
+ border-radius:8px;padding:.7rem .9rem;margin:.6rem 0 0;overflow-x:auto;line-height:1.8}
+.out .k{color:var(--mute)}
+.out .v{color:var(--c1)}
+.out .bad{color:var(--c2)}
+.out .good{color:var(--c0)}
+.out table{font-size:.8rem}
+.out .lane{display:grid;grid-template-columns:11rem 1fr;gap:.2rem .8rem;align-items:center;margin:.3rem 0}
+.out .lane i{display:block;height:6px;background:var(--c1);border-radius:3px;grid-column:2;margin-bottom:-.2rem}
+.units{display:flex;gap:.3rem;flex-wrap:wrap}
+.units button{min-width:2.9rem;text-align:center;font-family:var(--mono)}
+.units button[aria-pressed=true]{background:var(--c0);color:#0a0a10;border-color:var(--c0);font-weight:700}
+canvas{display:block;margin:0 auto;max-width:100%;height:auto;touch-action:pan-y;background:#0b0b12;border-radius:8px}
+
+.big{font-family:var(--display);font-size:clamp(2rem,6vw,4rem);line-height:1;color:var(--c0);font-weight:800;
+ margin:.2rem 0}
+.answer{border:1px solid var(--c0);border-radius:12px;padding:1.1rem 1.3rem;margin:1.4rem 0;
+ background:color-mix(in srgb,var(--c0) 6%,var(--panel));max-width:46rem}
+.answer h3{margin-top:0;color:var(--c0)}
+.answer p{margin:.5rem 0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;font-size:.86rem;max-width:44rem}
+.kv dt{color:var(--mute)}.kv dd{margin:0}
+.note{border:1px solid var(--line);border-left:3px solid var(--c2);background:var(--bg2);
+ border-radius:0 8px 8px 0;padding:.7rem 1rem;margin:1.2rem 0;font-size:.9rem;max-width:46rem}
+.note b{color:var(--c2)}
+ul.ticks{list-style:none;padding-left:0}
+ul.ticks li{padding-left:1.4rem;position:relative}
+ul.ticks li:before{content:"✓";position:absolute;left:0;color:var(--c1);font-weight:700}
+ul.checks{list-style:none;padding-left:0;font-family:var(--mono);font-size:.78rem;columns:2;
+ column-gap:2rem;max-width:none}
+ul.checks li{break-inside:avoid;color:var(--mute);margin:.15rem 0}
+ul.checks li b{color:var(--c1);font-weight:400}
+@media (max-width:48rem){ul.checks{columns:1}.out .lane{grid-template-columns:1fr}.out .lane i{grid-column:1}}
+.tl{list-style:none;padding:0;margin:1rem 0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:.3rem 0 .9rem 1.4rem;max-width:48rem}
+.tl li:before{content:"";position:absolute;left:-7px;top:.75rem;width:12px;height:12px;border-radius:50%;
+ background:var(--c1);border:2px solid var(--bg)}
+.tl li.quantum:before{background:var(--c2)}
+.tl li.riemann:before{background:var(--violet)}
+.tl li .when{font-family:var(--mono);color:var(--c0);font-size:.8rem;display:block}
+.tl li .who{font-weight:700}
+.tl li p{margin:.2rem 0 0;font-size:.95rem}
+dl.words dt{font-weight:700;color:var(--c0);margin-top:.9rem}
+dl.words dd{margin:0;max-width:44rem}
+.src{font-size:.86rem}
+.src li{margin:.35rem 0;padding-left:.2rem}
+.src li b{color:var(--mute);font-weight:400;font-family:var(--mono);margin-right:.4rem}
+</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Big Numbers, Split", "url": "https://nanobotco.github.io/factoring/", "description": "Factoring, from Eratosthenes to Shor: how big numbers get split, who has split the biggest, what the Riemann Hypothesis has to do with it, and what all of it means for a bitcoin wallet.", "license": "https://creativecommons.org/licenses/by/4.0/", "author": {"@type": "Person", "name": "Nan", "url": "https://hongdam.net/"}, "publisher": {"@type": "Organization", "name": "NaNoBotCo", "url": "https://nanobotco.github.io/index/", "email": "nan@motdang.net", "sameAs": ["https://motdang.net/", "https://nanobotco.github.io/mae-hong-son-loop/", "https://motdang.net/muay-thai/", "https://motdang.net/roads/", "https://wichaa.net/", "https://nanobotco.github.io/hand-poke/", "https://nanobotco.github.io/black-holes/", "https://nanobotco.github.io/quantum-computing/", "https://nanobotco.github.io/goin-fast/", "https://nanobotco.github.io/three-body/", "https://nanobotco.github.io/exceptional-magic/", "https://nanobotco.github.io/factoring/", "https://nanobotco.github.io/amulet-atlas/", "https://nanobotco.github.io/carolina-barbecue/", "https://nanobotco.github.io/buffalo-wings/", "https://nanobotco.github.io/pink-box/", "https://nanobotco.github.io/basque-tables/", "https://nanobotco.github.io/pinot-noir/", "https://nanobotco.github.io/care-abroad/", "https://nanobotco.github.io/thairoots/", "https://nanobotco.github.io/index/", "https://nanobotco.github.io/uptake/", "https://nanobotco.github.io/", "https://ask.motdang.net/", "https://ai.motdang.net/", "https://defiant.to/", "https://hongdam.net/", "https://hakfarang.net/", "https://offrampt.net/"]}, "sameAs": ["https://motdang.net/", "https://nanobotco.github.io/mae-hong-son-loop/", "https://motdang.net/muay-thai/", "https://motdang.net/roads/", "https://wichaa.net/", "https://nanobotco.github.io/hand-poke/", "https://nanobotco.github.io/black-holes/", "https://nanobotco.github.io/quantum-computing/", "https://nanobotco.github.io/goin-fast/", "https://nanobotco.github.io/three-body/", "https://nanobotco.github.io/exceptional-magic/", "https://nanobotco.github.io/amulet-atlas/", "https://nanobotco.github.io/carolina-barbecue/", "https://nanobotco.github.io/buffalo-wings/", "https://nanobotco.github.io/pink-box/", "https://nanobotco.github.io/basque-tables/", "https://nanobotco.github.io/pinot-noir/", "https://nanobotco.github.io/care-abroad/", "https://nanobotco.github.io/thairoots/", "https://nanobotco.github.io/index/", "https://nanobotco.github.io/uptake/", "https://nanobotco.github.io/", "https://ask.motdang.net/", "https://ai.motdang.net/", "https://defiant.to/", "https://hongdam.net/", "https://hakfarang.net/", "https://offrampt.net/"]}</script></head>
+<body data-base="/factoring/" data-asof="2026-09-23">
+<a class="sr" href="#main">Skip to the page</a>
+<header class="top"><div class="in">
+<a class="brand" href="/factoring/"><i></i>Big Numbers, <b>Split</b></a>
+<nav aria-label="Sections"><a href="/factoring/split/">Split</a><a href="/factoring/history/">History</a><a href="/factoring/methods/">Methods</a><a href="/factoring/records/">Records</a><a href="/factoring/quantum/">Quantum</a><a href="/factoring/riemann/">Riemann</a><a href="/factoring/wallet/">Wallet</a><a href="/factoring/now/">Now</a><a href="/factoring/words/">Words</a><a href="/factoring/sources/">Sources</a></nav></div></header>
+<main id="main"><h1><span class="kind">Factoring, from Eratosthenes to Shor</span>Big Numbers,<br>Split</h1>
+<p class="lede">Multiply two big primes: a millisecond. Get them back out of the product: past a certain
+size, nobody can. Every RSA lock on the web rests on that gap, and the lock on a bitcoin wallet is the
+same gap in a different coat. This is the history of the gap, who has narrowed it, and what is left of it
+as of 2026-09-23.</p>
+
+<div class="hero"><img src="/factoring/img/hero.jpg" alt="Thousands of small amber dots on a dark ground, arranged on a square spiral so that faint diagonal lines run through them: the primes, drawn where they fall." width="2000" height="1000"></div>
+<p class="small mute">The whole numbers wound into a square spiral, 1 in the middle, and every prime lit.
+Stanisław Ulam drew it on a scratch pad during a dull talk in 1963. The diagonal streaks are real — primes
+crowd some quadratic lines and shun others — and nobody has explained them. Drawn here from a sieve, not
+copied.</p>
+
+<div class="answer" id="wallet-answer">
+<h3>If you came about the wallet</h3>
+<p><b>Nobody has broken a real key.</b> The largest number ever split by Shor's algorithm on a physical
+machine is 21, in 2012, with the answer wired into the circuit
+<a class="cite" href="/factoring/sources/#src-44" title="Experimental realization of Shor&#x27;s quantum factoring algorithm using qubit recycling — 21 = 3 × 7">[44]</a><a class="cite" href="/factoring/sources/#src-47" title="Oversimplifying quantum factoring">[47]</a>. The largest wallet-style curve key broken on hardware is 15 bits
+(April 2026), and Bitcoin developers matched that result with random coin flips within a day
+<a class="cite" href="/factoring/sources/#src-95" title="The Q-Day Prize awarded for a 15-bit elliptic curve key recovered on IBM Heron processors">[95]</a><a class="cite" href="/factoring/sources/#src-96" title="IBM quantum hardware cracks 15-bit ECC key, but Bitcoin devs say random bits match the result">[96]</a>. A wallet key is 256 bits.</p>
+<p><b>The bill keeps falling, on paper.</b> Qubits said to be needed for a 2048-bit RSA key: a billion in
+2012, twenty million in 2019, under a million in 2025, under a hundred thousand in February 2026 on a code
+nobody has built at scale <a class="cite" href="/factoring/sources/#src-50" title="Surface codes: towards practical large-scale quantum computation">[50]</a><a class="cite" href="/factoring/sources/#src-51" title="How to factor 2048 bit RSA integers in 8 hours using 20 million noisy qubits">[51]</a><a class="cite" href="/factoring/sources/#src-58" title="How to factor 2048 bit RSA integers with less than a million noisy qubits">[58]</a><a class="cite" href="/factoring/sources/#src-88" title="The Pinnacle architecture — RSA-2048 with fewer than 100,000 physical qubits on qLDPC codes">[88]</a>. For a wallet
+key: under half a million, in minutes, on a fast superconducting machine — Google, March 2026
+<a class="cite" href="/factoring/sources/#src-91" title="Resource estimates for breaking 256-bit elliptic curve keys — under 1,450 logical qubits, fewer than 500,000 physical, minutes of runtime">[91]</a>.</p>
+<p><b>The machines are far behind the paper.</b> The biggest have a hundred to a thousand physical qubits,
+and the best error-corrected count is 48 logical qubits <a class="cite" href="/factoring/sources/#src-86" title="Commercial launch of Helios — 98 trapped-ion qubits, 48 error-corrected logical qubits">[86]</a><a class="cite" href="/factoring/sources/#src-62" title="Quantum error correction below the surface code threshold — the Willow chip">[62]</a>. The papers
+want more than a thousand logical qubits running for hours.</p>
+<p><b>Some coins are more exposed than others.</b> About 30% of all bitcoin sits
+in outputs whose public key is already visible on the chain — Satoshi-era coins, Taproot, and any address
+that was used twice <a class="cite" href="/factoring/sources/#src-106" title="6.04 million BTC with the public key already visible on-chain">[106]</a><a class="cite" href="/factoring/sources/#src-104" title="Bitcoin and quantum computing: current status and future directions">[104]</a>. A hash-only address that has never spent
+shows its key only for the ten minutes or so while its transaction waits to be confirmed.</p>
+<p><b>The timelines people put their names to:</b> experts surveyed in 2025 put a 28–49% chance on a
+one-day RSA-2048 break within ten years; NIST retires RSA-2048 and 256-bit curves after 2030 and bans them
+after 2035; Google will finish its own move by 2029 <a class="cite" href="/factoring/sources/#src-119" title="Quantum threat timeline report 2025 — the expert survey">[119]</a><a class="cite" href="/factoring/sources/#src-64" title="Transition to post-quantum cryptography standards — NIST IR 8547 (initial public draft): RSA and ECC deprecated after 2030, disallowed after 2035">[64]</a><a class="cite" href="/factoring/sources/#src-90" title="Google&#x27;s post-quantum migration timeline — done by 2029">[90]</a>. Bitcoin
+has proposals and no roadmap <a class="cite" href="/factoring/sources/#src-121" title="Google says post-quantum migration needs to happen by 2029 — and Bitcoin has no roadmap">[121]</a>.</p>
+<p><a href="/factoring/wallet/">The whole wallet page</a> — which outputs are exposed, what the proposals say,
+and a lock small enough to see.</p>
+</div>
+
+<h2>The short version</h2>
+<div class="prose">
+<p>Take two boards and glue them face to face. Anyone can do it, and you cannot tell afterwards where the
+seam is. Now hand the block to a stranger and ask them to split it back into the two boards. If the block is
+small they can find the seam by tapping along it. If the block is big enough, tapping takes longer than
+they have.</p>
+<p>A <strong>prime</strong> is a whole number that nothing divides but 1 and itself. Glue two of them
+together by multiplying and you get a <strong>semiprime</strong>. Every RSA key is one: a number of 617
+digits that is exactly two primes of about 309 digits each. The public key is the block. The private key is
+the two boards. The bet the whole web makes is that nobody can find the seam.</p>
+<p>Tapping along the block is <strong>trial division</strong>: try 2, try 3, try 5, and so on up to the
+square root. For a 20-digit number that is ten billion taps. For a 617-digit number it is a 1 with 308
+zeros after it. The methods on this site are the clever ways of tapping, from a Greek librarian's sieve to a
+1994 idea that needs a machine that does not exist yet. They shorten the job, a lot. None of them, on any
+computer built so far, gets through a 2048-bit block.</p>
+<p>A wallet key is not a semiprime. It is a hop count on a curve — start at a fixed point, hop k times,
+show everyone where you landed, keep k. Finding k from the landing spot is the <strong>discrete
+logarithm</strong>, and it is hard in the same way and for the same reason, and the same 1994 idea breaks
+both. That is why a site about factoring is the site for the wallet question.</p>
+</div>
+
+<h2>Where to go</h2>
+<div class="shots">
+<a class="shot" href="/factoring/split/"><span class="bg" style="background-image:url(/factoring/img/band-wave.jpg)"></span><span class="scrim"></span><span class="sp"></span><span class="tx"><em>Make one, break one</em><b>Split</b><span>Two primes, one product, and a counter that shows the wall arriving. Then a 2048-bit key, made in your browser in a second.</span></span></a>
+<a class="shot" href="/factoring/history/"><span class="bg" style="background-image:url(/factoring/img/band-sieve.jpg)"></span><span class="scrim"></span><span class="sp"></span><span class="tx"><em>240 BC to last week</em><b>History</b><span>43 events: Eratosthenes, Fermat, Gauss, Riemann, the Lehmers, Pollard, RSA, Shor, and two records from this month.</span></span></a>
+<a class="shot" href="/factoring/methods/"><span class="bg" style="background-image:url(/factoring/img/band-sieve.jpg)"></span><span class="scrim"></span><span class="sp"></span><span class="tx"><em>Sieves</em><b>Methods</b><span>Four old methods racing, and the one trick since 1926 that every record rests on: two squares that agree.</span></span></a>
+<a class="shot" href="/factoring/quantum/"><span class="bg" style="background-image:url(/factoring/img/band-wave.jpg)"></span><span class="scrim"></span><span class="sp"></span><span class="tx"><em>Shor, and the bill</em><b>Quantum</b><span>Period-finding you can watch, every hardware claim beside what it did, and the gap chart: qubits asked for against qubits built.</span></span></a>
+<a class="shot" href="/factoring/riemann/"><span class="bg" style="background-image:url(/factoring/img/band-zeros.jpg)"></span><span class="scrim"></span><span class="sp"></span><span class="tx"><em>A hundred zeros, computed</em><b>Riemann</b><span>Where the primes are, the Hypothesis in one line, the zeros drawn, and what proving it would and would not do to a key.</span></span></a>
+<a class="shot" href="/factoring/wallet/"><span class="bg" style="background-image:url(/factoring/img/band-curve.jpg)"></span><span class="scrim"></span><span class="sp"></span><span class="tx"><em>The curve, the window, the proposals</em><b>Wallet</b><span>Which outputs show their key, how many coins sit in them, what a ten-minute attack needs, and every draft on the table.</span></span></a>
+</div>
+<div class="grid">
+<a class="card" href="/factoring/records/"><h3>Records</h3><p class="mute small">Every general-purpose record since 1991</p><p>The table, the chart, and a ruler for how far 2048 bits is from the record.</p></a>
+<a class="card" href="/factoring/now/"><h3>Now</h3><p class="mute small">The ledger to 2026-09-23</p><p>40 dated rows since 2024, each with what it does not mean; and a weekly feed nobody has read.</p></a>
+<a class="card" href="/factoring/words/"><h3>Words</h3><p class="mute small">30 terms</p><p>Prime, semiprime, discrete logarithm, qubit, soft fork — each in a sentence or two.</p></a>
+<a class="card" href="/factoring/sources/"><h3>Sources</h3><p class="mute small">124 numbered</p><p>Every citation on the site, with a link.</p></a>
+</div>
+
+<h2>How to read this site</h2>
+<div class="prose">
+<p>Every number on these pages comes from one of two places. The computed ones — the count of primes, the
+zeta zeros, the cost curve, the worked examples — are produced by <code>tools/compute.py</code> at build
+time, and <a href="/factoring/riemann/#checks">25 checks</a> run before the site will
+publish (0 failing as of 2026-09-23). The historical and recent ones live in data
+files with a source on every row, and the source list is <a href="/factoring/sources/">one page</a>.</p>
+<p>Where a claim reached the press, the <a href="/factoring/quantum/#claims">claims table</a> gives what was
+said and what was done, side by side. Where a fact rests on a single secondary source it is marked
+<span class="tag c2">unconfirmed</span>.</p>
+<p>The pictures are computed too: the spiral, the sieve, the strip, the curve. No photograph, no stock.</p>
+</div></main>
+<footer class="bot"><div class="in">
+<p><b>Big Numbers, Split</b> — Factoring, from Eratosthenes to Shor: how big numbers get split, who has split the biggest, what the Riemann Hypothesis has to do with it, and what all of it means for a bitcoin wallet.</p>
+<p>Text and figures Nan · hongdam.net · CC BY 4.0. Code MIT. Built 2026-09-23; the ledger runs to 2026-09-23.
+Every number on these pages is computed by <code>tools/compute.py</code> or carried in a data file with its
+source, in <a href="https://github.com/NaNoBotCo/factoring">the repository</a>. Nothing here is advice about money.</p>
+<div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/goin-fast/" title="a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs">Goin&#x27; Fast</a> · <a href="https://nanobotco.github.io/three-body/" title="the mathematics of the three-body problem in plain words, with the orbits found rather than copied">The Three-Body Problem</a> · <a href="https://nanobotco.github.io/exceptional-magic/" title="the octonions, triality, the magic square and E8, computed and drawn — a plain-spoken reading of one paper">Exceptional Magic</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div>
+<div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a> · Source: <a href="https://github.com/NaNoBotCo" rel="noopener">GitHub</a></div>
+<div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div>
+</div></footer>
+<script src="/factoring/js/nav.js" defer></script>
+</body></html>

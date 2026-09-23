@@ -1,0 +1,55 @@
+{
+ "_about": "What the wallet page prints: output types and their exposure, the counts of exposed coins by source, the attack models, the proposals, the timelines. Researched by a web agent on 2026-09-23 and edited by hand. Mechanics and public record only; nothing here is advice. CC BY 4.0, Nan · hongdam.net.",
+ "as_of": "2026-09-23",
+ "outputs": [
+  {"type": "P2PK", "since": "2009", "prefix": "no address — the key itself", "exposed": "always", "note": "The original 2009–2010 output: the public key sits in the open on the chain. Satoshi-era mining rewards are here, about 1.7 million BTC across some 20,000 to 45,000 outputs, untouched since.", "src": ["btcdev", "chaincode2025"]},
+  {"type": "P2PKH", "since": "2009", "prefix": "1…", "exposed": "only when spent, or if the address is reused", "note": "The output holds a hash of the key. The key is shown in the spending transaction — so a used address that receives coins again is exposed.", "src": ["btcdev"]},
+  {"type": "P2SH", "since": "2012", "prefix": "3…", "exposed": "only when spent, or if reused", "note": "A hash of a script; the script and its keys appear at spend time.", "src": ["chaincode2025"]},
+  {"type": "P2WPKH", "since": "2017", "prefix": "bc1q… (42 characters)", "exposed": "only when spent, or if reused", "note": "SegWit's version of P2PKH; same hash-until-spend property.", "src": ["btcdev"]},
+  {"type": "P2WSH", "since": "2017", "prefix": "bc1q… (62 characters)", "exposed": "only when spent, or if reused", "note": "SegWit's version of P2SH.", "src": ["chaincode2025"]},
+  {"type": "P2TR (Taproot)", "since": "2021", "prefix": "bc1p…", "exposed": "always", "note": "The output is itself a (tweaked) public key, by design, so the key is on the chain from the moment coins arrive. About a third of all outputs by count in 2025, under one percent by value.", "src": ["bip341", "chaincode2025"]},
+  {"type": "P2MR (proposed, BIP 360)", "since": "draft", "prefix": "bc1z…", "exposed": "no key path", "note": "Taproot's script tree with the key-path spend removed, so a hash-based or post-quantum script can sit in a leaf. A draft with no activation path.", "src": ["bip360"]}
+ ],
+ "exposure": [
+  {"who": "Deloitte", "date": "2020-12", "btc": 4000000, "share": 0.25, "method": "about 2 million BTC in P2PK plus 2.5 million in reused P2PKH", "src": ["deloitte"]},
+  {"who": "Chaincode Labs", "date": "2025-05", "btc": 6260000, "share": 0.30, "method": "P2PK, raw multisig and Taproot, plus reused addresses; about 1.72 million BTC in P2PK alone", "src": ["chaincode2025"]},
+  {"who": "CoinShares", "date": "2026-02", "btc": 1600000, "share": 0.08, "method": "P2PK only, 32,000+ outputs averaging about 50 BTC", "src": ["coinshares2026"]},
+  {"who": "Glassnode", "date": "2026-05", "btc": 6040000, "share": 0.302, "method": "1.92 million structural (P2PK, Taproot) plus 4.12 million by address reuse; 1.66 million of the reuse is exchanges", "src": ["glassnode2026"]},
+  {"who": "Coinbase advisory board", "date": "2026-06", "btc": 7000000, "share": 0.33, "method": "about 1.7 million in some 20,000 P2PK addresses plus about 5 million by reuse", "src": ["coinbase2026"]}
+ ],
+ "attacks": [
+  {"name": "Long-range", "what": "The public key is already on the chain. The attacker can take a month. Every P2PK output, every Taproot output, and every reused address of any type is in this class.", "src": ["chaincode2025", "bip360"]},
+  {"name": "Short-range (on-spend)", "what": "The key appears only in the spending transaction, so the attacker must compute the private key and broadcast a competing spend before the honest one is confirmed — about ten minutes, sometimes an hour. Every output type is in this class at the moment of spending.", "src": ["chaincode2025", "babbush2026"]},
+  {"name": "Harvest now, decrypt later", "what": "Does not apply to a wallet. There is no ciphertext to store; a key is either on the chain or it is not.", "src": ["chaincode2025"]}
+ ],
+ "window": [
+  {"who": "Webber and others", "date": "2022", "ten_minutes": "1.9 billion physical qubits", "one_hour": "317 million", "one_day": "13 million", "src": ["webber2022"]},
+  {"who": "Litinski", "date": "2023", "ten_minutes": "about 6.9 million physical qubits (photonic model)", "one_hour": null, "one_day": null, "src": ["litinski2023"]},
+  {"who": "Babbush, Gidney, Boneh and others", "date": "2026-03", "ten_minutes": "fewer than 500,000 superconducting qubits, 9–23 minutes", "one_hour": null, "one_day": null, "src": ["babbush2026"]},
+  {"who": "Caltech and Oratomic", "date": "2026-03", "ten_minutes": "not possible on atoms — about 10 days per key on 10,000–26,000 atoms", "one_hour": null, "one_day": null, "src": ["caltech2026"]},
+  {"who": "IonQ", "date": "2026-09", "ten_minutes": "not possible on ions — 25.7 days per key on 19,397 qubits", "one_hour": null, "one_day": null, "src": ["haner2026"]}
+ ],
+ "proposals": [
+  {"name": "BIP 360 — P2MR", "who": "Hunter Beast, Ethan Heilman, Isabel Foxen Duke", "date": "2024-12 onward", "what": "A new output type, SegWit version 2, addresses bc1z: Taproot's script tree without the key path. Renamed twice (P2QRH, P2TSH, P2MR). Status: draft.", "src": ["bip360"]},
+  {"name": "BIP 361 — legacy signature sunset", "who": "Jameson Lopp and others", "date": "2025-07 list post; 2026-04 merged as draft", "what": "Phase A, about three years after activation: legacy scripts may only send to post-quantum scripts. Phase B, two years later: old signatures no longer verify, with 'rescue' paths for coins provably from a seed phrase. Status: draft.", "src": ["bip361", "lopp2025list"]},
+  {"name": "Hourglass", "who": "Hunter Beast", "date": "2025-04", "what": "Rate-limit spends from P2PK outputs to one per block, so a thief could not dump 1.7 million BTC at once.", "src": ["hourglass2025"]},
+  {"name": "Commit, delay, reveal", "who": "Tim Ruffing; Tadge Dryja's variant", "date": "2025-05", "what": "Publish a hash of your transaction first, wait, then reveal it, so an attacker who learns your key at reveal time cannot front-run a transaction committed earlier. Would let exposed keys spend safely after the curve breaks.", "src": ["dryja2025"]},
+  {"name": "Quantum canary", "who": "BitMEX Research", "date": "2026-04", "what": "Coins in an address only a quantum machine could open; a spend from it triggers restrictions automatically instead of on a fixed date.", "src": ["canary2026"]},
+  {"name": "Provable address-control timestamps", "who": "Dan Robinson, Paradigm", "date": "2026-05", "what": "Privately timestamp a proof that you control an address now, without moving coins; redeem frozen coins later with a STARK proof.", "src": ["pacts2026"]},
+  {"name": "SHRINCS", "who": "Jonas Nick and Mikhail Kudinov, Blockstream", "date": "2026-08", "what": "A SHA-256-based signature of about 324 bytes, so post-quantum signatures do not cut throughput to a third of a transaction a second.", "src": ["shrincs2026"]},
+  {"name": "Quantum-safe transactions without a fork", "who": "Avihu Levy, StarkWare", "date": "2026-04", "what": "Hash-based proofs under today's rules, at $75–$200 of GPU time per transaction; a last resort, its author says.", "src": ["starkware2026"]},
+  {"name": "P2Q", "who": "Casey Rodarmor", "date": "draft", "what": "A SegWit version 3 output identical to Taproot, so its key path can be switched off later without touching existing Taproot coins.", "src": ["p2q"]}
+ ],
+ "elsewhere": [
+  {"chain": "Ethereum", "what": "A roadmap: hash-based validator signatures, signature agility for accounts (EIP-8141, expected in the Hegotá fork), core post-quantum infrastructure around 2029.", "src": ["ethroadmap"]},
+  {"chain": "Algorand", "what": "First post-quantum transaction on mainnet in November 2025, Falcon-1024 signatures in a stateless contract; consensus itself not yet post-quantum.", "src": ["algorand2025"]}
+ ],
+ "timelines": [
+  {"who": "Global Risk Institute expert survey", "date": "2026-03", "what": "28–49% chance of a 24-hour RSA-2048 break within ten years; 92% of experts give even odds within twenty.", "src": ["gri2025"]},
+  {"who": "NIST", "date": "2024-11", "what": "RSA-2048 and 256-bit curves deprecated after 2030, disallowed after 2035 (draft).", "src": ["nist8547"]},
+  {"who": "Google", "date": "2026-03", "what": "Its own migration done by 2029.", "src": ["google2029"]},
+  {"who": "Coinbase advisory board", "date": "2026-04", "what": "'Clearly on the horizon', a few years to a decade or more; blockchains safe today; start preparing now.", "src": ["coinbase2026b"]},
+  {"who": "CoinShares", "date": "2026-02", "what": "At least a decade away.", "src": ["coinshares2026"]}
+ ],
+ "no_roadmap": {"what": "Bitcoin has no agreed roadmap, funding or timeline for a post-quantum migration; every proposal above is a draft.", "src": ["coindesk2026roadmap"]}
+}
