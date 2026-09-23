@@ -122,7 +122,7 @@ def page(title, body, path, desc="", cur="", scripts=(), jsonld=None):
     ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
     canon = SITE_URL + "/" + path if path else SITE_URL + "/"
     head_title = f"{title} — {NAME}" if path else f"{NAME} — factoring, from Eratosthenes to Shor"
-    out = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+    out = f"""<!doctype html><html lang="en" translate="no" class="notranslate"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{E(head_title)}</title>
 <meta name="description" content="{E(desc or TAG)}">
@@ -133,7 +133,11 @@ def page(title, body, path, desc="", cur="", scripts=(), jsonld=None):
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{BASE}icon.svg" type="image/svg+xml">
-<style>{CSS}</style>{ld}</head>
+<style>{CSS}</style>{ld}
+<meta name="google" content="notranslate">
+<meta name="robots" content="notranslate">
+<script>if(/[.]translate[.]goog$/.test(location.hostname))location.replace("https://"+location.hostname.slice(0,-15).replace(/--/g,"~").replace(/-/g,".").replace(/~/g,"-")+location.pathname+location.search.replace(/([?&])_x_tr_[^&]*/g,"$1").replace(/[?&]+$/,"").replace(/[?]&+/,"?")+location.hash)</script>
+</head>
 <body data-base="{BASE}" data-asof="{AS_OF}">
 <a class="sr" href="#main">Skip to the page</a>
 <header class="top"><div class="in">
