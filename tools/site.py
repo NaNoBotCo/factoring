@@ -16,6 +16,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import fleet                                   # noqa: E402
+import ogcards  # noqa: E402
 from css import CSS                            # noqa: E402
 from sources import SOURCES, BY_ID             # noqa: E402
 
@@ -161,6 +162,8 @@ source, in <a href="https://github.com/NaNoBotCo/{SELF}">the repository</a>. Not
 
 def write(p: Path, text: str):
     p.parent.mkdir(parents=True, exist_ok=True)
+    if p.suffix == ".html":
+        text = ogcards.apply(text, p.relative_to(SITE).as_posix(), SITE_URL)
     p.write_text(text, encoding="utf-8")
 
 
@@ -1008,6 +1011,7 @@ def main():
     if SITE.exists():
         shutil.rmtree(SITE)
     SITE.mkdir(parents=True)
+    ogcards.copy(ROOT, SITE)
     shutil.copytree(IMG, SITE / "img")
     shutil.copytree(BUILD / "data", SITE / "data")
     shutil.copytree(ROOT / "js", SITE / "js")
