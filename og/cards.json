@@ -1,4 +1,8 @@
 {
+ "./": {
+  "alt": "Card: Big Numbers, Split, a field of amber and teal dots behind the title",
+  "image": "img/card.jpg"
+ },
  "history/": {
   "alt": "Card: History, Eight coloured stripes, one per small prime, each with ticks at that prime's multiples, and a last stripe of amber ticks where the primes survive.",
   "image": "og/history.jpg"
