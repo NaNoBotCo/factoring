@@ -1,0 +1,42 @@
+{
+ "history/": {
+  "alt": "Card: History, Eight coloured stripes, one per small prime, each with ticks at that prime's multiples, and a last stripe of amber ticks where the primes survive.",
+  "image": "og/history.jpg"
+ },
+ "methods/": {
+  "alt": "Card: Methods, Big Numbers, Split",
+  "image": "og/methods.jpg"
+ },
+ "now/": {
+  "alt": "Card: Now, Big Numbers, Split",
+  "image": "og/now.jpg"
+ },
+ "quantum/": {
+  "alt": "Card: Quantum, Big Numbers, Split",
+  "image": "og/quantum.jpg"
+ },
+ "records/": {
+  "alt": "Card: Records, Big Numbers, Split",
+  "image": "og/records.jpg"
+ },
+ "riemann/": {
+  "alt": "Card: Riemann, A teal field with dark wells along a rose horizontal line: the size of the zeta function across the critical strip, the zeros as the dark spots.",
+  "image": "og/riemann.jpg"
+ },
+ "sources/": {
+  "alt": "Card: Sources, Big Numbers, Split",
+  "image": "og/sources.jpg"
+ },
+ "split/": {
+  "alt": "Card: Split, A field of teal bars of varying height with a tall amber bar every so often at a steady spacing: a^x mod N repeating.",
+  "image": "og/split.jpg"
+ },
+ "wallet/": {
+  "alt": "Card: Wallet, A glowing amber loop and tail, an elliptic curve, with a teal line cutting it at three points and a rose vertical dropping from the third.",
+  "image": "og/wallet.jpg"
+ },
+ "words/": {
+  "alt": "Card: Words, Big Numbers, Split",
+  "image": "og/words.jpg"
+ }
+}
