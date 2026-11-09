@@ -1,6 +1,84 @@
 {
- "fetched": "2026-11-02T16:33:51+00:00",
+ "fetched": "2026-11-09T16:52:05+00:00",
  "arxiv": [
+  {
+   "title": "Empirical Assessment of Post-Quantum Cryptography Adoption Status in TLS",
+   "url": "http://arxiv.org/abs/2611.09707v1",
+   "date": "2026-11-06",
+   "authors": "Md Ariful Haque, Sander Vinberg, Ben Edwards, and others"
+  },
+  {
+   "title": "Empirical Study of Post-Quantum Cryptography Adoption Status in SSH Infrastructure",
+   "url": "http://arxiv.org/abs/2611.09703v1",
+   "date": "2026-11-06",
+   "authors": "Md Ariful Haque, Sander Vinberg, Ben Edwards, and others"
+  },
+  {
+   "title": "Shared Lookups and Lazy Residues: Fewer Toffoli Gates for Factoring RSA-2048",
+   "url": "http://arxiv.org/abs/2611.08907v1",
+   "date": "2026-11-06",
+   "authors": "Monit Sharma, Hoong Chuin Lau"
+  },
+  {
+   "title": "SoK: Post-Quantum Cryptography (PQC) Integration in Software Development: Approaches, Gaps, and Future Directions",
+   "url": "http://arxiv.org/abs/2611.08442v1",
+   "date": "2026-11-05",
+   "authors": "Shakya R. D. N., Craig Costello, Nalin A. G. Arachchilage"
+  },
+  {
+   "title": "Zirah: A Post-Quantum True Random Number Generator Hardware Signer With an Avalanche Noise",
+   "url": "http://arxiv.org/abs/2611.08200v1",
+   "date": "2026-11-05",
+   "authors": "Muhammad Shaheer Bin Junaid"
+  },
+  {
+   "title": "AMORT-V1: Checkpointed Post-Quantum Attestation for Industrial Controllers",
+   "url": "http://arxiv.org/abs/2611.07476v1",
+   "date": "2026-11-05",
+   "authors": "Rishabh Das, Gerald Agendia, Jibriel Adjei, and others"
+  },
+  {
+   "title": "Improved deterministic integer factorization by quadratic-image sieving",
+   "url": "http://arxiv.org/abs/2611.06580v1",
+   "date": "2026-11-04",
+   "authors": "Pantelimon Stănică"
+  },
+  {
+   "title": "A Post-Quantum Interactive Hashing Theorem",
+   "url": "http://arxiv.org/abs/2611.06124v1",
+   "date": "2026-11-04",
+   "authors": "Céline Chevalier, Laurent Holin, Quoc-Huy Vu"
+  },
+  {
+   "title": "Quantum resource trade-offs of mixed sparse single and double factorization for qubitization-based phase estimation",
+   "url": "http://arxiv.org/abs/2611.05603v1",
+   "date": "2026-11-03",
+   "authors": "Troy Losey, Jacob Z. Williams, Avanish Mishra, and others"
+  },
+  {
+   "title": "Factorized approximate inverse preconditioners in the tensor train format",
+   "url": "http://arxiv.org/abs/2611.03859v1",
+   "date": "2026-11-02",
+   "authors": "Pau Torrente Badia, Daniel Pérez García, Artur Garcia-Saez, and others"
+  },
+  {
+   "title": "Side-Channel Attack Prevention for Post Quantum Cryptography Algorithms: A 3D-Shield Approach",
+   "url": "http://arxiv.org/abs/2611.01144v1",
+   "date": "2026-10-31",
+   "authors": "Carl Benda, Eren Kurshan, Aydin Aysu, and others"
+  },
+  {
+   "title": "Normal Factor Graph Representations of Stabilizer Quantum Codes with Applications",
+   "url": "http://arxiv.org/abs/2611.00985v1",
+   "date": "2026-10-31",
+   "authors": "July X. Li, Pascal O. Vontobel"
+  },
+  {
+   "title": "Cyclotomic polynomials with trinomial irreducible factors over finite fields",
+   "url": "http://arxiv.org/abs/2611.00647v2",
+   "date": "2026-10-31",
+   "authors": "Li Zhu, Hongfeng Wu"
+  },
   {
    "title": "Efficient cross-domain multi-factor authentication",
    "url": "http://arxiv.org/abs/2610.41342v1",
@@ -102,110 +180,122 @@
    "url": "http://arxiv.org/abs/2610.33452v1",
    "date": "2026-10-24",
    "authors": "Swastik Kopparty, Rishabh Kothary, Ashutosh Shankar"
-  },
-  {
-   "title": "Post-Quantum Perfect Zero-Knowledge Arguments for NP From Any One-Way Permutation",
-   "url": "http://arxiv.org/abs/2610.33185v1",
-   "date": "2026-10-23",
-   "authors": "Frédéric Dupuis, Rémi Ligez, Khaireddine Medhioub, and others"
-  },
-  {
-   "title": "Quantum Cadence: Post-Quantum Consensus with Multiple Concurrent Proposers",
-   "url": "http://arxiv.org/abs/2610.32803v1",
-   "date": "2026-10-23",
-   "authors": "Mohammad Mussadiq Jalalzai, Tobias Klenze, Jovan Komatovic"
-  },
-  {
-   "title": "Langlands-Shahidi gamma factors and local transfer in families",
-   "url": "http://arxiv.org/abs/2610.31615v1",
-   "date": "2026-10-22",
-   "authors": "Johannes Girsch, Robert Kurinczuk"
-  },
-  {
-   "title": "Ideal class groups of certain real quadratic number fields and factorizations of values of certain quadratic polynomials",
-   "url": "http://arxiv.org/abs/2610.29347v1",
-   "date": "2026-10-21",
-   "authors": "Stéphane R. Louboutin"
-  },
-  {
-   "title": "Post-quantum commutative group actions from oriented superspecial abelian varieties",
-   "url": "http://arxiv.org/abs/2610.27922v1",
-   "date": "2026-10-20",
-   "authors": "Wouter Castryck, Bogdan Adrian Dina, Péter Kutas, and others"
-  },
-  {
-   "title": "Primes in short intervals assuming the Riemann hypothesis",
-   "url": "http://arxiv.org/abs/2610.27830v1",
-   "date": "2026-10-20",
-   "authors": "Matt Visser"
-  },
-  {
-   "title": "Quantum-Seeded Distributed Post-Quantum Group Signatures for 5G V2X Communications",
-   "url": "http://arxiv.org/abs/2610.27316v1",
-   "date": "2026-10-19",
-   "authors": "P. Blanco-Casal, P. Rejo-Iglesias, D. Cajaraville-Aboy, and others"
-  },
-  {
-   "title": "Energy Consumption of Post-Quantum Cryptography on Constrained and General-Purpose Architectures",
-   "url": "http://arxiv.org/abs/2610.27111v2",
-   "date": "2026-10-19",
-   "authors": "Olivier Gillot, William J. Buchanan, Madjid G. Tehrani"
-  },
-  {
-   "title": "Zero-free half-planes for Hecke $L$-functions over number fields and Quasi-Riemann Hypothesis",
-   "url": "http://arxiv.org/abs/2610.26835v2",
-   "date": "2026-10-19",
-   "authors": "Baiying Liu"
-  },
-  {
-   "title": "Reusable QUBO-Derived Block-Schur Inverse Factors for Fixed-Operator Finite-Difference PDE Solvers",
-   "url": "http://arxiv.org/abs/2610.24158v1",
-   "date": "2026-10-16",
-   "authors": "Arash Fath Lipaei, Özgür E. Müstecaplıoğlu, Özlem Salehi, and others"
-  },
-  {
-   "title": "Translation-Invariant Pure States with Exotic Half-Chain Factors",
-   "url": "http://arxiv.org/abs/2610.24154v1",
-   "date": "2026-10-16",
-   "authors": "Ruizhi Liu, Jinmin Yi"
-  },
-  {
-   "title": "Note on the largest prime factors of consecutive integers",
-   "url": "http://arxiv.org/abs/2610.23280v1",
-   "date": "2026-10-16",
-   "authors": "Zhiyuan Yang"
-  },
-  {
-   "title": "Ekedahl-Oort strata with a superspecial factor in unitary Shimura varieties",
-   "url": "http://arxiv.org/abs/2610.22036v1",
-   "date": "2026-10-15",
-   "authors": "Emerald Andrews, Deewang Bhamidipati, Heidi Goodson, and others"
   }
  ],
  "news": [
+  {
+   "title": "Niagara Networks Launches 90 Gbps TLS Decryption With Post-quantum Crypto - Quantum Zeitgeist",
+   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPLWw1VmdtNnkzWFh5bkdBNlo5ODlUVGNCS0xwMFdOR1FTZWVxd2YzWkR2TkJlSVlaV1lIc3UzRmpfcnRLeTZ4SG5XU05GSE91RFNCWWhoeXI1OFhUX3llMG9OUTdqT1NNREpXemlxSTh1MW5zOElTalRMMmp2eTE0Xw?oc=5",
+   "date": "2026-11-09",
+   "source": "Quantum Zeitgeist"
+  },
+  {
+   "title": "Bitcoin Cash price in focus as post-quantum proposal nears review date - ad-hoc-news.de",
+   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNbE10bi1XRmw3WW5heFpSOXF2cXJ4WGJQUzZkNFpld0F3OFNfSm1IRnhvZEEteS01QjViR0V4SldiWVBmbVBFWE9UeGh6MU9pbGtIdVRzeGhEdGZrZW9OWHlQcjd0NDJteHNNX3NIZlprbi1FTDFVZTdUaEtEaFRycVFCTkFkbVZCR3ZKOTFKUkp4Y2dLSnVNeTRHQUFJSDN1ZWJETUJTRE5CWGZ0ZzFKWklXbm9JWXJxOUR1RjFKdGdxLW4ycF9DVU9RNWI?oc=5",
+   "date": "2026-11-09",
+   "source": "ad-hoc-news.de"
+  },
+  {
+   "title": "Our Estimate for Factoring RSA-2048 with Cat Qubits: Pushing the Frontier Between Size and Speed - Alice & Bob",
+   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNUkt5M0h6X082X1RlWDByWnVQOVVEWTZDaDcyaTJKSkZoS3VNNGt5WUR2VG10NFRfZVVVQXhTeFdoNFQ0Q2R4bEZSZmc2QnloXzB2MF9WVTlDYm5KVGdUMzB0WkstUUdnN1I5YUpseExESFRfYVd3MmJLbE11WURWOEFwcnYzX1pVLVRBUFVNQm5JRTYxQ1RGeXQwUnFFWUU1WFQ2TVotbXoyS1RjNEVSWGVPQld0R2RwbDVaSXlCOUw?oc=5",
+   "date": "2026-11-08",
+   "source": "Alice & Bob"
+  },
+  {
+   "title": "DeepMind reveals two flaws in 1024-bit RSA, 2048-bit keys stay safe - Pasquale Pillitteri",
+   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQaExUeGE4YWNfbE5qNEdSeExqaEp2R1lOR1NNckFxS1hERm5sYjc0b0N2TklfYmQ2a0g5WGlmX1B4azQ0NjlBVmFoNEw1bFllUVNEUEMyT1hGNnZKRWljQ05LeU5QVnJiZ1BoamRvMFM2SkVkcDlzYUtPRmxiZkkxMS1rbl9vQm5xeHNj?oc=5",
+   "date": "2026-11-08",
+   "source": "Pasquale Pillitteri"
+  },
+  {
+   "title": "Existing Bitcoin hardware wallets can generate quantum-resistant signatures, aiding future security. - Pluang",
+   "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOYmxFZC1sZ3R2aFVyTlZRUkZKWXpUTFdVWURrSll3T1ZmR2tlRmtpT0stSXFEczhLYUx4MlMtNWZORUpKREl6MzNpMFM4NXR6dG9zQWtXRXUzSmQ1OXFHMlZkbk1jdV9tUU50TVF4alZPQllfYkwzZUpONmp6dGxMeUZTWUpsZW80cG96TzlRWjliVWxRZk5fcHp3WXM?oc=5",
+   "date": "2026-11-08",
+   "source": "Pluang"
+  },
+  {
+   "title": "Can Bitcoin Survive Quantum Computers? Researchers Just Tested Today's Hardware Wallets - Coinpaper",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQcWFwY0FoNXNmUDQ1Z0VTWGMzcVF6eUtGemZWSER2aHBHSWozOTFhbUIzMEtuR0VIYVZ6c3pRd2NRcl8yTVcxSlZaWHRBdGQ2ZU10bkR4NUIwclNQUF9UZmxkZjYwdkx6Z3l0UXladzA3Z0hOYVdPX2I2SWdBZ3BIM0U4eV9VbE0yNEpxNU1XS0F5dERXVkZuY0dMMXRLVGtOSTN0cGQ2ZURCX0g0RmxDT0pkdjU?oc=5",
+   "date": "2026-11-08",
+   "source": "Coinpaper"
+  },
+  {
+   "title": "Introducing post-quantum security to Bitcoin leads to major downsides, experts note - Traders Union",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQM0RnZ25mc2dMc3JuNXFEQ0xfdE0yU2RvWjVhOFV5dmpPX2hzYnZrV1ZJbVhzMHA5OS1CNlBEVXBxbU1ra2VBX2J2N3dOcXNUVlllbEVITGNQR01wbU8xYWxkaHNjV0J3RGE4eDE3WFFxb3lXWldOT1owV1dCWV9naGZ2VmNQNmdsbjIwNDBydWM?oc=5",
+   "date": "2026-11-08",
+   "source": "Traders Union"
+  },
+  {
+   "title": "Bitcoin Cash price in focus as quantum-signature proposal enters review - ad-hoc-news.de",
+   "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNTmdYWU1lSlM1MFlJZm9qMTJSWDdsZDVzbHFBajQ2Sk1Gd0pwOTRKLTI0dFFUZ1pwQVdxN19GajhYT1I5bkwyLVFOdjVCLW83cmpuWlcxc0pia1FSOUctd3U3N254aUJZZmRDWmRmRms1YWl3bFpwdlRZMFhmUGdPZHhTbHVyMGZiQWpaMDc1WTg5WC1ySkV2bjMtV19SU210bUVOVEhGQ3RDOWQ3WHA5UmNCb20xR2RMejcxcWZ6aFlySDhZaWlPcWt6cGF4dw?oc=5",
+   "date": "2026-11-07",
+   "source": "ad-hoc-news.de"
+  },
+  {
+   "title": "Blockstream names Falcon-1024 its top quantum-resistant signature pick for Bitcoin - Crypto Briefing",
+   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQdDc2X2t0OXVSSTJWMzdmdjkxa1QxdjR2UWplY2lJcnZvZWZudnA0LTJpSnBHVjk0NGlmNXlMdnlOWl9ZNHpzMmRlTlk1Y25HMnpWcUxVcUtfY3FUM0VCaVJkRWZaN0xKZGFDWnlhVDNOM1BUZDdfQmFyOFpHbkNmX0FxdFc?oc=5",
+   "date": "2026-11-07",
+   "source": "Crypto Briefing"
+  },
+  {
+   "title": "Developer Proposes ‘Quantum Mines’ Mechanism to Protect Bitcoin - ForkLog",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQQ29mYWhYRWtMbl84d20tUzAwbi1LMzIzNWxNLXJYUTBZeWxPSmRKei1ZcXkwMzRlSEZ5eVprOVNVdEFPeFBONEJJc1ZIcnlvTlRkYmhDeWh6clZ2cW1scHJkT185VmpIVk43VjZLdzZpbWxvc2R2OEFJdGNfS1E3N19kYXFKMFFray1mbmpB?oc=5",
+   "date": "2026-11-06",
+   "source": "ForkLog"
+  },
+  {
+   "title": "A Strange Quantum Theorem Has Killed Einstein’s Reality",
+   "url": "https://www.quantamagazine.org/a-strange-quantum-theorem-has-killed-einsteins-reality-20261106/",
+   "date": "2026-11-06",
+   "source": "Quanta Magazine"
+  },
+  {
+   "title": "Researchers estimate RSA-2048 could be cracked in 3 days — ScienceAlert - UA.NEWS",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOb3dsTjRfUHVZajFFVmJQR2xkWUY1MzJraVNjUjBiNVFZYllkRlhNNTN5NU5yUnVBRVdJS05GSXdZZlVMMkNlTGVCUUI5UnprOEl2U2N6U2VkOXJIU3Zyb1hFa2x2bjYwWV9DQ25abUxQYUNmdlVIWGpuWDItaHRFTGNqaXM0R1ljWUdZSW94UTVnNFVhT1JEOHhRLXNCR3At?oc=5",
+   "date": "2026-11-05",
+   "source": "UA.NEWS"
+  },
+  {
+   "title": "Quantum Computer With 22,593 Cat Qubits Could Break RSA-2048 in 3.14 Days - Around Prague",
+   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNV2w4SXdKamkxNXhWRF8yS1RlR0dVNTJ1NVVtbmFoVkpLZzlWaTUzOGJ1djhaVHhYZk53cnQ5bGU2N3ZZTFdhcHpCVHFfQlBZMEVFaG91ZXhQbTFhSEpmdVNMd0gxbHc0dFVpaUVHWE42a09ZV3NDbk91VU9TR3VsT2hXcnFGRUpEa1ROWFVhY2VRZXBTMkZZNXJ4dU5sNFN5Q2JKOW9fa3V5NmhGWGg2NUJrbw?oc=5",
+   "date": "2026-11-05",
+   "source": "Around Prague"
+  },
+  {
+   "title": "Alice & Bob study: quantum computers could break RSA-2048 - NewsBytes",
+   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNaUlweVBPZTNmSWpvdjFpbDdEQXBxUjlEMnBVbzZjRlFyV0N5SF8tTWx3REl4Z0RUazBCLUEwNm9ZQkVpMXBmYXFPQmlXd1JVNExITmVWUlFKMlZEZ2JnOUFhY2RIcWczUW8wa215NzdXSllyNUhLQzBiaGpKRjFVYXIzYlpwOGlrOWpmUFZfMDh1em4wWXZxSXNqVnlKdDZxWm44?oc=5",
+   "date": "2026-11-05",
+   "source": "NewsBytes"
+  },
+  {
+   "title": "Compiling Shor’s Algorithm on Cat Qubits: 22 593 Qubits to Break RSA-2048 in 3.14 Days - Alice & Bob",
+   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNX09WMUpQdzVOeGEtWWI4b0VQazZncmNDWVRZUGZiYXhheTdhMDN5WTJkV0F3UV9oek14NGNqNnI0NlA2clYxanhPVUJ4a0NMMDg3dHZtTzhscTE5NUpBak4zRHZyeVRGN1JZSng3QkdIb2Mtcm83MUxNMjE1LVU0WmJrNC1xMXVlLUY2R1RtZ2ZkRHdBS0lpVGx0NEg4X0FNWmljSTVlMDVtWXVVWjBHVDJR?oc=5",
+   "date": "2026-11-04",
+   "source": "Alice & Bob"
+  },
+  {
+   "title": "Ethereum Post-Quantum Transition: Justin Drake Hopes for December 2028 - Altcoin Buzz",
+   "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQaFNfbzlQM29Ud2pQa3MwdHpETzB5VzRQejJfclRpVDVjVllManBnN2ctandSczhqY09jVHB2cHY1a2d0ZjlKdlJ4Q044NnhadjFpQV9za2dvTnhfN3JpTUx5MDA0STZzejRPMllyX3kwZzBKWE04RXFudTltaWFGZkVYZlY3eGd2eW1ZMzU0Y1dNZllkTnlPckVTVWg?oc=5",
+   "date": "2026-11-04",
+   "source": "Altcoin Buzz"
+  },
+  {
+   "title": "Ethereum targets 2028 for post-quantum transition, a year early - Crypto Briefing",
+   "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5BSHlQSHFsQnQ3Z1p5QXJ2WDNqOFdXWndKZXF2QzgxRF9jYXU4Q3ZLNHRfOGRmX1QyYVI2SHBGZVBCRHZKX2F5NEtiemxJaU9Sdk1xTERSckh1c1pENmNmY2pLUzAzNGJFVjRLZXp4VFR4V0k?oc=5",
+   "date": "2026-11-04",
+   "source": "Crypto Briefing"
+  },
+  {
+   "title": "Justin Drake Targets December 2028 for Ethereum Post-Quantum Shift - Crypto Economy",
+   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQd1YtSDNybnd3dFRqX3pfeFE4aGdiWDEwV1pydk1xczRJWnVMb2x3bzNvUDh2aUtodGZ4Z2tNVnhvUjBmSVN5cW5JMW5udERwSlFURFlHTjdHb0IxSHp3RUpaMC1FWVNoTUx6dnNpSFhGTzZJY0NWa3hzWjJ0QXJZbg?oc=5",
+   "date": "2026-11-04",
+   "source": "Crypto Economy"
+  },
   {
    "title": "Alice & Bob Estimates RSA-2048 Could Be Factored With 22,593 Cat Qubits in 3.14 Days - XenoSpectrum",
    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBkSDBVdmtaeXZybHVPTThiSWhLeXVkaS1fbDhfYlFfSllQUy1pM3h2cHJua3VQX25WbzhGMnJkcU1XLThab0NTZHpVUnJsNDFUSElHajhMUzI5Vm5TSHBIU1N5YnRiaHp1?oc=5",
    "date": "2026-11-02",
    "source": "XenoSpectrum"
-  },
-  {
-   "title": "Alice & Bob Claims New Benchmark for Hacking RSA in 3 Days - BankInfoSecurity",
-   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPQXJncnJrU3hqTWRMNW5UNXBaVWo1NEFQcXpTNUI2N2pnb04xMVZTcjVJWE15UTMwcXhaSEdCUzJkSzBTeDItSmV0WE5rZE5TZXV3WGdCb2lLM0xGSjhYOHJNRHJYRFJqWVMyaW1IektQanZnM0FUbGE2UW1IWG9JdWg3eVVLeTZWTF9nc0dwZ3NHU0JmZk5iZWlXZl9RUVNjbGdj?oc=5",
-   "date": "2026-11-01",
-   "source": "BankInfoSecurity"
-  },
-  {
-   "title": "Coinbase Is Racing to Quantum-Proof Bitcoin Before It Has To - Startup Fortune",
-   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOQllTZnRpaERsNGJPWGxCczRzN01oZTF4c2RPRFRIaHBrbUNWN2NqbDJLbzlfTmpzRnhZRUVobkU3WjAzMFZWb2thMEVpSmktbC0zanBTa05VQ0R2V3Z3WVk2a25ISzhiY3ZwWEJ1S0N2cTZwU2c4NmYxUFBfeGZYczJNcGY2MjVvVUhRODZjSlliQQ?oc=5",
-   "date": "2026-10-31",
-   "source": "Startup Fortune"
-  },
-  {
-   "title": "Tel Aviv University Boosts Post-Quantum Crypto Security Efforts - Quantum Zeitgeist",
-   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPMTJJQnkwTlVZRWh5ZVFQMWFUQmp5aC1UbVg2QzY3OV9yaEJ2MUJWWjJxdTBWOGZzMC1EckItZElxLTRXYXctU0dQYWZjeHhHTzhqNnVtVElCaWpkT1BiRXRoNVpycXBldmpWSDdJUE5VUDdQb1NzRjJHNHhqd3dISTZEOERzTUQwa1ZmZjR6WFQzWTM3eWc?oc=5",
-   "date": "2026-10-31",
-   "source": "Quantum Zeitgeist"
   },
   {
    "title": "Alice & Bob Demonstrates End-to-End Shor’s Algorithm Compilation Requiring 23,000 Cat Qubits to Break RSA-2048 - Quantum Computing Report",
@@ -214,34 +304,10 @@
    "source": "Quantum Computing Report"
   },
   {
-   "title": "Alice & Bob Put Breaking RSA-2048 At 23,000 Cat Qubits And Three Days - Quantum Zeitgeist",
-   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBqMndraWhxTHhWZ25aVk1MWFpuN19jeGdkNWtYYkpIWGJVSHZIVVZGNUtjaGQ5d3U4LWFtcEREUF9xN3FBTHE0ZjNIUmJfTTB6bENLT1ZNcWtRQXg4UXFZZG9XTjZoQmVud1VB?oc=5",
+   "title": "Alice & Bob Claims New Benchmark for Hacking RSA in 3 Days - BankInfoSecurity",
+   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPQXJncnJrU3hqTWRMNW5UNXBaVWo1NEFQcXpTNUI2N2pnb04xMVZTcjVJWE15UTMwcXhaSEdCUzJkSzBTeDItSmV0WE5rZE5TZXV3WGdCb2lLM0xGSjhYOHJNRHJYRFJqWVMyaW1IektQanZnM0FUbGE2UW1IWG9JdWg3eVVLeTZWTF9nc0dwZ3NHU0JmZk5iZWlXZl9RUVNjbGdj?oc=5",
    "date": "2026-10-30",
-   "source": "Quantum Zeitgeist"
-  },
-  {
-   "title": "Crypto Biz: Bitcoin’s quantum threat is becoming an economic problem - TradingView",
-   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNcmlPNy00QkVFWk1naC00Qk8wR1FuSUljNmROcUlOaGZuZkdhQU9sVUFmbVhBTk5rVHB5c3UzOHNoMHhiVzREU19yTkpJeS1qTWJZdnNLUm9kbENGU0hfazJoSmFsb2pNVFVacEFUc0REMkpvMXZaTzdyQkFwT3RkZTFxNlFPa1E0VzZPSy1wWEhKSEhWYzZzdHFhOFFfcDVkQmJwbFJpLVZfNzFkX0dxV2Vza1BXZXkxam5mNk00R181MWFjbHdYTGp3bw?oc=5",
-   "date": "2026-10-30",
-   "source": "TradingView"
-  },
-  {
-   "title": "StarkWare Tests Quantum-Resistant BTC Transaction on Bitcoin Mainnet - CoinMarketCap",
-   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQYV95R05rZjVmbUlxb21ybWtIYTR1RE4zbE5XMC1kek02UW5MQS1ZXzlvM1BDUm42WGRra25wMENJaEtCNmpxd0x0VDRaazBhRXdKRTV5SHRxY2NuZDY2V2RSX2tlRXBVTUJaMDIyNUY3QXZLcUo0MWJFR1V1SDlIOF8tdDV2QnFWQ3JmREZXeHFYV3pwSGw2d1FubjFFdmotRTJuQzdR?oc=5",
-   "date": "2026-10-30",
-   "source": "CoinMarketCap"
-  },
-  {
-   "title": "Security experts warn North Korean hackers aren't just using AI in their new campaigns, but also 'post-quantum' encryption - TechRadar",
-   "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQU2tBZlRtZXhoUE9TbG1SRnpEaFNscWNmcWVYT0YyOVNZQzVGNUdvSFZSLV9EVllfeXFZbmJVdFE1aFRXNXFtbE9tUnhEQlIzYllHQzFkM2dJUVdpY0dBVGpSNXN2WUxhZEZTMXN0SnJPUWtQUDh1ZDAtTXFEcm5yNDdubzIteXJyR2Y0Wl9Yei1kTW8yR1pQWnJGT3lvcFJ0QUlrdjQ0ZHpfb0UzcmtoRmhld3hlT1BZem1sa2JhQms0WUI5SkhqN3Y4S1Vmc0tfQ1VYTGJNbC14TFFnX05icVAzdVJoVlRPTV83Uy1n?oc=5",
-   "date": "2026-10-30",
-   "source": "TechRadar"
-  },
-  {
-   "title": "Our estimate for factoring RSA-2048 with cat qubits: pushing the frontier between size and speed - Alice & Bob",
-   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNUkt5M0h6X082X1RlWDByWnVQOVVEWTZDaDcyaTJKSkZoS3VNNGt5WUR2VG10NFRfZVVVQXhTeFdoNFQ0Q2R4bEZSZmc2QnloXzB2MF9WVTlDYm5KVGdUMzB0WkstUUdnN1I5YUpseExESFRfYVd3MmJLbE11WURWOEFwcnYzX1pVLVRBUFVNQm5JRTYxQ1RGeXQwUnFFWUU1WFQ2TVotbXoyS1RjNEVSWGVPQld0R2RwbDVaSXlCOUw?oc=5",
-   "date": "2026-10-29",
-   "source": "Alice & Bob"
+   "source": "BankInfoSecurity"
   },
   {
    "title": "Alice & Bob Estimates 22,593 Qubits to Break RSA-2048 - The Quantum Insider",
@@ -262,34 +328,10 @@
    "source": "HPCwire"
   },
   {
-   "title": "Bitcoin Quantum Attack Cost Halved to 1,151 Qubits [2026] - shattered.io",
-   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE54Zmc4VG5FaTJIUXBmX1Z2NUhKdmRxUXlmLTh3dVFZbFNiRU9QbGZjcXpSQXN1U1FvNmxHTEtkM2dlZ24yLTdoVEpXdjkxYXVhb0c2TTcwNUVadlczM2tFaVRnS1JkejAxc3VlSjRB?oc=5",
+   "title": "Alice & Bob Put Breaking RSA-2048 At 23,000 Cat Qubits And Three Days - Quantum Zeitgeist",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBqMndraWhxTHhWZ25aVk1MWFpuN19jeGdkNWtYYkpIWGJVSHZIVVZGNUtjaGQ5d3U4LWFtcEREUF9xN3FBTHE0ZjNIUmJfTTB6bENLT1ZNcWtRQXg4UXFZZG9XTjZoQmVud1VB?oc=5",
    "date": "2026-10-29",
-   "source": "shattered.io"
-  },
-  {
-   "title": "Stacks Founder Warns Quantum Threat May Hinder Bitcoin Growth - ForkLog",
-   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQWXo5T0t2dF84WmVPUDRtLWRTcWlVQWtJZWFtcmtqQXZXaWZtWUU2NjZoRldMSm1LY01ZMlpZQnJtc0c5MDBiTmNHLWpldkV0SFZrd1VMOTc4UTFXcDM1M0s0aW85Ymk2OHczVWtJSXpaMTFzNEVCMGxha1pkV2hMSHFYdXJmWXF4WTRhcThR?oc=5",
-   "date": "2026-10-28",
-   "source": "ForkLog"
-  },
-  {
-   "title": "Bitcoin Quantum Fix: 90 Days vs BIP-361’s 3 Years [2026] - shattered.io",
-   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNQ3o5Z295WkdmSkJ5c2tSWExzTWEteXV6MnBSVk9vRjJ5eC1zX3BpdDhyQ1BpbTNmTXVyRlVXVVpwMVJOS1ViUEF0WC1mOVdqWDY4UkR0WENrdGVyRFhTVU9lWEprbm9xTzdibWg2Z2pzMk1YQlFRSlVvanVNMnR6UWVfbVdaMGdGcFlnNllXTQ?oc=5",
-   "date": "2026-10-28",
-   "source": "shattered.io"
-  },
-  {
-   "title": "Verona Launches Fermi Mainnet v32 with NIST Post-Quantum Cryptography - Yellow.com",
-   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPeEdkNmUybG9JU2JPNE5OUGRvdnhSc250TW1BTWJub1NXYVRjcnpncjduWFFCM04tNFNFbzFGbldnMXhKRUNpc25jdWpQQXA1d1NpdmZLQUlYRjlqWU9USDRMSGRJZkx2dTIyNXdkamplMWM1NFJBUWJDRGNJTno4TUF0MXBRN19vbnNPYkpDM194WVpHRVdRRQ?oc=5",
-   "date": "2026-10-28",
-   "source": "Yellow.com"
-  },
-  {
-   "title": "Stacks Co-Founder Warns Quantum Fears Are Capping Bitcoin's Institutional Demand - BigGo Finance",
-   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1PanFSeTJHaFFQaVFnZ0RsbWFIQXVVeG9JNjFRd1JNazNhQ2NKVnRfS0RJaVZmY3l3ZlVjVmE3T2FPVVdpNDRQbElWNTgxcDRGVFRSY1VmcldZb1ltYXU5akFSU3hLUmRZLVMwcEVZaTg4bDVaWlE?oc=5",
-   "date": "2026-10-28",
-   "source": "BigGo Finance"
+   "source": "Quantum Zeitgeist"
   },
   {
    "title": "Pinnacle 1.2: 72,000 Qubits to Break RSA-2048 - PostQuantum.com",
@@ -298,160 +340,10 @@
    "source": "PostQuantum.com"
   },
   {
-   "title": "Quantum fears already limiting Bitcoin’s growth, Stacks founder says - TradingView",
-   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQdnd0WWZfc241ZGwtTHpBN211VXRkRnRhOGQ0VWtaQjR5MDJyRWk4UHhrd2FDczRtNW9BYWVRSGJUcVRRaHluNUlfYzFMbE1QSVo1V3BmZzlQR0RjMkxoMDJ0OHhGeE5vSDh5QldzR3Q1eHFZS1RIUHJvM0V4TmJ5djl3R1VsUllfaWt0Q1RYem43SW1PSnFmNDJLMHVfRFR6RDdwWW5pNjBrWjZjcjZFVmZSV1lmaGdaTzVCSm1WX2UxN3ViN0JqREwwZw?oc=5",
-   "date": "2026-10-27",
-   "source": "TradingView"
-  },
-  {
-   "title": "Bitcoin: Analyst sees ‘buying opportunity of a lifetime’ in BTC’s quantum crisis - Cryptonews.net",
-   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8xYm1VRmtUNndEVGNqMm1ZbE05QXFMSjAycE9UaDlTS0JnSzkwWUtSRlRtMUJHSkk3QlQtVVZvcUxwWDJlajZ0QTRCaF9ZTWVzU05OYlNBaDE?oc=5",
-   "date": "2026-10-26",
-   "source": "Cryptonews.net"
-  },
-  {
-   "title": "Muneeb Ali says Bitcoin has about two years to start its post-quantum upgrade - TradingView",
-   "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNclRZdV9iTFhxVmhFalFEeWJ3XzVPVmNuMDdyUUI4OUhpR05zZm8teGdMZElyT3ZYYmtUaVR3UFpfcWl3Zl9PS2JoMXdIbUpCWFVGOThCeFB2VzM3bk9la2NWVFM2WGVyRXkxZXNEb3o4ZXdJdmVIb0VSdFB5QlJ4VFQyV0toYnR5LWNSbkcxTmF3WGZtdDBuZG9iNDE5Y0JMSEozTk5Fc05NZWN5TXlQRXEwcndZLUhuMDh4TnRhRTFMRjk3Qm8ySUU4SWFONFk0OU4wcmRCUXJydw?oc=5",
-   "date": "2026-10-25",
-   "source": "TradingView"
-  },
-  {
-   "title": "Will Bitcoin Survive Quantum Computing? Inside the Race Toward Q-Day - CoinMarketCap",
-   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNV0w3RUlSblk1UEJjdzN1bk9ZYWdKWnhTVDVLVUpVc0E0YXhUQmRGOHBwTkJZYkgwdDlOQWpXaGRoNFgtVUtta2NrVXBqemFnXzJORkw2OU1JZ2VrLTB2RlJvRExkY0JFUkFZVWNMZE1MTmg1aVlEN1RFMWFoS1JIXy1tZmQ?oc=5",
-   "date": "2026-10-24",
-   "source": "CoinMarketCap"
-  },
-  {
-   "title": "Bitcoin's Quantum-Resistance Proposals Remain in Draft Stage - TOKENPOST",
-   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE43Ml9FMUtTZU1NcUxFV2tpXzl1MHczSWdxQ3pFaWFTeUUweFp2X2NWUUc1ZWlPemRJTlNMcVN3eC1pNXVXLVdUVjdxU0NZdEdOM3VoWk10WElfQlk?oc=5",
-   "date": "2026-10-24",
-   "source": "TOKENPOST"
-  },
-  {
-   "title": "Bitcoin faces quantum risks by 2030 – Can developers secure BTC in time? - Cryptonews.net",
-   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5SMEhuZ2dic0otempoa1dacDdheXdXLWtKd1hBTk1laEFxOTZjbkdaUkI1MTdUV2NXRnR6MUVrOEFnVEYtVXZyX3Fydi16a2VuQTJiMTJZank?oc=5",
-   "date": "2026-10-24",
-   "source": "Cryptonews.net"
-  },
-  {
    "title": "Iceberg Quantum Validates Pinnacle 1.2 Architecture with Crevasse QLDPC Decoder to Reduce RSA-2048 Factoring Resources - Quantum Computing Report",
    "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOTWRwdmxQa2dOcndTaVNEMy1zLVRJNkkwMk1NbHYzSm1mbmU1MDlXc1ZzM09HR3lyRmVoZFpPWGlia2xSQUs4UnFrU2ZIZk00Q0kwbV9lTklQSktLZzlSNHdKeUtZM1RqS25DX2NkUXZXZXlaN0ExbnZvU1lYUjRHUUFHWW9LbUczVHBpZW5kbTI1Qms1cF9sY0xJMjJCdDM2V0ZIRXBtcGxtZzc1ekRMQXN6V0dhMDQ1Zm5GNEhWc3NWS2dEd2lEM2ZWSVZwdmdKSy1FVTh4aFU1N2wwU1dDOE1PSld4Qk10YVHSAe8BQVVfeXFMT0lLbENYek5ubVpzVnhZMXluWGt4YWQtSGNEdHJsVlNSdmZKUUZieVVCMVpGdXBoY0pTVDZuM0pPN0k0andKNGt2R05UVGl3dEQ2WUMtNnZ0WC1TSXR5by03aV9UcUxzcnAycTdkcE1saGtQRkR3VGYxY00zVV96djFoMElOVWVhSGRGeTFpYlZsMTF5eGhYU0Z4aDZjQUpLYTBVVXphaERjYU9DQnNVOTV6bENrSDBmRWlpMFkxUW1PbTdRUXF3SW55LVVBX1Fab29seG1uX0FfcTVYckk3b1dEaUI4UFp2aVZ1Mlk5U1k?oc=5",
    "date": "2026-10-22",
    "source": "Quantum Computing Report"
-  },
-  {
-   "title": "Bitcoin and Ethereum Take Different Paths to Post-Quantum Wallets - The Defiant",
-   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNUDc2LWh0YVp5QUNpUFQ5WkJzRS1NTThLalRldlhwekhVcDBGUTc4YkRyWXVNN3BDUVJkQU9OdTJMWmV5VlJXNDFPVkJObTBlbUgxaW1PWTBqbWdWYkZMMFptV244SXhwSmFFRW10dlNOYy1wSHpCc2xSdEJJQUlTMVdRb05seTJCakNJczF0YXppU1RGbkJ2LVFQN2tXWVpjY1pR?oc=5",
-   "date": "2026-10-22",
-   "source": "The Defiant"
-  },
-  {
-   "title": "Tezos, Algorand, QRL are quantum ready, but where does Bitcoin stand with BIP-360? - AMBCrypto",
-   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPajhkZXAyaFBONnA2aGZrdU4zSzdFN0FRLWM3Yjc5S0o3ZE42a1l6YlZlVktkQ2o1UDlFamNNZ1RZTXN1TlhrRmh0ODV1bHNtaExhQnU4RXRiQXpWODk1LThJclQ2RHd5OHk5dHZvQk5zbVlqSk0zSld2d3RmdkFoNU1qR1VRUjhwSHhRSUdhOFlHWjBkNWNkZXgxZlg4OGNBZEY0?oc=5",
-   "date": "2026-10-22",
-   "source": "AMBCrypto"
-  },
-  {
-   "title": "Quantum Alliance Flags 30.2% of Bitcoin at Risk [2026] - shattered.io",
-   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5YOU11cjd1VEFsSGJDWmlnN25OOHZfX0RGeGhqMDJFb2UyVXhIRVBZb25sa3VBTllmelJaZnQtOUNrSVJnX2c5UDh5WE85c2wtUFlGczhHc1pIM1hLbVdBLW5HN0pkUGJnWnpDWnVycVRWeGVGMlFGRQ?oc=5",
-   "date": "2026-10-22",
-   "source": "shattered.io"
-  },
-  {
-   "title": "Coinbase Outlines Bitcoin Quantum Plan, Flags 6.9 Million BTC - TOKENPOST",
-   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5iMlBrMnRfc0ZfV0daZER2MGg0bHpQTkw4c1ExakhVbkhiNjlOZHRWczdUMWZoYUVRQXZRbjMzdGE0Nnh4N0dQLUF4VXVqV1ROUHFhM3R5R1p3Rmc?oc=5",
-   "date": "2026-10-22",
-   "source": "TOKENPOST"
-  },
-  {
-   "title": "AI reconstructs quantum circuits in 53 hours: Countdown begins for post-quantum migration in Bitcoin and banking sectors - Moomoo",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQamlCSXhmaS1CbENHSXpEQ2Q3dVl3RGFqSzd1VWdiMHQ5NkM4OGdETUgyZUc1MWdrRk4tTkhPWll2b29IM1NMTWVLT3JoaXRfV2xrYnJGRTJxUGVWaE9xcXNONkZ0ZnFyMEwtV3FpT1ZYNkhEWmxLcWF2Z21JWTRvbVVtZTNJd1I3YkQxRzFrSjQ4RVFGczA1T3dfOVhKQk9CN0R3MDJRQlhGLWJlUGc?oc=5",
-   "date": "2026-10-20",
-   "source": "Moomoo"
-  },
-  {
-   "title": "Ensuring Bitcoin’s future in a post-quantum world requires preparation and collaboration across the industry. - Moomoo",
-   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOY25XN21ka2VGcjhQNDdMcnlMcGJTa3N4R3hFWWl5OXVDS2ZKTVhWQ0xfeTdBdk9yLWY5RGU1U1hEb05iRDlQWEhROE8wSUU4NlktMWZDaDFDSzdFNzBVcXdBbU5uODVCS2ZIYUtDWUV6aWtfRUlPZDZ4aFZMeEJTUFEzMmtvX3plbWduRk9MT1RJRlJaalRaZjNmZXZkTFRTcExFaXNFRl9DVlpoY2swd2Fn?oc=5",
-   "date": "2026-10-20",
-   "source": "Moomoo"
-  },
-  {
-   "title": "WBTC Advances Bitcoin Custody Preparations for the Quantum Era - markets.businessinsider.com",
-   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNS19xbElWOEFhTVNDT2QxZzNJVjA2OUNqQm9qU0h6WFF1TkFhdUJlcXVhd3RKQmZVRVdZZWhRUWlJbHRDVmFJakZyel8wZlFSNUszeWFkb1dPT0pOaUlIY0NIcWtLLW9vQW9ncTctajhreXpPWmNRbS1nbWo4WEVfR21ZeVRZN0ZiRHkxVXQ4SXFnMlVvMHRFclREczQwdXRLOTdnbTFrRjBUS25QVDNERkxvM3JJY2xNM2pSTFdn?oc=5",
-   "date": "2026-10-19",
-   "source": "markets.businessinsider.com"
-  },
-  {
-   "title": "Wrapped Bitcoin Shifts Bitcoin Custody To Cut Risk From Quantum Computers - Quantum Zeitgeist",
-   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9HX2l6RjlLYXBTdHBvYmtqeXM4M0Z0R2FzeDZOdlFBbGhYN0dFdFJRZW5KdFk5N09PU0wzZzNGMkxjeVRoRFFQSllwaGI1bmE5RWF1eVdmLUc4VTlpX01QUHNMRHdOTWkyY3NWeTFZNUtzcGRBazVZaQ?oc=5",
-   "date": "2026-10-19",
-   "source": "Quantum Zeitgeist"
-  },
-  {
-   "title": "Will RSA-2048 Be Factored Before 2040? Manifold Market Jumps After Google's Quantum Result - tech-insider.org",
-   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPUTBpcld1ZnYtSXNyVElnZV9lcGtITHE3NzgxS05raWR3cVc5YmFEc0pLX0dGbWRrNDNoNVpqT0xXUHZZSTltVmVkRzV6YmY4aTV0YmwzUWdPY1kxdm5PWU9rSVh4RHdSelRhQTlDNWw1OHVtUEQzRkxMRjlBOVdHSkdkbE9pUQ?oc=5",
-   "date": "2026-10-18",
-   "source": "tech-insider.org"
-  },
-  {
-   "title": "Bitcoin’s Quantum Transition Won’t Stop at Bitcoin - TradingView",
-   "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPTlJNMjRxNFFQSEFEa2FEWnZRQllWTFBKQi1IdnNZNm1VVUZfOXRvb043YWxhRHk3LXBQQTRubzFEZFlBeEdrcVpZOHFfUW1KRXplV3VZRS1lRmU4QjFNYk4tWWIzV0FBTjRjWFYwR2hXOTBUMUxteFcyY1JWS0NlN2tCVTVDUEdJOVRLdkZwYXJnQjJ3YTdjUWtSZkEyU3UzR2NvZ29OdzY0eDNI?oc=5",
-   "date": "2026-10-18",
-   "source": "TradingView"
-  },
-  {
-   "title": "9 blockchain firms just formed a quantum alliance – Here’s the plan - AMBCrypto",
-   "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNSURDVkpsMkFISkR0dDd1X3FNaElNb3JqdHF0UlVsTVdCR0ZVSDZsSzcweWw5Z2tWWk1ySTUyY0JJWW1WMEh5blFIN3psTV9aRlNFN25HN1RxRFg1Y1J4dmdWT2FIX1NfZnpMUEx0RkF5LWdnTzR3RXdPN0VVRGp2NVI1eWxPNTlRdkFwamtaSVZoblJfckhFV21BeF8?oc=5",
-   "date": "2026-10-18",
-   "source": "AMBCrypto"
-  },
-  {
-   "title": "Coinbase's Bitcoin Post-Quantum Requirements - PostQuantum.com",
-   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOMXFaQ2ZKMmRJM0RRcGVHa01rZ0ZsQ1RVYTBWNEhyR05OajF1dnpkUjcwMVB3OGxGY0FZbVNZaXA3eWdPaExhZDdiZXNzaVFmX1lQdzhUSEVEQjkxakFoLXhaUHc1dERrejhCTTVaWGRTVnRXQzN1b29xbVhTaEZxRHJ4aG1NMlU?oc=5",
-   "date": "2026-10-17",
-   "source": "PostQuantum.com"
-  },
-  {
-   "title": "Coinbase pushes Bitcoin's post-quantum migration - CryptoTicker.io",
-   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOUVluRDR2UXpRZHhSUExwOV9lRmZmTjNPTXpQSDgxVnBoZjE4TlpmSHNXMmhSa2RNak9tSDlSZVk3bFptbzY4RHNEaGdoODNNZlgxdmVhTjc4R1JRMFA4TzRTa0prcTFpRllZY19tLXpSZmhubGI5YXBCUmFjSWYwaA?oc=5",
-   "date": "2026-10-17",
-   "source": "CryptoTicker.io"
-  },
-  {
-   "title": "Coinbase Shares Technical Priorities For Bitcoin (BTC) Post- Quantum Computing Transition - Crowdfund Insider",
-   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPQUlBNGtXNjhLQTJXanFFZ2lqSnlWLU1DdnhlTi1WS28yR0VVQUxNZy16NVprSW9SdUprcTFhem5OTE9salMyTWVsUWRRcEFydGp3eEE1MlJTeWQ0cmdKTVpzSk1EZXYzS1lUZDdFSXpPNGRXVFFSYjlZM3BfbHRKQWJoU0tUbjdFS1FRcktzTG0yMk1EdHRRN0RBUmU3SVZ3Tko5MUhBUkdhV21GQ19TYVVQbVNFbXktdnREV1pqc0xQTnVVUl9rX1VRb2V6T29T?oc=5",
-   "date": "2026-10-17",
-   "source": "Crowdfund Insider"
-  },
-  {
-   "title": "Nine crypto firms form Quantum Alliance to set post-quantum standards - TradingView",
-   "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOTEVVN3VPMFhtcXh1bEkyaFZENElvYWRhM1E0TGZLTmU4UjFaRzhNRU92VVR2aHFJZlJURW9KTWJrRWJRMVFQTkQ2Q2J1U0FwWmszd1BZRXdXS1lYNWltMGtBQmpmcHV6aHJiQ3doM19RU2RNM2loY2l0YzRiaVpfMzI5MllHX0h3UTBIVmduN2Mybm9uZmRPM1JiNkxPSTJ6TkJ0a203ZUxMbWctQkhLSVByVjRMSXozYWt4TmJUV0l6U1R4UnlfalhxRWRkcEE?oc=5",
-   "date": "2026-10-17",
-   "source": "TradingView"
-  },
-  {
-   "title": "DAC highlights need for quantum-resistant infrastructure as Italy prepares to unveil first quantum supercomputer and industrial quantum annealer - Crypto News",
-   "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPVXk0WGxKdUhuLUNUNUtkODRxR2RrRjJkbUpGUm51REdoY1E5Vzk1SGtpY3pyREJwYm9iOUVLeGNaT1gzT2dzRlJNLWEyWEtzX09wclZ4ZWhvM0xvU3QzVHlyM3NNcHVhSWQxR1dDenZ1UDlldnd3c2ktTWVFVVFvTVk0OVVvS1YtWHV1b0tDRTZzUS1lUml5aE02YnJqNEQxeXNMU2htZWxWb3NJX181b3VqSUZIbVd3eDB2RTNUQWFMd1dVRjE0b2xSRUxWNVFyNDByVVZJdDE2VFFQOFE5VGhPYnBSeWdTY210NjhYb3FyMzl2RGM3cA?oc=5",
-   "date": "2026-10-17",
-   "source": "Crypto News"
-  },
-  {
-   "title": "Is Bitcoin Ready for Quantum Computers? What Coinbase’s New Plan Shows - BeInCrypto",
-   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBpeHZ6a2JXTzI2el82UFlGX0tGUzY5WjZPeDRDckw0ckRlX25pR1FGTjRnMk1HZVF4aWdvSlNpN3BfcXgyaTA0NjEtM1N4MDFQajZOTWY2QkN5bGhqTG1YZnFpcmllUnFrYjVsUGlEUjhBdDVNNG5XMA?oc=5",
-   "date": "2026-10-16",
-   "source": "BeInCrypto"
-  },
-  {
-   "title": "Nine Crypto Firms Form Alliance to Protect Blockchains from Quantum Attacks - ForkLog",
-   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQckU1aEtST05fVjFrbnQzTXYzaXFkVGtuSG5BbGF4U3BCQks0MURsTEktWEd0RUJZSmRaNTlneElZVEZYUFNRZEJuNTNrYm1FYmdSUTl5dWNZVGNBZ2J6YjI1aU80N3lIN1Etand0SDRCNlhnNkt3aGVnbURsLVBRV3U3bmU5OU5kMXlkZWFXeExXbnpHMWlWcl9JTEVjS2Yy?oc=5",
-   "date": "2026-10-16",
-   "source": "ForkLog"
-  },
-  {
-   "title": "Quantum Alliance Forms to Define and Verify Post-Quantum Readiness for the Blockchain Industry - StreetInsider",
-   "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOUXpiaFBRWi1ydDVneDlEV1d3R05vOGxXaG9IZnNjTkFDT2J0dXF2aE9seWZYSTlRM2NoeTdmMWNSUWJQa2pNSEl2VFJrYVFIQW5MWU4wWHl4U01OZFlNUTJwYzF0Q3VfX2c5c2NqWkl6TWhucnNMc0hkVjBCeXp1WGVLSlNSM3NRZzBTcWhlNTIydDk0bEtfQ2xBV29wZGhEWHFNMzdEeUUtMFJFYlJfd0dLa1gwQl9IMndtMk8zTndONE9CVkZud3J2czdOSTNQNktfXzVTSDd5UFJhSElwN29HWUdiTFl3?oc=5",
-   "date": "2026-10-16",
-   "source": "StreetInsider"
   },
   {
    "title": "Bitcoin's Post-Quantum Solutions - Seeking Alpha",
@@ -460,88 +352,196 @@
    "source": "Seeking Alpha"
   },
   {
-   "title": "Michael Saylor’s Quantum Claims About Bitcoin, Checked - PostQuantum.com",
-   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE04NnBIYnplYU1uRmhLSV83cUo4T0JSUUgxemZlNVMycEhCMGg2bUs0TU1rMkx1MV9DTWhCNkNwS0Vtdll0N0NtYUZicWluRWExWnE4ZUZTZW9wZ0ZiTVVjenY2clZTN1p5eVkxLXZXUGVHQWhQekE?oc=5",
-   "date": "2026-10-15",
-   "source": "PostQuantum.com"
+   "title": "Working Together on Bitcoin’s Post-Quantum Readiness - Coinbase",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNUUtjY3pOQ1hOS2FNc3pIRjJHOEw2VTJEODNFRmQ3emFuV0I1R0FmMlZLNGlSazRtRVVIWm13anI1Mm9pY0o3N2FiVzNxNW9tSWtVOFhoSWVfMXl3cXNldmdlcGs4RUVjaW1nNXhkenlSOE5UNm0wYnZXck5BXzVGUnhB?oc=5",
+   "date": "2026-10-13",
+   "source": "Coinbase"
   },
   {
-   "title": "Coinbase Holds About 15% Of All BTC. Quantum Computing In Focus. - Quantum Zeitgeist",
-   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5IcTRBYzhfYlZXVXd6R2VCTG5nbENJY2t6ODBvLWlKYWV4V3hVYTk4N0wycy1hcDhKemhsa0FVRklEWHFNd2V1LXU5eW1CUDRYQnVNWlNnSEpaZTBERlVrMVd2clNjTUxFNG5FZzZEYzRpd1UwM0MweA?oc=5",
-   "date": "2026-10-15",
-   "source": "Quantum Zeitgeist"
-  },
-  {
-   "title": "Quantum Alliance Launches to Set Post-Quantum Standards for Blockchains - The Quantum Insider",
-   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPNHExbl9GVjdLLWlkN1RxX3dTSVFLeUZWSlZIMFhyaUpXdmh0NHFUUUotSVFNVFRESmtKZFdfWFd6d3RYb01jTmwxeUN3aU5WRnZUYUdyTFJvZHFLTjN3eWg3TUxIbXBCd3RvZzZMaWFkWDFjWklNTDVNNUp4YW9DMnBNSGllRjJHQTl0QkNnSDFvaTFBUDVOVQ?oc=5",
-   "date": "2026-10-15",
+   "title": "Coinbase Urges Early Work on Bitcoin’s Post-Quantum Transition - The Quantum Insider",
+   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNSFF4eUhhei1KRVVtTklCMEhiMmNzcjRETFd1a002cnM4R291dzZGekpNT3RCMmdyaDVZWEhxaGw1Tk5BY2F2amhhTW1NMkFSYWNpRGtrQ1FzQjFCZjA3MlNfMXk2QXAtMjQyUklQOGJEdGE4SDBtZ01wekNIaUl6X0JLbXk2TUxpNlRPWEQ3UGVjX1FnUzBWbXdkcm9qVmFZNFRxSDVn?oc=5",
+   "date": "2026-10-13",
    "source": "The Quantum Insider"
   },
   {
-   "title": "Coinbase Says Bitcoin Needs Years to Prepare for Quantum Computers. Is Your Bitcoin Safe Until Then? - 24/7 Wall St.",
-   "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxONkJvcVZGVUpqbURCdU8xY0oyT2F3Rmx4WEtUWXZlY2xZQUowMWxpQnR5VzBmYkl2eHUxS3JMMFNGckFXRHhhT0swZXZjR3d5VGo3QW81ZkxqeTNPb3ZwVzFEdTFPWXpzNmFMY0xBekdJUXlGRFhxUlJwRndVdzA3RmJrZjRHbU1zS0IycnVLZk85VGhYaTdZaUdwM3JGblBMTUNLYXpJZnFXYjZaUll5VTZxbGFSYmc0a0dtUzgzREFNNkFCZWExSUZPT3hPRDhYVzZkMDdmaHo4bDFlTy1zQUEtal9wVlFRLVFHM1VR?oc=5",
-   "date": "2026-10-14",
-   "source": "24/7 Wall St."
+   "title": "Coinbase lays out flexible designs as key priority for Bitcoin's post-quantum migration - The Block",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQNmM5bjU2RzlNTGR0a0J2MnZaSHVKdDdvX3RsRmJocE52UDQ0cFRta1B0R3R4dmhfNFVFUU5oYTN5bkdRVUlHR2QtVExJT1h0NVlNYTFTbXBpZ2NvZUQtbFBlUF9LZFlXT0g4RzRNME9NSGNxb2Y3cE8tR3VhODB5RzZMcTVieDh1dEFzdVJRUWlVNFhIVzUwbUFMY192Zw?oc=5",
+   "date": "2026-10-13",
+   "source": "The Block"
   },
   {
-   "title": "Bitcoin’s Quantum-Resistant Upgrade Has to Work for Big Custodians, Coinbase Tells Developers - Yahoo Tech",
-   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNTG1rQUpLS2FtNlhkRVhvUGxGTW9OczJuQklzTlh5c201cWtfUlBJU0NRaENLSHdmZjZsbi1ROUo4T0JpY0licEZVMlU2SThFelFEYmticGo0TVhPTkVTR0NRanhWQkVVclc2RVlZbVRXVFBOWDQ2N3JxS3JEVGZPTEU4RlhPNkVTLWcyT194OEF4LUhvdkc4?oc=5",
-   "date": "2026-10-14",
-   "source": "Yahoo Tech"
+   "title": "RSA-896 Cracked with Claude AI, Second Factoring Record in Sixteen Days - Tech Times",
+   "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNbWFfMGZUZDJaUzBpdWd1SVBoSE9tMU4wZF92QWVCYV83a25ldXJOU2gzdGM0emo3aGc5VllQLXJVczZZQmJhXzNvY3hKeC1pZmdBc0xxZm9zd01UTGU2SFk4Y2owdDF1SUN0RDFWai1wZk5VVXFPQ0ZxdzdSTTd4TnBHRFlCVkdkallsREwxMlVGSEhXd1dJa0R0TEl5WVNjSllsVG4yZVNZdG9reEFIekdpY3ZtbmtF?oc=5",
+   "date": "2026-09-20",
+   "source": "Tech Times"
   },
   {
-   "title": "Coinbase Lays Out Post-Quantum Needs for Bitcoin Custody - CryptoPotato",
-   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOSW9vM2laOEhsU1Zfb29NbkdPajdpb0NybjUzMmp4TDBoeGJfU0hvaUt6R0RtMzBGd1lrQkxyMFdSSkY4VFRWM2RKRDMxUWlmYkpUVzBsclEwemgxalJQVTA3ZFYxeEpKSlh0M3hXZTZTb3BiRC1NTU1MZG1VU3A2VlpZalkwc3VWV0E?oc=5",
-   "date": "2026-10-14",
-   "source": "CryptoPotato"
+   "title": "Quantum Computing Update: Post-Quantum Crypto Emerges as Federal Efforts Accelerate - Holland & Knight",
+   "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5XWjZWNndackF3MVZVNG55M0NObjFYTEdVd0lMaUhfQjRob0MwSGV1S0ZBV09kbHV0LTh1enlzZFRZb25jVHZWWENJeEZJbVFqZnJtaVY2RVgyaV9md2F4Ul9oaVRhM0pnMzJhcHY2MmR1UQ?oc=5",
+   "date": "2026-09-09",
+   "source": "Holland & Knight"
   },
   {
-   "title": "Coinbase Calls For Quantum-Resistant Bitcoin Upgrade, Warns Dormant Coins Pose A Challenge - Stocktwits",
-   "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNaHMxaW1PNF9uR2JJMEllQkNJbEdTbDNQM0trdHpqMTF4MDMyeFJNSjl0amlOSWhhMFF1ZjRkRi1tOFlFcDZrZkg3bThYd21zUWVrb0lnbGhBclF4cmkwSlRzU3dTMWJXWkVoVTBSbDU0RVByTnNvYmhnVGJFVlFPeVY3S3dSUnB5VkZzbEhfM19tNHd2WjlVaWlRV1d2ZG1mTmZkcmZLdnNBM3hxd0Noa0hfYWhpRlAxWF8wWldNZTRMNVlGVzEyeWZKVV9LSDlXVWU5OTFyUlBhRHdUamE5Y0kwcjRNSUpzMmNwdlJrd2N1X1BBZHc?oc=5",
-   "date": "2026-10-14",
-   "source": "Stocktwits"
+   "title": "Moving Bitcoin’s Post-Quantum Readiness Forward - Coinbase",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOMTBMaDAwNWZkalVENVU2ZVpBR2ctWWJhcDJPNkNCUXp6aWJyU2dPdVdESll1czZGNjFBRFJwbWU2X0djRXRreEloLW8wZUJIaXJpdmVjczhBcWxqSkhCZ29mZndKYnBEWkQzOUNzYkx5OXRTYTZ6N3dPNnZKbVFjVTdn?oc=5",
+   "date": "2026-09-09",
+   "source": "Coinbase"
   },
   {
-   "title": "Researchers Build First Working Post-Quantum Defense for Bitcoin’s Lightning Network - Cryptonews.net",
-   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9iWUFTYkdIMFM5d0ZYcURyb2Nrd01zeDlUZ2NNZGczOTZuTjFaSjFKQVd4NV9IT2JCNXVvaFVXd2NidUlScklHUWl4SjluZ0o2c1VDQkV6MVk?oc=5",
-   "date": "2026-10-14",
-   "source": "Cryptonews.net"
+   "title": "The First Quantum-Resistant Bitcoin Transaction Has Been Mined - Gizmodo",
+   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNWTZuWWFSZ3loOFRTNFFwSV8wNHBjVmRqekZCNUQtdHFaSGxGU0RaQzFjVV83TGdQdkRJTEtNWDRUOHhBNmdOWEE4Q1p0c0gxLWk5QVBsSkRBU29CcG5Qd1YzR3VQTWNsTE1BZk8zaE1vbk5SQXdOeVlmaGU5STBmOUhGOXRreGJaZDFuTWh0NUhBY1czNjZEQQ?oc=5",
+   "date": "2026-08-30",
+   "source": "Gizmodo"
   },
   {
-   "title": "Coinbase Lays Out Post-Quantum Needs for Bitcoin Custody - CryptoRank",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPd3JFb3JFRWlOQnd1RExpd0xsRlJkNE9EbEJjT3lQcldBeUhsZXNmdTlhVVE0SllzUldUeXk4MEtjSTdVVDhSTjZoMWJNblFYdWd2c09ZUGlGaks0aEItR2tObEtzTnY5cmtnZFV3R0JZZFFsNFFOQUgtZlJaOGNUbWVqZVFPZUpzWVlxekJCUG5VOU5YeTNaNnhn?oc=5",
-   "date": "2026-10-14",
-   "source": "CryptoRank"
+   "title": "StarkWare Researcher Demonstrates Quantum-Resistant Bitcoin Transaction - The Quantum Insider",
+   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPeUMwaFkyQkQwd0gyYlg4cDlaYWM3NE1vdlVnYjBOU2xGZjVPV210ZjZBOEU5RTk1TGVvWGMxU2VsVURHQ1dDalFNTEg5eGhMSVBMS2JPNUhKSzl1SW5tU3lPcEtZcEpIWVdSc0ZVNUFxNDMzbF84TEUtQl81a1NSWldudUZaaU5KMkY3bk5pbm5sNXVraHdCVTJZRnBFWU5Oam5JTGNMdlFEMmNSVUIxOHZDYw?oc=5",
+   "date": "2026-08-27",
+   "source": "The Quantum Insider"
   },
   {
-   "title": "Coinbase Calls for Early Bitcoin Migration to Quantum Security - Cryptonews",
-   "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5hMGZGMFVpS0NPTXY5R3BwcGFKdGZteEF6QS1XUGRPMzNjUE5XQzd4OTMtUkRTaXpyR2wtOUVFeUEzTEdaRVZHS1hsNzVkd1VHSm5KLVZ4N3lWcWM5UTBwLVZnYWFBV2JTOF9oai1pVQ?oc=5",
-   "date": "2026-10-14",
-   "source": "Cryptonews"
+   "title": "First quantum-resistant Bitcoin transaction successfully executed, StarkWare says - The Block",
+   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSzNtbWRQOFYzRV9TeW15eFg0U1ViMU45T2NIY2V5YzJSWFQtMU90cm41NUtWSGJEVWRudXdzQ0JmOUtrVUV4UXJkN0tOM01pM09kbEhfNl8xaTNUZkJFODJ5QWJMNDRjTUxqMkJ4Y2VNYkRtYmpvdkNmTDVmeGx0cjJlbnJudVlDVmRPS1dQZ0ZrVXBmenFqV1NraUlGcmwxX014c3NrMzY?oc=5",
+   "date": "2026-08-26",
+   "source": "The Block"
   },
   {
-   "title": "Coinbase Maps Bitcoin’s Post-Quantum Security Path as It Holds 5% of Supply - Cryptonews.net",
-   "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5EZkprOUZmNDJEeDk1OEdUY1B4Z3VlcHpJSzU4Vmw4c3AtbzZ5TnFyUHpaVnMwb1U0NS1xcUt2dzl4MEdqdFpLQmhuMkJXV2dXS2lwM01Jdw?oc=5",
-   "date": "2026-10-14",
-   "source": "Cryptonews.net"
+   "title": "AI enthusiast unlocks and mods BIOS with Claude Code — AI defeats RSA-2048 signature checks and unlocks 55 hidden settings - Tom's Hardware",
+   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPbHJfZHNfSm9mdzBHMGgyeW9xR3ZWWWsteUEwcVVldlVYSVR4MlNFMUI2UzZ5WmZIbnRWZjB0TTVlOHk5X0RWU01sZmNpNU4wa3lEZXdXXzB5SUpwOWNoaEJfc3dDY0NkWE5Jdk9Uc1dWOEZUMTNSYTZVMjBMbVlDU1RzMHNud08wLVI1WGlCaDNaMGJHUDNGa1h6VGY4bXR2SnFuSjRfVHBHeERGbnN1c0tvVTdUdXFFSmJXZFJWYVpSX0tLQ0ZTSDI4MFoxZDVKdF9TVXJzOWE3NHQzcUE?oc=5",
+   "date": "2026-08-03",
+   "source": "Tom's Hardware"
   },
   {
-   "title": "Coinbase Urges Early Preparation for Bitcoin’s Post-Quantum Transition - ForkLog",
-   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQZndTaVlpQ0tCbENTc1ZVZU1rS3NYQU1scjQ1cEM0bTdpTFI5aTAxZE5ub0JNQ1F4cnZWc3NSbUdPSEpaTFFCR3Fhdnh4SXpfWkJyZE1qVHVIUVRjRnRiSndINFQ2U0FTLU5yNnVFUDdnVW04RHhCOXl5MnVjYm9VSVVFcEYxcXJQV3FzZWlYd0NibWUwRjZUbQ?oc=5",
-   "date": "2026-10-14",
-   "source": "ForkLog"
+   "title": "Quantum Resistant Cryptocurrency, The Complete 2026 Guide - Quantum Zeitgeist",
+   "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE01SHpPVkRVUks1elhpQWd5UURLUHc0aGxnd0VLQjJrVFJ3LXd6LVI3clRoWWUybFgtVF9Eb0lNbmttS0VJM2RrWlpOVFpmRnNFMm94QmZVX1NZZlUzMV9WV0Z1WGczUUhsTmk5V213RQ?oc=5",
+   "date": "2026-07-26",
+   "source": "Quantum Zeitgeist"
   },
   {
-   "title": "Coinbase, Custodian of 5% of BTC, Urges Early Quantum Prep - Bitbo",
-   "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9WQlIyRWxJUmUwcVl3YzJNclFGZWlEMlZybFVzZ0wza043elRyd2FSaEZkZE85OG1pOWtHTS1rS0JlYnBFNlNwaHNMQUhTYWRTN2VMRzk1YWlxZzhmVDZZSHhSLWhUSk1xd3JxMGFYSQ?oc=5",
-   "date": "2026-10-14",
-   "source": "Bitbo"
+   "title": "Coinbase Works On Post-Quantum Future For Bitcoin - Bitcoin Magazine",
+   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE93U0kwNjJBdmFWVkhpbDRSU2hjdHJVRm93amhIWnliaVpCUGRuOGcyaGMyLTFLZDRvM0hRR0ozYnBWQ2gyVnJlVkUzOEp0UC1NUDdYaG5rV2p5M2hBS1d0SUR5NktsZzZXT0lkUGkwd1FoYlR3XzZWRjI4dHR3QQ?oc=5",
+   "date": "2026-07-23",
+   "source": "Bitcoin Magazine"
   },
   {
-   "title": ".NET 11 RC2 Adds Post-Quantum Crypto, .NET MAUI C# UI and NuGet Controls - Visual Studio Magazine",
-   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPNEdlaTUwUE1kSjdwMUZtVFhlNGFIRTJnMDFpUnIydlRIcFQ1cTRINXVTTm1CbHFTaTJ3VVpoQ3MzS1lieUZSSzJpX0R6T0R5QmJvRl9NajdVal9zcGZYbkYtOFhVZWhXWVNjZ2lwU0lmWGNmbHMzNTk4MGZkU2tMUXJEUWV4MkRSY1JVcDlrVnN2UDE4LVJqRjNjNHlrMnFGOEJJMDgtR19jZjB0UWJIeWtBTjNaUlN5blR5NFNFVHVnYlVBbGc?oc=5",
-   "date": "2026-10-14",
-   "source": "Visual Studio Magazine"
+   "title": "Quantum Resistant Bitcoin, The Complete 2026 Guide - Quantum Zeitgeist",
+   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9nNzJTc3p2ek9tZmxMck11UFVRUElqYkZBWkVVM05tMmNkSzFvcUg1NlprOW5qVzBUazBNVmNaR0U0bi1LVl9fQTJ2UTVoR3h3TEJJYXZ4SWhtczNmcUtYQTRibDBsQQ?oc=5",
+   "date": "2026-07-21",
+   "source": "Quantum Zeitgeist"
+  },
+  {
+   "title": "Improved Research and Roadmaps For Quantum to Crack Main Internet Security RSA-2048 - NextBigFuture.com",
+   "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPdGM2d0cwRDRHNHRXNkRQU1RJNmJNLWFDVnFncGx1U240Zldiem5qakthQTQzdkF2VGE5UGhyeGVOQkNnRUdVdjE2TzhvSklaYjd5VGl0OWhUNmZteEtLSW1FU2Q3QXhmYXl2dEhHUjVOOUNEVTBkckJQMjdYTlNWU0dOeklkdHpDQW4wSXlzSnQxMzdSVlN2Nmp6Yi1MNTNWZmpyWlota19yUDNlTjNwdjhWb1lVVVJUeXBNN0tQcF9ZQ2JY?oc=5",
+   "date": "2026-07-10",
+   "source": "NextBigFuture.com"
+  },
+  {
+   "title": "Crypto firms prepare defenses as quantum threat to encryption draws nearer - Reuters",
+   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOQnZuN29MZHJtVi1IMFQ0b3Q0cGtJMFdVVHpVZ0M0U2d4OEdGSDg1VWg1YWtmMWFkMVdsNnJPMHhSZEQ5Rkp0bkNadVRVaWc1SlBTVmJINWk0SHptNlpuREVZcEV6TFZRYVNSclRiQ252c2NpdFk4SjBkbDR1ODJNbHlIWUVnaVNiWkFrcUJic0xoSTJpMUdpQU1UTXpUNzdwTndRSE5mb3lad21xUUJvYzdwSVRZa1I4OXFyLTRR?oc=5",
+   "date": "2026-07-08",
+   "source": "Reuters"
+  },
+  {
+   "title": "Trump sets post-quantum crypto deadlines, launches broader federal quantum initiative - csoonline.com",
+   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOeEtDQnpLTl9kOGJ1ZGlBSXZVU3Y4NFlBSXozb0t4Q3ZMMzgweVI2ZHZKX2NJSXBndWpjZmRZNUdlMHlsZWlWOFZWVDZaN0FRXzdfdU8wN3JOc3ZkRTlCdHJiV1VhQ0VkWnlibHhFR1J4WFhqV1FBaE95VlNYeUNzbmxPX2dhZWR5eWtkTWR3VGEwOU9PTFdCSk01QU54R1lScmd4c19YeG9DeWxwakVKRVhfcU1DbUMxWjNKc0Y0ZU1ZVFgtQk9OdGUzYw?oc=5",
+   "date": "2026-06-23",
+   "source": "csoonline.com"
+  },
+  {
+   "title": "Bitcoin is going quantum-proof. Inside BIP-360 and the migration - Crypto News",
+   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOb0F4UGdqd2U2SlRxSXVzOGcxelFsYXlBS2hNRkNfdFNjX3JoZkxXVE9xemZXLTBpSXdWbG9rQ3p3Vm96SEVGVnoxWHczWXFtWVpoTHRXRW5RdU5leDFBTjZPaVRCYXk3RFBjbzhJT2pJZTFrZ3QxRGdpdURDYXBYMG8wdzJNY1NXWHRhUw?oc=5",
+   "date": "2026-06-08",
+   "source": "Crypto News"
+  },
+  {
+   "title": "XRP News: Ripple’s New Quantum-Resistant Roadmap Puts XRPL Ahead of Bitcoin and Ethereum - Yahoo Finance",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOd0Y1TTR4LUM3bGF3a2FidmZONWhhMk9BYlRBUW9HRHlHRGl4RF80NHJOTVo3enlaTzJoMmtpVnJVR0E0TDcxZzhZTThQWVc5Vk5GNWdESF9HM0U2RTdMSXRDR0pJME5tSktieGp5X1laaHRlRk1IVWtKTzF0RkdLOXBOeTV4TWJNb0oweXU4ZHRMbS1hMmZYdlVtLU44cXc?oc=5",
+   "date": "2026-04-21",
+   "source": "Yahoo Finance"
+  },
+  {
+   "title": "Bitcoin Developers Propose Bitcoin Quantum Migration Plan That Would Freeze Legacy Coins - Bitcoin Magazine",
+   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9rTjZ0V09XUHNnWDNEWVAtS1dtNG1ocnJWZDZKbFU3Y092N1o2RmdzX2dBYmxiMmllZUg4ZE11RHBUZUxDVTFsYm4xVVFYR0ZCSnJQVFY5Nl9SWVNaTlJpbDNudlp4ay1fRVYyWVY2ZXJ4OUY2Sm05dmdMbXo?oc=5",
+   "date": "2026-04-15",
+   "source": "Bitcoin Magazine"
+  },
+  {
+   "title": "Presidio Bitcoin Releases Quantum Readiness Paper - Bitcoin Magazine",
+   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQRGcxQU45SGIya2F1Z2Q1TXdYbk5lR3ZWT0VCMUZwdnBUUFB3bFo4NjZfaHBycHZGSVo5NC0zV3ZjS21UMUdxNlUySXpZTEFtY0MwOVNaZmdRV1RCRmtmUmlHMERvcTlRdEcxRUNzRTljRlBVRUFlb0VCN0FxbG5obnJiVm5BNWpVckE?oc=5",
+   "date": "2026-04-14",
+   "source": "Bitcoin Magazine"
+  },
+  {
+   "title": "Architecture Matters as Much as the Algorithm: Q-CTRL's Heterogeneous Quantum Computer Design Cuts RSA-2048 to 190k-381k Qubits - PostQuantum.com",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOX0JrVVVaRDRfaHkzNEJtVExuRmlyRWJEaGFROXg4QTRPdzZSazliWlJ3Q2ZHZ2hkZFlWN2x2Zmhha0p3RF9VQ0E0NXFOVTFNUS1jdlUzT3RmcG04eXVPeGlyWXpnWUtpREpoLUNHclhFTU5PQnVJTGI1UDV1ZGtjTHFn?oc=5",
+   "date": "2026-04-09",
+   "source": "PostQuantum.com"
+  },
+  {
+   "title": "Bitcoin's $1.3 trillion security race: Key initiatives aimed at quantum-proofing the world's largest blockchain - CoinDesk",
+   "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPZlFiOHNEUGltNGZmbW5GazJteHZLUWR0Um9QRnZZcEFvTFlFVWVPNkRWR2Rhd3ZoV2NCSGZONk5mM2pKVDBfQTYzcFRFWFFTU01xSHpqM00weXZTZXpKSnNYNWhFYjNyN1BuVzF0a1NRT2UycjVRX2ZNZUVId21FOWppQjFEbUtFUk5fUzBuY2k2Nnd6bzZ4YWJVZVVXZFR4TGtqcy1KQWdkSE5oejVkd1BzcWpra1Nqa181YVVBR2t1RkxrQzdwOHhEWGY2ay1YRDRMTHIzcGhJczYzY0U4YVJGYl82d04z?oc=5",
+   "date": "2026-04-04",
+   "source": "CoinDesk"
+  },
+  {
+   "title": "What It Will Actually Cost to Break RSA-2048: Energy, Hardware, People, and the Bill Nobody's Talking About - PostQuantum.com",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPemNUbWIwXzJiekhOZGp4TFFHdzI3WnRwY0lZMU5Tall0RmhGRzduSVRFVVZfdzR3aDlzdWVNSURJQ0p1WVVENEhBcDdiRDZXQ0pwSFZoZDJvMlplcnpsdW1mR1psNWFLejRtMzdhZUJJVzBBNE1Bc0hDcnA0X2F5Q21B?oc=5",
+   "date": "2026-04-03",
+   "source": "PostQuantum.com"
+  },
+  {
+   "title": "Some quantum-resistant tokens jump 50% as Google flags risks to Bitcoin security - CoinDesk",
+   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOUndZekVEb0JNbkNXel9jUjZHZUdObmRzWXh3WFFFbHNLcFM0RGYzQWhFTWRrLWVSdURUaUpNSkhOa3lwZEV0RHVDUUpiZjF6QTdaTnZ6dlJmVVl2MUdUYkdkeEY1UUlVMkVUT3ZuWkgtNXlmVXBnejZKLUxPTjVodnltWGY3Y2cyNnlrV1hwY1hHRXVtYXBzeXdjUFh2U1pQWHFMQ0IzQnh3cHB5REpqYkdTWHl2VW5RNXNMbU1yN2VBR0lEWTNVZjk4aTEyaVNq?oc=5",
+   "date": "2026-04-01",
+   "source": "CoinDesk"
+  },
+  {
+   "title": "Safeguarding cryptocurrency by disclosing quantum vulnerabilities responsibly - Google Research",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNZlIydE4tc3hxMjh6enFJRVRqNWZzcFQ5Szl4M3d2QWxzOGsxMlQwTnVUU3NEYTlsODlmMFo2Xy1ULU11cF8xTnJYZXRmT3VwTGdKbGpHOXdkRWpHc3hJME9MUlB5ZmVGYzZlbF9FcllZRm5vVmpFdHFWZmoxQ1VxUHJPWUQ3VV9LVUxENHJnazhoRGxBUDBzT1p1SzkwMFFaRml2cmpqMW5NTkE?oc=5",
+   "date": "2026-03-31",
+   "source": "Google Research"
+  },
+  {
+   "title": "Watch out Bitcoin devs. Google says post-quantum migration needs to happen by 2029. - CoinDesk",
+   "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNZkxSOHd0aHV2QW4wd3FUYmZNZEhhZG1RNWN3SVJ1azh0X2xLQlpycDBWUFczdjJzOVBmUzdjUzdWU09hNEhuaDJoVXNhNWF6Y1Vhb0xPeVpLU1BaOTduQ0dVZnNoeTVQR2tNMUNnRlkzMl9JbTltR2Z0emJsNE9xSVI4bW52eGs1cUR5bmVjMEx4WDQ0cnFrNG1XRlM3SDhieG8xMGZMSkR1YVZJU2p3X3ZXbHpiSlIxbFpldHl6SQ?oc=5",
+   "date": "2026-03-28",
+   "source": "CoinDesk"
+  },
+  {
+   "title": "Top Quantum Cryptographic Companies in 2026 - The Quantum Insider",
+   "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOMVp6dk82V09MY1czRkM3bFoxd2k4NVYyV2dzVENvSFJyUWFYSEk3OGhma0JqWkhFREQ5aVRoU3FmZkUyUFRwTDBBMUk3SjZoODZYRDNzdVlwRVhuaDVGSF8tNUFrb3IxSlFGZHlHcjdJcUpFU1N0QXhrMVBvcFRSbk9OT2pHRHNwbnRRb0RNbWhraVZCTU4yckxwN3llN2x5eEMxNEZVaWtGY25XcXRQZA?oc=5",
+   "date": "2026-03-25",
+   "source": "The Quantum Insider"
+  },
+  {
+   "title": "BTQ Technologies Deploys BIP 360 on Bitcoin Quantum Testnet v0.3.0 - Quantum Computing Report",
+   "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNNE9kRU1pRVJPMm1veFRHZ25qbXBwNWxidURYZ1IxRXZzazBfOXcxUjZHeEFmRkgyc0t5TGp0dTJvQ1JHd0ZnYWZZd2RXZUZCbUtEcGxsQURQQU5lODFiVnByRDZseWxaT0J2dWhyYnN6TjRpaVJfenBEYmxzVlU1TWVjQWdzekRwcWZfWVk4MkZ5Z0VMV3lSN09xYW5iSkRjX2dDeNIBqgFBVV95cUxQWnJsNFlJMkJaV09NbjJ0TS1ScXpWQUVGTEREZnZkaldfRWxiTGVLQk1lNW9UXzFoUl9scGlmVEl0ZXprZUh6MXJUNkhVZGV0SC1KVXpudjRzQjR0MDNKMzlVa2lWbkZXOGNDWERjNVY3aHA4dzhWZ1hTb2NndWF4aHRURm1RUjczOVA3akFESFIzRDVjTVhrWmxMX0JWNWZCWU40NGU0V0ZWZw?oc=5",
+   "date": "2026-03-21",
+   "source": "Quantum Computing Report"
+  },
+  {
+   "title": "BTQ Technologies Implements BIP 360 Quantum-Resistant Bitcoin Transactions on Testnet - The Quantum Insider",
+   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPa2hXV1o1LU5ZOGdoQ1N5SHlvd1dWbmN6aFJhMG0xYlJ1WTZYRkJFbkxvbllYTDYxVnFmSno3aXYyaWpJX0tfT2dSOXgzM1kybmd6WGVoTTR2cE8xczVGUXR5WlVZV2lUQzFWQmQtTVdEVi1pMWh6Z2FMQUF2dzBMZlM2eHRNVnR3T2hNSjc3andCaTlNV0hlVEZacUZuaFpOd0I4Y1pvbDNiM25aYzE1MDA5ZmZTZE03ZUhDVlhJUVRZUQ?oc=5",
+   "date": "2026-03-20",
+   "source": "The Quantum Insider"
+  },
+  {
+   "title": "Bitcoin Is Rising to the Challenge of Quantum Readiness - Galaxy",
+   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE96VnNhOXdWTXpWdEM2emVzYllzQ2RkVlUyXzVVYl9JbEJobFRXc2JfcGdhOFlLTlFYWmVCbWs5cHpKbnhOQmtzb0x3WE1BcHp2M0d2MWEwME02dkwxbkFkeXBBNTc5aThJMUNScEY3Zm5jZ0VmUUFHSFNGVQ?oc=5",
+   "date": "2026-03-19",
+   "source": "Galaxy"
+  },
+  {
+   "title": "BTQ Deploys First Working BIP 360 Implementation On Bitcoin Quantum Testnet - Bitcoin Magazine",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBfOV9LWlBrWlFzNVh1M3hIaGRobl9od1JQMW15OWU0c0MyYlFJRGtzSmFjLUJIWFFtNXlpN2RJQVRBRy02STFaMk5xYzZsWGJPSFBYOUhPMTFzUGQtOC03Tk5pcVk5Ym1kb05wVDNPRndEUnhf?oc=5",
+   "date": "2026-03-19",
+   "source": "Bitcoin Magazine"
+  },
+  {
+   "title": "Shor, QLDPC Codes, and the Compression of RSA-2048 Resource Estimates (Part II) - Quantum Computing Report",
+   "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPQlA4cllKX0JhTUZwYU9veUpXaVdwRTlYT2kxYjhFcGFwaWJaMl9lZnkxSEYzVU53SUIzMkZTdlQyUlZ4UXBQLXNkNURwSF9IRDVlWTFhVm9BZEllSmt6ZXNiZWV3VWlHNkVaazZaRllYSmpTZkxtdG5JU2ZweDB4bm8tdkhCU0dWZkRKWC1KWk5YQ1NwdWZyUE9DVkZHd2R3d1NNQWV2UXl2dnZWcm1FdNIBtgFBVV95cUxPNHlhZ21uWWxUZm90LWc1Qkg1ajk4WkZqUFc3VFZPTnJ3M3d2NnFtRW9nNFJoaWlnUWozeTdIX0JzempsVGhOczFBRXVXeXBOaVRRSWNvczV6VVRtVFp1ZVI5YUxObmUxQUJrVG5iekI0ZHRnOEZhMEJYV1V6SmZQdWRROFJ2cUpfUHhzY0RCZEEyekNkTy1qNWgwSmhtZnRrSWRnTGhkQThOXzVzLWNIWEVWc3FkUQ?oc=5",
+   "date": "2026-03-13",
+   "source": "Quantum Computing Report"
   }
  ],
  "errors": [],
